@@ -5,8 +5,24 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
-  background-color: #1e1e1e;
+  background-color: #0b0a0a;
   color: white;
+}
+
+.linear-gradient {
+  background: linear-gradient(
+    225deg,
+    #000000 0%,
+    #30303040 55.41%,
+    #604f9368 100%
+  );
+}
+
+.blob {
+  width: 794px;
+  height: 756px;
+  flex-shrink: 0;
+  fill: rgba(96, 79, 147, 0.4);
+  filter: blur(250px);
 }
