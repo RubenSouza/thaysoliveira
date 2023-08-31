@@ -6,7 +6,7 @@ const Inicio = () => {
     <>
       <img src={blob1} className="absolute bottom-0 right-0 w-full" />
       <div
-        className="w-[1200px] h-[670px]  flex items-center justify-center overflow-hidden
+        className="w-[1200px] flex items-center justify-center overflow-hidden
      relative"
       >
         <div className=" h-full flex">
@@ -18,7 +18,7 @@ const Inicio = () => {
           </div>
           <div className="w-full h-full flex items-end justify-end ">
             <div className="">
-              <img src={capa} className="h-[670px] z-20" />
+              <img src={capa} className="h-[650px] z-20" />
             </div>
           </div>
         </div>

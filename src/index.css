@@ -19,6 +19,15 @@ body {
   );
 }
 
+.section2 {
+  background: linear-gradient(
+    224deg,
+    #100b0b00 0%,
+    #62557a4f 48%,
+    #100c0c00 100%
+  );
+}
+
 .blob {
   width: 794px;
   height: 756px;

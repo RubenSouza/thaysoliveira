@@ -4,11 +4,11 @@ import Title from "./Title";
 
 const AboutMe = () => {
   return (
-    <div className="w-[1200px] py-20">
+    <div className="w-[1200px] py-10">
       <div className="flex justify-between items-center">
-        <img src={crianca} className="w-[450px]" />
+        <img src={crianca} className="w-[400px]" />
         <div className="w-[500px] space-y-2">
-          <Title title="Sobre mim" line="w-[82px]" />
+          <Title title="Sobre mim" line="w-[81px]" />
           <h2 className="text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
           </h2>
@@ -29,9 +29,8 @@ const AboutMe = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center py-20">
+      <div className="flex justify-between items-center py-10">
         <div className="w-[500px] space-y-2">
-          <Title title="Sobre mim" line="w-[82px]" />
           <h2 className="text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
           </h2>
@@ -51,7 +50,7 @@ const AboutMe = () => {
             </p>
           </div>
         </div>
-        <img src={purpleimg} className="w-[450px]" />
+        <img src={purpleimg} className="w-[400px]" />
       </div>
     </div>
   );
