@@ -11,10 +11,8 @@ const Inicio = () => {
       >
         <div className=" h-full flex">
           <div className="flex justify-center items-start flex-col">
-            <h1 className="text-9xl font-semibold font-serif">
-              Thays Oliveira
-            </h1>
-            <h3 className="text-xl">Professora de música</h3>
+            <h1 className="text-9xl font-thin font-glossy">Thays Oliveira</h1>
+            <h3 className="font-sans px-3">Professora de música</h3>
           </div>
           <div className="w-full h-full flex items-end justify-end ">
             <div className="">

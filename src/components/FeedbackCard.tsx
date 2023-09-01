@@ -1,13 +1,14 @@
 import quotes from "../assets/quotes.svg";
 import user from "../assets/user.svg";
-// type Props = {
-//     name:string;
-//     character:string;
-//     photo:string;
-//     feedback:string;
-// }
 
-const FeedbackCard = () => {
+type Props = {
+  name: string;
+  character: string;
+  photo?: string;
+  feedback: string;
+};
+
+const FeedbackCard = ({ name, character, feedback }: Props) => {
   return (
     <div
       className="w-[580px] h-[360px] border-[1px] 
@@ -19,26 +20,17 @@ const FeedbackCard = () => {
             <img src={user} className="w-12 h-12" />
           </div>
           <div className="text-primary-600 px-3">
-            <h3 className="text-xl font-semibold">Marta Alves</h3>
-            <p className="text-sm">Mãe do aluno</p>
+            <h3 className="text-xl font-semibold">{name}</h3>
+            <p className="text-sm">{character}</p>
           </div>
         </div>
         <img src={quotes} alt="quotes" className="w-12 h-12" />
       </div>
       <div className="px-10 text-primary-600 ">
-        <p className="text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet
-          nunc nec nibh aliquet fringilla. Proin nec luctus velit, ut elementum
-          purus. Nunc varius, urna et vehicula luctus, arcu eros fermentum
-          augue, ut sagittis justo lacus eu turpis. Phasellus et vestibulum
-          nulla. Etiam vel mi sed ante iaculis aliquam. Fusce fermentum est
-          elit, id tincidunt turpis tempus eu. Phasellus id elit dolor.
-        </p>
+        <p className="text-base">{feedback}</p>
       </div>
     </div>
   );
 };
 
 export default FeedbackCard;
-
-// {name,character,photo,feedback}: Props

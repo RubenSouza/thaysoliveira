@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Glossy";
+    font-weight: 100;
+    src: url("./assets/fonts/glossy.otf") format("opentype");
+  }
+}
+
 body {
   margin: 0;
   padding: 0;

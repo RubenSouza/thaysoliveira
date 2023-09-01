@@ -2,11 +2,12 @@ import AboutMe from "./components/AboutMe";
 import Feedbacks from "./components/Feedbacks";
 import Inicio from "./components/Inicio";
 import Navbar from "./components/Navbar";
+import Students from "./components/Students";
 
 function App() {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="w-[1400px]">
+    <div className="flex flex-col justify-center items-center ">
+      <div className="w-[1400px] space-y-4">
         <section
           className="w-full flex flex-col items-center justify-center 
           relative linear-gradient"
@@ -20,8 +21,11 @@ function App() {
         >
           <AboutMe />
         </section>
-        <section className="w-full flex items-center justify-center relative section2 mb-40">
+        <section className="w-full flex items-center justify-center relative section2">
           <Feedbacks />
+        </section>
+        <section className="w-full flex items-center justify-center relative pb-40 ">
+          <Students />
         </section>
       </div>
     </div>

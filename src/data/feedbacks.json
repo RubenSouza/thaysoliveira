@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Maria Alves",
+    "character": "Mãe do aluno",
+    "photo": "https://i.imgur.com/1YBQqZS.png",
+    "feedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet nunc nec nibh aliquet fringilla. Proin nec luctus velit, ut elementum purus. Nunc varius, urna et vehicula luctus, arcu eros fermentum augue, ut sagittis justo lacus eu turpis. Phasellus et vestibulum nulla. Etiam vel mi sed ante iaculis aliquam. Fusce fermentum estelit, id tincidunt turpis tempus eu. Phasellus id elit dolor."
+  },
+  {
+    "name": "José Pereira",
+    "character": "Pai do Aluno",
+    "photo": "https://i.imgur.com/1YBQqZS.png",
+    "feedback": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet nunc nec nibh aliquet fringilla. Proin nec luctus velit, ut elementum purus. Nunc varius, urna et vehicula luctus, arcu eros fermentum augue, ut sagittis justo lacus eu turpis. Phasellus et vestibulum nulla. Etiam vel mi sed ante iaculis aliquam. Fusce fermentum estelit, id tincidunt turpis tempus eu. Phasellus id elit dolor."
+  }
+]
