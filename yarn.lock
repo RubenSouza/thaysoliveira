@@ -432,6 +432,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@seznam/compose-react-refs@^1.0.4":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@seznam/compose-react-refs/-/compose-react-refs-1.0.6.tgz#6ec4e70bdd6e32f8e70b4100f27267cf306bd8df"
+  integrity sha512-izzOXQfeQLonzrIQb8u6LQ8dk+ymz3WXTIXjvOlTXHq6sbzROg3NWU+9TTAOpEoK9Bth24/6F/XrfHJ5yR5n6Q==
+
 "@types/json-schema@^7.0.12":
   version "7.0.12"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.12.tgz#d70faba7039d5fca54c83c7dbab41051d2b6f6cb"
@@ -552,6 +557,13 @@
   dependencies:
     "@typescript-eslint/types" "6.5.0"
     eslint-visitor-keys "^3.4.1"
+
+"@vime/react@^5.4.1":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@vime/react/-/react-5.4.1.tgz#88f8d422f400b332e6941f34b5504b73b26aa03e"
+  integrity sha512-cwZDp6d+gGTfXiYhZlZ5QF7GvmJZfATcJG5Hdc1TulCnbxpw7zJsE5zH0p9d2YCkKKSE3/r64gG16a0kqZTaMg==
+  dependencies:
+    "@seznam/compose-react-refs" "^1.0.4"
 
 "@vitejs/plugin-react@^4.0.3":
   version "4.0.4"
