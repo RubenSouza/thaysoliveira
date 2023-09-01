@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vime/core": "^5.4.1",
     "@vime/react": "^5.4.1",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
