@@ -51,6 +51,7 @@ const AboutMe = () => {
           </div>
         </div>
         <img src={purpleimg} className="w-[400px]" />
+        <div id="feedbacks" />
       </div>
     </div>
   );

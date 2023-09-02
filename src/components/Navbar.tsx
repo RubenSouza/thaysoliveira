@@ -5,9 +5,15 @@ const Navbar = () => {
         className="uppercase flex justify-between w-[400px] text-sm font-semibold 
       font-sans"
       >
-        <li className="hover:cursor-pointer">Sobre mim</li>
-        <li className="hover:cursor-pointer">Feedback</li>
-        <li className="hover:cursor-pointer">Alunos</li>
+        <a href="#aboutme">
+          <li className="hover:cursor-pointer">Sobre mim</li>
+        </a>
+        <a href="#feedbacks">
+          <li className="hover:cursor-pointer">Feedback</li>
+        </a>
+        <a href="#students">
+          <li className="hover:cursor-pointer">Alunos</li>
+        </a>
         <li className="hover:cursor-pointer">Contato</li>
       </ul>
     </div>
