@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Students from "./components/Students";
 import Videos from "./components/Videos";
 
-import arrowUp from "./assets/arrrowUp.svg";
+// import arrowUp from "./assets/arrrowUp.svg";
 
 function App() {
   return (
@@ -59,7 +59,7 @@ function App() {
           <Contact />
         </section>
       </div>
-      <a href="#home">
+      {/* <a href="#home">
         <div
           className="w-[30px] h-[30px] border border-primary-500 
       rounded-full flex items-center justify-center opacity-50
@@ -68,7 +68,7 @@ function App() {
         >
           <img src={arrowUp} alt="goToHome" className="w-[12px]" />
         </div>
-      </a>
+      </a> */}
     </div>
   );
 }
