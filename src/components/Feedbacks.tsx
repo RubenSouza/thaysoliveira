@@ -19,7 +19,7 @@ const Feedbacks = () => {
     );
   });
   return (
-    <div className="w-[1200px] h-[600px] py-20">
+    <div className="w-[1200px] h-[600px] py-16">
       <Title title="Feedbacks" line="w-[78px]" />
       <div className="flex justify-between">
         <h2 className="text-4xl font-semibold text-primary-100 font-serif">

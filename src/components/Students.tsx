@@ -64,7 +64,7 @@ const studentsList = students.map((student, i) => {
 
 const Students = () => {
   return (
-    <div className="w-[1200px] flex flex-col items-center justify-center py-5">
+    <div className="w-[1200px] flex flex-col items-center justify-center">
       <Title title="Alunos" line="w-[50px]" />
       <div className="max-w-full flex flex-wrap justify-between py-10 gap-10">
         {studentsList}

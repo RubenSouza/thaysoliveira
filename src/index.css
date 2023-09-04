@@ -27,12 +27,23 @@ body {
   );
 }
 
-.section2 {
+.feedbacks {
   background: linear-gradient(
     224deg,
     #100b0b00 0%,
     #62557a4f 48%,
     #100c0c00 100%
+  );
+}
+
+.videos {
+  background: linear-gradient(
+    180deg,
+    #2f2f2f00 0%,
+    #62557a17 5%,
+    #62557a3d 25%,
+    #62557a3d 98%,
+    #000000 100%
   );
 }
 

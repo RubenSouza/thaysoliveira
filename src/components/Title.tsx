@@ -1,6 +1,6 @@
 type Props = {
   title: string;
-  line: string;
+  line?: string;
 };
 
 const Title = ({ title, line }: Props) => {
