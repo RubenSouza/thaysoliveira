@@ -12,7 +12,7 @@ function App() {
   return (
     <div
       className="flex flex-col justify-center items-center w-full 
-      min-h-screen h-screen scrollbar-thin overflow-y-scroll 
+      min-h-screen h-screen overflow-y-scroll 
       scrollbar-track-gray-400/40 scrollbar-thumb-primary-300"
     >
       <div className="w-[1400px] h-full space-y-4">
