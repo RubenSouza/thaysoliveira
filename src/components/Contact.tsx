@@ -10,18 +10,21 @@ const Contact = () => {
     <div className="w-[1200px]  space-y-2">
       <div className="space-y-1">
         <Title title="Contato" line="w-[55px]" />
-        <h2 className="text-4xl font-semibold text-primary-100 font-serif">
-          Vamos ser amigos
+        <h2 className="text-3xl font-semibold text-primary-100 font-serif">
+          Agende sua aula experimental
         </h2>
       </div>
-      <div className="py-14 flex w-full justify-between ">
+      <div className="py-10 flex w-full justify-between ">
         <div className=" ">
           <img src={logo} alt="logo" className="w-[350px]" />
         </div>
         <div className="grid grid-cols-2 gap-4 ">
           {/* instagram */}
           <a href="https://www.instagram.com/thaysoliveira.a/" target="_blank">
-            <div className="w-[375px] h-[105px] border border-primary-300 rounded-lg">
+            <div
+              className="w-[375px] h-[105px] border border-primary-100 rounded-lg
+            hover:bg-primary-500/20"
+            >
               <div className="flex justify-between items-center w-full h-full px-5">
                 <div>
                   <h4 className="text-2xl font-serif">Instagram</h4>
@@ -35,7 +38,10 @@ const Contact = () => {
           </a>
           {/* whatsappp */}
           <a href="https://wa.me/5583991029054" target="_blank">
-            <div className="w-[375px] h-[105px] border border-primary-300 rounded-lg">
+            <div
+              className="w-[375px] h-[105px] border border-primary-100 rounded-lg
+            hover:bg-primary-500/20"
+            >
               <div className="flex justify-between items-center w-full h-full px-5">
                 <div>
                   <h4 className="text-2xl font-serif">Whatsapp</h4>
@@ -49,7 +55,10 @@ const Contact = () => {
           </a>
           {/* Youtube */}
           <a href="https://www.youtube.com/@ThaysOliveira" target="_blank">
-            <div className="w-[375px] h-[105px] border border-primary-300 rounded-lg">
+            <div
+              className="w-[375px] h-[105px] border border-primary-100 rounded-lg
+            hover:bg-primary-500/20"
+            >
               <div className="flex justify-between items-center w-full h-full px-5">
                 <div>
                   <h4 className="text-2xl font-serif">Youtube</h4>
@@ -63,7 +72,10 @@ const Contact = () => {
           </a>
           {/* Email */}
           <a href="mailto:thaysoliveira@gmail.com">
-            <div className="w-[375px] h-[105px] border border-primary-300 rounded-lg">
+            <div
+              className="w-[375px] h-[105px] border border-primary-100 rounded-lg
+            hover:bg-primary-500/20"
+            >
               <div className="flex justify-between items-center w-full h-full px-5">
                 <div>
                   <h4 className="text-2xl font-serif">Email</h4>

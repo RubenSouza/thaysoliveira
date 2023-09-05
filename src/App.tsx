@@ -15,7 +15,7 @@ function App() {
       min-h-screen h-screen scrollbar-thin overflow-y-scroll 
       scrollbar-track-gray-400/40 scrollbar-thumb-primary-300"
     >
-      <div className="w-[1400px] h-full space-y-4">
+      <div className="w-full h-full space-y-4">
         <section
           className="w-full flex flex-col items-center justify-center 
           relative linear-gradient"

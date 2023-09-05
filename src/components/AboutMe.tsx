@@ -7,7 +7,7 @@ const AboutMe = () => {
     <div className="w-[1200px] py-10">
       <div className="flex justify-between items-center">
         <img src={crianca} className="w-[400px]" />
-        <div className="w-[465px] space-y-2">
+        <div className="w-[490px] space-y-2">
           <Title title="Sobre mim" line="w-[81px]" />
           {/* <h2 className="text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
@@ -43,11 +43,11 @@ const AboutMe = () => {
         </div>
       </div>
       <div className="flex justify-between items-center py-10">
-        <div className="w-[465px] space-y-2 text-sm">
-          {/* <h2 className="text-3xl font-semibold text-primary-200">
+        <div className="w-[490px] space-y-2 text-sm">
+          <h2 className="text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
           </h2>
-          <p>
+          {/* <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet
             nunc nec nibh aliquet fringilla. Proin nec luctus velit, ut
             elementum purus. Nunc varius, urna et vehicula luctus, arcu eros
@@ -78,6 +78,7 @@ const AboutMe = () => {
           </div> */}
         </div>
         <img src={purpleimg} className="w-[400px]" />
+        <div />
       </div>
     </div>
   );
