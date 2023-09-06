@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import Swiper core and required modules
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,7 +15,9 @@ const FeedbacksCarousel = ({ slides }: any) => {
     <div className="w-full h-full ">
       <Swiper
         // install Swiper modules
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
+        autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
+        loop={true}
         spaceBetween={40}
         slidesPerView={2}
         navigation={{

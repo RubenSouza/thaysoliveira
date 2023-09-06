@@ -28,10 +28,12 @@ function App() {
           <img
             src={leftBackground}
             className="h-full absolute -top-5 left-0 mix-blend-overlay"
+            loading="lazy"
           />
           <img
             src={rightBackground}
-            className="h-full absolute top-0 right-0 mix-blend-overlay "
+            className="h-full absolute top-0 right-0 mix-blend-overlay"
+            loading="lazy"
           />
         </section>
         <section

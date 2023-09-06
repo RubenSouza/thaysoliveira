@@ -1,5 +1,5 @@
 import capa from "../assets/capa.svg";
-import blob from "../assets/blob.svg";
+import blob from "../assets/blob.png";
 
 const Inicio = () => {
   return (
@@ -7,7 +7,8 @@ const Inicio = () => {
       <img
         src={blob}
         alt="light effect"
-        className="absolute bottom-0 right-0 w-full"
+        className="absolute bottom-0 right-0 h-full w-full"
+        loading="lazy"
       />
       <div
         className="w-[1200px] flex items-center justify-center overflow-hidden
@@ -20,7 +21,7 @@ const Inicio = () => {
           </div>
           <div className="w-full h-full flex items-end justify-end ">
             <div className="">
-              <img src={capa} className="h-[650px] z-20" />
+              <img src={capa} className="h-[650px] z-20" loading="lazy" />
             </div>
           </div>
         </div>
