@@ -27,11 +27,11 @@ function App() {
           <Inicio />
           <img
             src={leftBackground}
-            className="h-full absolute top-0 left-0 mix-blend-overlay"
+            className="h-full absolute -top-14 left-0 mix-blend-overlay"
           />
           <img
             src={rightBackground}
-            className="h-full absolute top-0 right-0 mix-blend-overlay "
+            className="h-full absolute -top-14 right-0 mix-blend-overlay "
           />
         </section>
         <section
