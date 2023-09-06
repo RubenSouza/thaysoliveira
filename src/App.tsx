@@ -7,6 +7,8 @@ import Students from "./components/Students";
 import Videos from "./components/Videos";
 
 import arrowUp from "./assets/arrrowUp.svg";
+import rightBackground from "./assets/rightBackground.svg";
+import leftBackground from "./assets/leftBackground.svg";
 
 function App() {
   return (
@@ -23,6 +25,14 @@ function App() {
         >
           <Navbar />
           <Inicio />
+          <img
+            src={leftBackground}
+            className="h-full absolute top-0 left-0 mix-blend-overlay"
+          />
+          <img
+            src={rightBackground}
+            className="h-full absolute top-0 right-0 mix-blend-overlay "
+          />
         </section>
         <section
           className="bg-[#09090C] w-full flex items-center 
@@ -61,12 +71,12 @@ function App() {
       </div>
       <a href="#home">
         <div
-          className="w-[30px] h-[30px] border border-primary-500 
+          className="w-[40px] h-[40px] border border-primary-500 
       rounded-full flex items-center justify-center opacity-50
       fixed bottom-5 right-7 cursor-pointer hover:opacity-70 
       animate-bounce duration-1000 delay-1000"
         >
-          <img src={arrowUp} alt="goToHome" className="w-[12px]" />
+          <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
     </div>

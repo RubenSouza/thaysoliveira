@@ -46,11 +46,3 @@ body {
     #000000 100%
   );
 }
-
-.blob {
-  width: 794px;
-  height: 756px;
-  flex-shrink: 0;
-  fill: rgba(96, 79, 147, 0.4);
-  filter: blur(250px);
-}

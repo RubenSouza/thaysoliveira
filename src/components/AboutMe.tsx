@@ -42,7 +42,10 @@ const AboutMe = () => {
           </div> */}
         </div>
       </div>
-      <div className="flex justify-between items-center py-10">
+      <div
+        className="flex justify-between
+       items-center py-10"
+      >
         <div className="w-[490px] space-y-2 text-sm">
           <h2 className="text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
@@ -78,7 +81,6 @@ const AboutMe = () => {
           </div> */}
         </div>
         <img src={purpleimg} className="w-[400px]" />
-        <div />
       </div>
     </div>
   );

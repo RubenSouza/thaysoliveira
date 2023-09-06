@@ -1,10 +1,14 @@
 import capa from "../assets/capa.svg";
-import blob1 from "../assets/blob1.svg";
+import blob from "../assets/blob.svg";
 
 const Inicio = () => {
   return (
     <>
-      <img src={blob1} className="absolute bottom-0 right-0 w-full" />
+      <img
+        src={blob}
+        alt="light effect"
+        className="absolute bottom-0 right-0 w-full"
+      />
       <div
         className="w-[1200px] flex items-center justify-center overflow-hidden
      relative"
