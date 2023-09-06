@@ -27,7 +27,7 @@ function App() {
           <Inicio />
           <img
             src={leftBackground}
-            className="h-full absolute -top-14 left-0 mix-blend-overlay"
+            className="h-full absolute -top-5 left-0 mix-blend-overlay"
           />
           <img
             src={rightBackground}
