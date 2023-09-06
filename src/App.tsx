@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import AboutMe from "./components/AboutMe";
 import Contact from "./components/Contact";
 import Feedbacks from "./components/Feedbacks";
@@ -9,8 +10,26 @@ import Videos from "./components/Videos";
 import arrowUp from "./assets/arrrowUp.svg";
 import rightBackground from "./assets/rightBackground.svg";
 import leftBackground from "./assets/leftBackground.svg";
+import loading from "./assets/videos/loading3.gif";
 
 function App() {
+  const [isLoading, setLoading] = useState(true);
+
+  // Função para marcar que o carregamento está completo
+  const handleLoad = () => {
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    // Adiciona um ouvinte para o evento de carga da janela
+    window.addEventListener("load", handleLoad);
+
+    // Remove o ouvinte quando o componente é desmontado
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
   return (
     <div
       className="flex flex-col justify-center items-center w-full 
@@ -28,12 +47,10 @@ function App() {
           <img
             src={leftBackground}
             className="h-full absolute -top-5 left-0 mix-blend-overlay"
-            loading="lazy"
           />
           <img
             src={rightBackground}
             className="h-full absolute top-0 right-0 mix-blend-overlay"
-            loading="lazy"
           />
         </section>
         <section
@@ -81,6 +98,11 @@ function App() {
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
+      {isLoading && (
+        <div className="fixed w-full h-screen bg-[#1e1d1d] flex items-center justify-center z-40">
+          <img src={loading} className="w-[800px]" />
+        </div>
+      )}
     </div>
   );
 }

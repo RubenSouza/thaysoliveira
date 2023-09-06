@@ -6,7 +6,7 @@ const AboutMe = () => {
   return (
     <div className="w-[1200px] py-10">
       <div className="flex justify-between items-center">
-        <img src={crianca} className="w-[400px]" loading="lazy" />
+        <img src={crianca} className="w-[400px]" />
         <div className="w-[490px] space-y-2">
           <Title title="Sobre mim" line="w-[81px]" />
           {/* <h2 className="text-3xl font-semibold text-primary-200">
@@ -80,7 +80,7 @@ const AboutMe = () => {
             </p>
           </div> */}
         </div>
-        <img src={purpleimg} className="w-[400px]" loading="lazy" />
+        <img src={purpleimg} className="w-[400px]" />
       </div>
     </div>
   );
