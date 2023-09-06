@@ -9,7 +9,6 @@ type Props = {
 };
 
 const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
-  console.log(photo);
   return (
     <div
       className="w-[580px] h-[360px] border-[1px] 
