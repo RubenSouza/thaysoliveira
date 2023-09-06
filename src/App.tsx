@@ -31,7 +31,7 @@ function App() {
           />
           <img
             src={rightBackground}
-            className="h-full absolute -top-14 right-0 mix-blend-overlay "
+            className="h-full absolute top-0 right-0 mix-blend-overlay "
           />
         </section>
         <section
