@@ -15,11 +15,13 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.onreadystatechange = () => {
-      if (document.readyState === "complete") {
-        setLoading(false);
-      }
-    };
+    // document.onreadystatechange = () => {
+    //   if (document.readyState === "complete") {
+    //     setLoading(false);
+    //   }
+    // };
+
+    setLoading(false);
   }, []);
 
   return (
