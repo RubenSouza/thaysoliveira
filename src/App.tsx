@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import // useState,
+// useEffect,
+"react";
 import AboutMe from "./components/AboutMe";
 import Contact from "./components/Contact";
 import Feedbacks from "./components/Feedbacks";
@@ -9,20 +11,20 @@ import Videos from "./components/Videos";
 import arrowUp from "./assets/arrrowUp.svg";
 import rightBackground from "./assets/rightBackground.svg";
 import leftBackground from "./assets/leftBackground.svg";
-import loading from "./assets/videos/loading3.gif";
+// import loading from "./assets/videos/loading3.gif";
 
 function App() {
-  const [isLoading, setLoading] = useState(true);
+  // const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // document.onreadystatechange = () => {
-    //   if (document.readyState === "complete") {
-    //     setLoading(false);
-    //   }
-    // };
+  // useEffect(() => {
+  // document.onreadystatechange = () => {
+  //   if (document.readyState === "complete") {
+  //     setLoading(false);
+  //   }
+  // };
 
-    setLoading(false);
-  }, []);
+  // setLoading(false);
+  // }, []);
 
   return (
     <div
@@ -92,11 +94,11 @@ function App() {
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
-      {isLoading === true ? (
+      {/* {isLoading === true ? (
         <div className="fixed w-full h-screen bg-[#1e1d1d] flex items-center justify-center z-40">
           <img src={loading} className="w-[600px]" />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
