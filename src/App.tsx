@@ -15,14 +15,10 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.addEventListener("load", () => {
-      setLoading(false);
-    });
-
-    return () => {
-      window.removeEventListener("load", () => {
+    document.onreadystatechange = () => {
+      if (document.readyState === "complete") {
         setLoading(false);
-      });
+      }
     };
   }, []);
 
@@ -94,7 +90,7 @@ function App() {
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
-      {isLoading ? (
+      {isLoading === true ? (
         <div className="fixed w-full h-screen bg-[#1e1d1d] flex items-center justify-center z-40">
           <img src={loading} className="w-[600px]" />
         </div>
