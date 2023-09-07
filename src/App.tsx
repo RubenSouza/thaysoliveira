@@ -6,7 +6,6 @@ import Inicio from "./components/Inicio";
 import Navbar from "./components/Navbar";
 import Students from "./components/Students";
 import Videos from "./components/Videos";
-
 import arrowUp from "./assets/arrrowUp.svg";
 import rightBackground from "./assets/rightBackground.svg";
 import leftBackground from "./assets/leftBackground.svg";
@@ -15,14 +14,16 @@ import loading from "./assets/videos/loading3.gif";
 function App() {
   const [isLoading, setLoading] = useState(true);
 
-  // Função para marcar que o carregamento está completo
-  const handleLoad = () => {
-    setLoading(false);
-  };
-
   useEffect(() => {
-    window.addEventListener("load", handleLoad);
-    return () => window.removeEventListener("load", handleLoad);
+    window.addEventListener("load", () => {
+      setLoading(false);
+    });
+
+    return () => {
+      window.removeEventListener("load", () => {
+        setLoading(false);
+      });
+    };
   }, []);
 
   return (
@@ -93,11 +94,11 @@ function App() {
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
-      {isLoading && (
+      {isLoading ? (
         <div className="fixed w-full h-screen bg-[#1e1d1d] flex items-center justify-center z-40">
           <img src={loading} className="w-[600px]" />
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
