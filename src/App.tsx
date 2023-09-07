@@ -21,13 +21,8 @@ function App() {
   };
 
   useEffect(() => {
-    // Adiciona um ouvinte para o evento de carga da janela
     window.addEventListener("load", handleLoad);
-
-    // Remove o ouvinte quando o componente é desmontado
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
+    return () => window.removeEventListener("load", handleLoad);
   }, []);
 
   return (
