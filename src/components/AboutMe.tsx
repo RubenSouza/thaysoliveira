@@ -4,15 +4,18 @@ import Title from "./Title";
 
 const AboutMe = () => {
   return (
-    <div className="w-[1200px] py-10">
-      <div className="flex justify-between items-center">
-        <img src={crianca} className="w-[400px]" />
-        <div className="w-[490px] space-y-2">
+    <div className="w-full md:w-[1200px] py-10">
+      <div
+        className="flex flex-col md:flex-row md:justify-between 
+      items-center w-full px-6 md:px-0"
+      >
+        <img src={crianca} className="w-[190px] md:w-[400px]" />
+        <div className="w-full md:w-[490px] space-y-2">
           <Title title="Sobre mim" line="w-[81px]" />
           {/* <h2 className="text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
           </h2> */}
-          <div className="text-sm space-y-2">
+          <div className="text-xs md:text-sm space-y-2">
             <p>
               Amante da música e apaixonada pela arte de ensinar. Toco desde os
               6 anos de idade e hoje tenho a oportunidade de lecionar, dessa
@@ -43,11 +46,12 @@ const AboutMe = () => {
         </div>
       </div>
       <div
-        className="flex justify-between
-       items-center py-10"
+        className="flex flex-col md:flex-row md:justify-between
+       items-center py-10 w-full px-6 md:px-0"
       >
-        <div className="w-[490px] space-y-2 text-sm">
-          <h2 className="text-3xl font-semibold text-primary-200">
+        <img src={purpleimg} className="w-[190px] md:hidden" />
+        <div className="w-full md:w-[490px] space-y-2 text-sm">
+          <h2 className="text-2xl md:text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
           </h2>
           {/* <p>
@@ -80,7 +84,7 @@ const AboutMe = () => {
             </p>
           </div> */}
         </div>
-        <img src={purpleimg} className="w-[400px]" />
+        <img src={purpleimg} className="w-[400px] hidden md:inline" />
       </div>
     </div>
   );

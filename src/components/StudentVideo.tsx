@@ -6,7 +6,6 @@ import {
   Player,
   Youtube,
   DefaultControls,
-  LoadingScreen,
 } from "@vime/react";
 
 type Props = {
@@ -22,7 +21,6 @@ const StudentVideo = ({ videoId }: Props) => {
           <ClickToPlay />
           <Spinner />
           <Poster />
-          <LoadingScreen />
           <DefaultControls activeDuration={1200} hideOnMouseLeave />
         </Ui>
       </Player>
