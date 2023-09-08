@@ -14,7 +14,7 @@ type Props = {
 
 const StudentVideo = ({ videoId }: Props) => {
   return (
-    <div className="w-[350px]">
+    <div className="w-[300px] md:w-[350px]">
       <Player aspectRatio="4:5" playbackQuality="auto" volume={70}>
         <Youtube videoId={videoId} />
         <Ui>

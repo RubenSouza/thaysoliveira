@@ -4,12 +4,16 @@ import students from "../data/students.json";
 
 const studentsList = students.map((student, i) => {
   return (
-    <div className="flex justify-center items-center" key={i}>
+    <div
+      className="w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
+      md:space-y-0 md:space-x-6 md:justify-start"
+      key={i}
+    >
       {student?.side === "left" ? (
         <>
           <StudentVideo videoId={student.video} />
           <div>
-            <h3 className="text-3xl font-semibold text-primary-300">
+            <h3 className="text-xl md:text-3xl font-semibold text-primary-300">
               {student.name}
             </h3>
             <p className="text-[11px] font-sans text-neutral-400">
@@ -34,7 +38,7 @@ const studentsList = students.map((student, i) => {
       ) : (
         <>
           <div>
-            <h3 className="text-3xl font-semibold text-primary-300">
+            <h3 className="text-xl md:text-3xl font-semibold text-primary-300">
               {student.name}
             </h3>
             <p className="text-[11px] font-sans text-neutral-400">
@@ -64,7 +68,7 @@ const studentsList = students.map((student, i) => {
 
 const Students = () => {
   return (
-    <div className="w-[1200px] flex flex-col items-center justify-center">
+    <div className="w-full px-6 md:px-0 md:w-[1200px] flex flex-col items-center justify-center">
       <Title title="Alunos" line="w-[50px]" />
       <div className="max-w-full flex flex-wrap justify-between py-10 gap-10">
         {studentsList}

@@ -20,6 +20,26 @@ const FeedbacksCarousel = ({ slides }: any) => {
         loop={true}
         spaceBetween={40}
         slidesPerView={2}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          800: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+        }}
         navigation={{
           nextEl: ".next-button",
           prevEl: ".prev-button",
