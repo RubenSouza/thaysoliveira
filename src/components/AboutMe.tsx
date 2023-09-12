@@ -7,11 +7,11 @@ const AboutMe = () => {
     <div className="w-full md:w-[1200px] py-10">
       <div
         className="w-full md:flex md:justify-between items-center space-y-2 
-        px-6 md:px-0"
+        px-4 md:px-0"
       >
         <img
           src={crianca}
-          className="w-[130px] md:w-[400px] bg-clip-text float-right m-3 md:m-0 pt-4"
+          className="w-[130px] md:w-[400px] bg-clip-text float-right m-2 md:m-0 pt-4"
         />
         <div className="w-full text-sm md:w-[490px] space-y-2">
           <Title title="Sobre mim" line="w-[81px]" />
@@ -41,11 +41,11 @@ const AboutMe = () => {
       </div>
       <div
         className="md:flex md:justify-between
-       items-center py-10 w-full px-6 md:px-0"
+       items-center py-10 w-full px-4 md:px-0"
       >
         <img
           src={purpleimg}
-          className="w-[130px] bg-clip-text float-right m-3 md:hidden"
+          className="w-[130px] bg-clip-text float-right m-2 md:hidden"
         />
         <div className="w-full md:w-[490px] space-y-2 text-sm">
           <h2 className="text-lg md:text-3xl font-semibold text-primary-200">

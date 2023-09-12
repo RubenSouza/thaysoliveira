@@ -13,7 +13,7 @@ const Inicio = () => {
         className="w-full md:w-[1200px] flex items-center justify-center overflow-hidden
      relative"
       >
-        <div className="px-6 md:px-0 h-full flex">
+        <div className="px-4 md:px-0 h-full flex">
           <div className="flex justify-center items-start flex-col pt-16">
             <h1 className="text-[32px] leading-tight md:text-9xl font-thin font-glossy">
               Thays Oliveira

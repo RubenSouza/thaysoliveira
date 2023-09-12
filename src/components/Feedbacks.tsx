@@ -19,10 +19,10 @@ const Feedbacks = () => {
     );
   });
   return (
-    <div className="w-full px-6 md:px-0 md:w-[1200px] md:h-[620px] py-16">
+    <div className="w-full px-4 md:px-0 md:w-[1200px] md:h-[620px] py-16">
       <Title title="Feedbacks" line="w-[78px]" />
       <div className="flex justify-between">
-        <h2 className="text-3xl font-semibold text-primary-100 font-serif py-2">
+        <h2 className="text-2xl md:text-3xl font-semibold text-primary-100 font-serif py-2">
           Clientes Felizes Dizem
         </h2>
         <div className="flex cursor-pointer">
