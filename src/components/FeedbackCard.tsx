@@ -1,5 +1,4 @@
 import quotes from "../assets/quotes.svg";
-// import user from "../assets/user.svg";
 
 type Props = {
   name: string;

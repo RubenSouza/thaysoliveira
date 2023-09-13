@@ -107,7 +107,7 @@ const Students = () => {
       <div className="max-w-full md:flex flex-wrap justify-between py-10 gap-10 hidden">
         {studentsList}
       </div>
-      <div className="max-w-full flex flex-wrap justify-between py-10 gap-10 md:hidden">
+      <div className="max-w-full flex flex-wrap justify-between gap-10 md:hidden">
         {mobileStudentsList}
       </div>
     </div>

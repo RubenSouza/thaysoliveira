@@ -11,8 +11,8 @@ const Contact = () => {
     <div className="w-full md:w-[1200px] px-4 md:px-0 space-y-2">
       <div className="space-y-1">
         <Title title="Contato" line="w-[55px]" />
-        <h2 className="text-2xl md:text-3xl font-semibold text-primary-100 font-serif">
-          Agende sua aula experimental
+        <h2 className="text-xl md:text-3xl font-semibold text-primary-100 font-serif">
+          Consultar horários disponíveis
         </h2>
       </div>
       <div className="py-10 flex flex-col md:flex-row w-full  items-center md:justify-between ">

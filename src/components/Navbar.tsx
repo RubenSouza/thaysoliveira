@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <>
+    <div className="h-10 w-full">
       <div className="md:w-[1200px] md:flex items-center md:py-10 hidden z-20">
         <ul
           className="uppercase flex justify-between w-[450px] h-full text-xs 
@@ -30,7 +30,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className="w-full px-4 py-4 md:hidden z-30 bg-black top-0"
+        className="w-full px-4 py-1 md:hidden fixed z-30 bg-black top-0"
         onClick={() => setIsMenuOpen(true)}
       >
         <img src={menu} alt="menu" className="w-11" />
@@ -73,7 +73,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
