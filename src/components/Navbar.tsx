@@ -24,7 +24,7 @@ const Navbar = () => {
             <li className="hover:cursor-pointer">Vídeos</li>
           </a>
           <a href="#contact">
-            <li className="hover:cursor-pointer">Contato</li>
+            <li className="hover:cursor-pointer">Contatos</li>
           </a>
         </ul>
       </div>
@@ -37,7 +37,7 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="top-0 bottom-0 left-0 right-0 bg-black fixed z-40">
+        <div className="top-0 bottom-0 left-0 right-0 bg-black/90 fixed z-40">
           <div className="absolute right-0 opacity-70 z-40">
             <p
               className="text-2xl p-6 h-20 w-16"
