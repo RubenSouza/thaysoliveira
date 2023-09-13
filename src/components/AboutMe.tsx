@@ -47,7 +47,7 @@ const AboutMe = () => {
           src={purpleimg}
           className="w-[130px] bg-clip-text float-right m-2 md:hidden"
         />
-        <div className="w-full md:w-[490px] space-y-2 text-sm">
+        <div className="w-full md:w-[490px] space-y-2 text-xs md:text-sm">
           <h2 className="text-lg md:text-3xl font-semibold text-primary-200">
             A vida é uma música e a nossa história é a letra
           </h2>
