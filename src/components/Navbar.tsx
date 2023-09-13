@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="h-10 w-full">
+    <div className="h-10 w-full flex justify-center">
       <div className="md:w-[1200px] md:flex items-center md:py-10 hidden z-20">
         <ul
           className="uppercase flex justify-between w-[450px] h-full text-xs 
@@ -67,7 +67,7 @@ const Navbar = () => {
                 <li className="hover:cursor-pointer">Vídeos</li>
               </a>
               <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-                <li className="hover:cursor-pointer">Contato</li>
+                <li className="hover:cursor-pointer">Contatos</li>
               </a>
             </ul>
           </div>
