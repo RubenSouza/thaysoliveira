@@ -43,9 +43,9 @@ const Contact = () => {
           />
           {/* Email */}
           <ContactCard
-            link="mailto:thaysoliveira@gmail.com"
+            link="mailto:profs.thaysoliveira@gmail.com"
             title="Email"
-            description="thaysoliveira@gmail.com"
+            description="profs.thaysoliveira@gmail.com"
             image={email}
           />
         </div>
