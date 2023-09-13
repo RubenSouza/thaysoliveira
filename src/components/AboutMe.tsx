@@ -4,7 +4,7 @@ import Title from "./Title";
 
 const AboutMe = () => {
   return (
-    <div className="w-full md:w-[1200px] py-10">
+    <div className="w-full md:w-[1200px] md:py-10">
       <div
         className="w-full md:flex md:justify-between items-center space-y-2 
         px-4 md:px-0"
