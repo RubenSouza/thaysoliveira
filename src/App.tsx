@@ -44,8 +44,8 @@ function App() {
           />
         </section>
         <section
-          className="bg-[#09090C] w-full flex items-center 
-        justify-center relative "
+          className="w-full flex items-center 
+        justify-center relative"
           id="aboutme"
         >
           <AboutMe />
@@ -83,7 +83,7 @@ function App() {
           className="w-[40px] h-[40px] border border-primary-500 
       rounded-full flex items-center justify-center opacity-50
       fixed bottom-5 right-7 cursor-pointer hover:opacity-70 
-      animate-bounce duration-1000 delay-1000"
+      animate-bounce duration-1000 delay-1000 z-40"
         >
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>

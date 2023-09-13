@@ -19,7 +19,7 @@ const Contact = () => {
         <div className=" ">
           <img src={logo} alt="logo" className="w-[200px] md:w-[350px]" />
         </div>
-        <div className="grid grid-cols-2 gap-4 ">
+        <div className="w-full grid grid-cols-4 md:grid-cols-2 gap-4 py-4">
           {/* instagram */}
           <ContactCard
             link="https://www.instagram.com/thaysoliveira.a/"
