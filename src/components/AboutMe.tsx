@@ -11,11 +11,11 @@ const AboutMe = () => {
       >
         <img
           src={crianca}
-          className="w-[130px] md:w-[400px] bg-clip-text float-right m-2 md:m-0 pt-4"
+          className="w-[130px] md:w-[400px] bg-clip-text float-right m-2 md:m-0 "
         />
         <div className="w-full text-sm md:w-[490px] space-y-2">
           <Title title="Sobre mim" line="w-[81px]" />
-          <div className="space-y-2">
+          <div className="space-y-2 text-xs md:text-sm">
             <p>
               Amante da música e apaixonada pela arte de ensinar. Toco desde os
               6 anos de idade e hoje tenho a oportunidade de lecionar, dessa

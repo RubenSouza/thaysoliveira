@@ -15,7 +15,7 @@ const Inicio = () => {
       >
         <div className="px-4 md:px-0 h-full flex">
           <div className="flex justify-center items-start flex-col pt-16">
-            <h1 className="text-[32px] leading-tight md:text-9xl font-thin font-glossy">
+            <h1 className="md:text-9xl font-thin font-glossy text-[32px] leading-tight">
               Thays Oliveira
             </h1>
             <h3 className="font-sans md:px-3 text-[11px]">
