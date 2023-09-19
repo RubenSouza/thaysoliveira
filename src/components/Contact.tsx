@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <div className="w-full md:w-[1200px] px-4 md:px-0 space-y-2">
       <div className="space-y-1">
-        <Title title="Contatos" line="w-[55px]" />
+        <Title title="Contatos" line="w-[65px]" />
         <h2 className="text-xl md:text-3xl font-semibold text-primary-100 font-serif">
           Consultar horários disponíveis
         </h2>

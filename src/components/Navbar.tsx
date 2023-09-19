@@ -4,6 +4,10 @@ import menu from "../assets/menu.svg";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  function handleMenuClick() {
+    setIsMenuOpen(false); // Feche o menu após o clique
+  }
+
   return (
     <div className="h-10 w-full flex justify-center">
       <div className="md:w-[1200px] md:flex items-center md:py-10 hidden z-20">
@@ -30,7 +34,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className="w-full px-4 py-1 md:hidden fixed z-30 bg-black top-0"
+        className="w-full px-4 h-12 bg-black md:hidden fixed z-30 top-0 left-0 right-0"
         onClick={() => setIsMenuOpen(true)}
       >
         <img src={menu} alt="menu" className="w-11" />
@@ -54,19 +58,19 @@ const Navbar = () => {
               <a href="#home" onClick={() => setIsMenuOpen(false)}>
                 <li className="hover:cursor-pointer">Inicio</li>
               </a>
-              <a href="#aboutme" onClick={() => setIsMenuOpen(false)}>
+              <a href="#aboutme" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Sobre mim</li>
               </a>
-              <a href="#feedbacks" onClick={() => setIsMenuOpen(false)}>
+              <a href="#feedbacks" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Feedbacks</li>
               </a>
-              <a href="#students" onClick={() => setIsMenuOpen(false)}>
+              <a href="#students" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Alunos</li>
               </a>
-              <a href="#videos" onClick={() => setIsMenuOpen(false)}>
+              <a href="#videos" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Vídeos</li>
               </a>
-              <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+              <a href="#contact" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Contatos</li>
               </a>
             </ul>

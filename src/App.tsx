@@ -13,6 +13,7 @@ import loading from "./assets/videos/loading3.gif";
 
 function App() {
   const [isLoading, setLoading] = useState(true);
+  const [topPadding, setTopPadding] = useState("0px");
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,13 +21,17 @@ function App() {
     }, 3000);
   }, []);
 
+  useEffect(() => {
+    window.innerWidth < 768 ? setTopPadding("48px") : setTopPadding("0px");
+  });
+
   return (
     <div
       className="flex flex-col justify-center items-center w-full 
       min-h-screen h-screen scrollbar-thin overflow-y-scroll overflow-x-hidden
-      scrollbar-track-gray-400/40 scrollbar-thumb-primary-300"
+      scrollbar-track-gray-400/40 scrollbar-thumb-primary-300 relative"
     >
-      <div className="w-full h-full space-y-4">
+      <div className="w-full h-full space-y-4 relative">
         <section
           className="w-full flex flex-col items-center justify-center 
           relative linear-gradient"
@@ -45,8 +50,9 @@ function App() {
         </section>
         <section
           className="w-full flex items-center 
-        justify-center relative"
+        justify-center relative "
           id="aboutme"
+          style={{ scrollMarginTop: topPadding }}
         >
           <AboutMe />
         </section>
@@ -54,12 +60,14 @@ function App() {
           className="w-full flex items-center justify-center 
         relative feedbacks"
           id="feedbacks"
+          style={{ scrollMarginTop: topPadding }}
         >
           <Feedbacks />
         </section>
         <section
           className="w-full flex items-center justify-center relative py-5"
           id="students"
+          style={{ scrollMarginTop: topPadding }}
         >
           <Students />
         </section>
@@ -67,6 +75,7 @@ function App() {
           className="w-full flex items-center  justify-center 
         relative videos pb-7"
           id="videos"
+          style={{ scrollMarginTop: topPadding }}
         >
           <Videos />
         </section>
@@ -74,6 +83,7 @@ function App() {
           className="w-full flex items-center justify-center
         relative pb-7"
           id="contact"
+          style={{ scrollMarginTop: topPadding }}
         >
           <Contact />
         </section>

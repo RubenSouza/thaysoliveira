@@ -6,7 +6,7 @@ type Props = {
 
 const ThaysVideo = ({ videoId }: Props) => {
   return (
-    <div className="w-full md:w-[550px] z-10">
+    <div className="w-full md:w-[550px]">
       <Player playbackQuality="auto" volume={50}>
         <Youtube videoId={videoId} />
         <DefaultControls hideOnMouseLeave />
