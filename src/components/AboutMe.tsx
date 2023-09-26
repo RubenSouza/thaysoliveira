@@ -1,5 +1,5 @@
 import crianca from "../assets/crianca.svg";
-import purpleimg from "../assets/purpleimg.svg";
+import fundoroxo from "../assets/fundoroxo.jpg";
 import Title from "./Title";
 
 const AboutMe = () => {
@@ -44,8 +44,8 @@ const AboutMe = () => {
        items-center py-10 w-full px-4 md:px-0"
       >
         <img
-          src={purpleimg}
-          className="w-[130px] bg-clip-text float-right m-2 md:hidden"
+          src={fundoroxo}
+          className="w-[130px] bg-clip-text float-right m-2 md:hidden rounded-full"
         />
         <div className="w-full md:w-[490px] space-y-2 text-xs md:text-sm">
           <h2 className="text-lg md:text-3xl font-semibold text-primary-200">
@@ -66,7 +66,10 @@ const AboutMe = () => {
             contato com um.
           </p>
         </div>
-        <img src={purpleimg} className="w-[400px] hidden md:inline" />
+        <img
+          src={fundoroxo}
+          className="w-[400px] hidden md:inline rounded-full"
+        />
       </div>
     </div>
   );
