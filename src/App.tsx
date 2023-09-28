@@ -10,6 +10,7 @@ import arrowUp from "./assets/arrrowUp.svg";
 import rightBackground from "./assets/rightBackground.svg";
 import leftBackground from "./assets/leftBackground.svg";
 import loading from "./assets/videos/loading3.gif";
+// import Games from "./components/Games";
 
 function App() {
   const [isLoading, setLoading] = useState(true);
@@ -64,6 +65,14 @@ function App() {
         >
           <Feedbacks />
         </section>
+        {/* <section
+          className="w-full flex items-center justify-center 
+        relative feedbacks"
+          id="feedbacks"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Games />
+        </section> */}
         <section
           className="w-full flex items-center justify-center relative py-5"
           id="students"
