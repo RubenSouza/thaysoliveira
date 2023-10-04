@@ -10,7 +10,6 @@ import arrowUp from "./assets/arrrowUp.svg";
 import rightBackground from "./assets/rightBackground.svg";
 import leftBackground from "./assets/leftBackground.svg";
 import loading from "./assets/videos/loading3.gif";
-// import Games from "./components/Games";
 
 function App() {
   const [isLoading, setLoading] = useState(true);

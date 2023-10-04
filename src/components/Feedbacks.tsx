@@ -1,16 +1,27 @@
+import { useEffect, useState } from "react";
 import FeedbackCard from "./FeedbackCard";
 import Title from "./Title";
 import feedbacks from "../data/feedbacks.json";
 import FeedbacksCarousel from "./FeedbacksCarousel";
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
-import game01 from "../assets/games/01.jpg";
-import game02 from "../assets/games/02.jpg";
-import game03 from "../assets/games/03.jpg";
-import game04 from "../assets/games/04.jpg";
-import game05 from "../assets/games/05.jpg";
+
+import landscape1 from "../assets/games/landscape/01.jpg";
+import landscape2 from "../assets/games/landscape/02.jpg";
+import landscape3 from "../assets/games/landscape/03.jpg";
+import landscape4 from "../assets/games/landscape/04.jpg";
+import landscape5 from "../assets/games/landscape/05.jpg";
+
+import portraitImage1 from "../assets/games/portrait/01.jpg";
+import portraitImage2 from "../assets/games/portrait/02.jpg";
+import portraitImage3 from "../assets/games/portrait/03.jpg";
+import portraitImage4 from "../assets/games/portrait/04.jpg";
+import portraitImage5 from "../assets/games/portrait/05.jpg";
+import GameCarousel from "./GameCarousel";
 
 const Feedbacks = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
   const feedbacksList = feedbacks.map((feedback, i) => {
     return (
       <FeedbackCard
@@ -23,20 +34,39 @@ const Feedbacks = () => {
     );
   });
 
-  const images = [game01, game02, game03, game04, game05];
+  const landscapeImage = [
+    landscape1,
+    landscape2,
+    landscape3,
+    landscape4,
+    landscape5,
+  ];
 
-  const imagesList = images.map((image, i) => {
+  const portraitImages = [
+    portraitImage1,
+    portraitImage2,
+    portraitImage3,
+    portraitImage4,
+    portraitImage5,
+  ];
+
+  useEffect(() => {
+    window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false);
+  }, []);
+
+  const imagesList = isMobile ? portraitImages : landscapeImage;
+
+  const images = imagesList.map((image, i) => {
     return (
       <div
-        className="w-full md:w-[580px] h-[290px] md:h-[360px] border-[1px] 
-      border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer 
-      bg-primary-100"
+        className="bg-red-300 md:w-[580px] md:h-[360px] border-[1px]
+              border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer transform "
         key={i}
       >
         <img
           src={image}
           alt="game"
-          className="w-full h-full rounded-xl object-fill"
+          className="w-full h-full rounded-xl md:object-fill"
         />
       </div>
     );
@@ -75,27 +105,27 @@ const Feedbacks = () => {
 
       {/* games */}
       <div className="w-full px-4 md:px-0 md:w-[1200px] py-4 md:py-8">
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center md:items-start">
           <Title title="Games" line="w-[52px]" />
           <div className="flex cursor-pointer">
             <div className="w-[35px] h-[35px] border-[2px] border-primary-200">
               <img
                 src={arrowLeft}
                 alt="arrow left"
-                className="w-full h-full p-1 prev-button"
+                className="w-full h-full p-1 game-prev-button"
               />
             </div>
             <div className="w-[35px] h-[35px] border-[2px] border-primary-200">
               <img
                 src={arrowRight}
                 alt="arrow left"
-                className="w-full h-full p-1 next-button"
+                className="w-full h-full p-1 game-next-button"
               />
             </div>
           </div>
         </div>
-        <div className="pt-5 flex justify-between">
-          <FeedbacksCarousel slides={imagesList} />
+        <div className="py-1 md:pt-5 md:justify-between ">
+          <GameCarousel slides={images} />
         </div>
       </div>
     </div>
