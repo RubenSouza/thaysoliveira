@@ -124,7 +124,7 @@ const Feedbacks = () => {
             </div>
           </div>
         </div>
-        <div className="py-1 md:pt-5 md:justify-between ">
+        <div className="py-1 md:px-1 flex md:pt-5 md:justify-between ">
           <GameCarousel slides={images} />
         </div>
       </div>

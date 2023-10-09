@@ -16,7 +16,7 @@ const FeedbacksCarousel = ({ slides }: any) => {
       <Swiper
         // install Swiper modules
         modules={[Navigation, Autoplay]}
-        autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
+        autoplay={{ delay: 6000, pauseOnMouseEnter: true }}
         loop={true}
         spaceBetween={40}
         slidesPerView={2}

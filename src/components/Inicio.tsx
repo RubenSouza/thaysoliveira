@@ -7,7 +7,7 @@ const Inicio = () => {
       <img
         src={blob}
         alt="light effect"
-        className="absolute bottom-0 right-0 h-full w-full"
+        className="absolute bottom-0 right-0 h-full w-full animate animate-pulse-slow"
       />
       <div
         className="w-full md:w-[1200px] flex items-center justify-center overflow-hidden

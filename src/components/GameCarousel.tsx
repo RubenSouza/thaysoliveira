@@ -16,14 +16,32 @@ const GameCarousel = ({ slides }: any) => {
       <Swiper
         // install Swiper modules
         modules={[Navigation, Autoplay]}
-        autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
+        autoplay={{ delay: 6000, pauseOnMouseEnter: true }}
         loop={true}
         spaceBetween={20}
+        breakpoints={{
+          // when window width is >= 640px
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          // when window width is >= 1200px
+          1200: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+        }}
         slidesPerView={2}
         navigation={{
           nextEl: ".game-next-button",
           prevEl: ".game-prev-button",
         }}
+        style={{ direction: "rtl" }} // Defina a direção como RTL
       >
         {slides.map((slide: any, i: number) => {
           return <SwiperSlide key={i}>{slide}</SwiperSlide>;
