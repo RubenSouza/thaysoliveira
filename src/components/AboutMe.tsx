@@ -55,15 +55,18 @@ const AboutMe = () => {
             A música nos proporciona diversos benefícios como: estimula a
             criatividade, melhora a concentração, a socialização, diminui o
             estresse… Inclusive, exerce um papel importantíssimo no
-            desenvolvimento das crianças. Aprender um instrumento musical na
-            infância pode oferecer diversos benefícios, tais como; melhora a
-            capacidade de atenção, aumenta a autoestima, além de auxiliar de
-            forma direta no processo cognitivo dos nossos pequenos.
+            desenvolvimento das crianças. Meu objetivo é contribuir com o seu
+            crescimento musical e te ajudar a realizar o sonho de tocar um
+            instrumento, mesmo sem nunca ter tido contato com um.
           </p>
           <p>
-            Meu objetivo é contribuir com o seu crescimento musical e te ajudar
-            a realizar o sonho de tocar um instrumento, mesmo sem nunca ter tido
-            contato com um.
+            As aulas acontecem uma vez na semana no melhor horário para ambas as
+            partes. Possuímos um cronograma de estudos e repertório musical
+            personalizado de acordo com o gosto e o tempo de cada aluno. Além
+            disso, realizamos um evento lindo em que todos os alunos terão a
+            oportunidade de mostrar seu crescimento e desenvolvimento musical
+            aos seus amigos e familiares. Acompanhe um pouco desse momento na
+            sessão alunos.
           </p>
         </div>
         <img

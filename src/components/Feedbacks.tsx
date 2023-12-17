@@ -11,12 +11,19 @@ import landscape2 from "../assets/games/landscape/02.jpg";
 import landscape3 from "../assets/games/landscape/03.jpg";
 import landscape4 from "../assets/games/landscape/04.jpg";
 import landscape5 from "../assets/games/landscape/05.jpg";
+import landscape6 from "../assets/games/landscape/06.jpeg";
+import landscape7 from "../assets/games/landscape/07.jpeg";
+import landscape8 from "../assets/games/landscape/08.jpeg";
 
 import portraitImage1 from "../assets/games/portrait/01.jpg";
 import portraitImage2 from "../assets/games/portrait/02.jpg";
 import portraitImage3 from "../assets/games/portrait/03.jpg";
 import portraitImage4 from "../assets/games/portrait/04.jpg";
 import portraitImage5 from "../assets/games/portrait/05.jpg";
+import portraitImage6 from "../assets/games/portrait/06.jpeg";
+import portraitImage7 from "../assets/games/portrait/07.jpeg";
+import portraitImage8 from "../assets/games/portrait/08.jpeg";
+
 import GameCarousel from "./GameCarousel";
 
 const Feedbacks = () => {
@@ -40,6 +47,9 @@ const Feedbacks = () => {
     landscape3,
     landscape4,
     landscape5,
+    landscape6,
+    landscape7,
+    landscape8,
   ];
 
   const portraitImages = [
@@ -48,6 +58,9 @@ const Feedbacks = () => {
     portraitImage3,
     portraitImage4,
     portraitImage5,
+    portraitImage6,
+    portraitImage7,
+    portraitImage8,
   ];
 
   useEffect(() => {
@@ -106,7 +119,7 @@ const Feedbacks = () => {
       {/* games */}
       <div className="w-full px-4 md:px-0 md:w-[1200px] py-4 md:py-8">
         <div className="flex justify-between items-center md:items-start">
-          <Title title="Games" line="w-[52px]" />
+          <Title title="Materiais didáticos" line="w-[136px]" />
           <div className="flex cursor-pointer">
             <div className="w-[35px] h-[35px] border-[2px] border-primary-200">
               <img
