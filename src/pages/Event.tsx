@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import fundo from "../assets/fundo.jpg";
 import recitalStudents from "../data/recitalStudents.json";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-// import PIX from "react-qrcode-pix";
+import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from "react-icons/io";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
+import PIX from "react-qrcode-pix";
 
 type Student = {
   id: number;
@@ -16,6 +18,10 @@ const Event = () => {
   const [counter, setCounter] = useState(1);
   const [nextPage, setNextPage] = useState(false);
   const [totalValue, setTotalValue] = useState(35);
+  const [fullPIX, setFullPIX] = useState("");
+  const [isPix, setIsPix] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+  const inAreaRef = useRef<HTMLDivElement | null>(null);
 
   const first = recitalStudents.slice(0, 3);
   const second = recitalStudents.slice(3, 7);
@@ -31,9 +37,33 @@ const Event = () => {
     setNextPage(true);
   };
 
+  const handleCopy = () => {
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 3000);
+  };
+
   useEffect(() => {
     setTotalValue(35 * counter);
-  }, [totalValue, counter]);
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        nextPage &&
+        inAreaRef.current &&
+        !inAreaRef.current.contains(event.target as Node)
+      ) {
+        setNextPage(false);
+        setIsPix(false);
+        setCounter(1);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [totalValue, counter, nextPage]);
 
   return (
     <div
@@ -58,7 +88,7 @@ const Event = () => {
             className="flex flex-col items-center justify-center py-2 2xl:py-6"
           >
             {/* 3 colunas */}
-            <div className="grid grid-cols-3 gap-10 2xl:gap-16">
+            <div className="grid grid-cols-3 gap-6 xl:gap-10 2xl:gap-16">
               {first.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -66,7 +96,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-20 h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -77,12 +107,12 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p>{student?.name}</p>
+                  <p className="text-sm xl:text-base">{student?.name}</p>
                 </div>
               ))}
             </div>
             {/* 4 colunas */}
-            <div className="grid grid-cols-4 gap-10 2xl:gap-16">
+            <div className="grid grid-cols-4 gap-8 xl:gap-10 2xl:gap-16">
               {second.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -90,7 +120,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-20 h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -101,12 +131,12 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p>{student?.name}</p>
+                  <p className="text-sm xl:text-base">{student?.name}</p>
                 </div>
               ))}
             </div>
             {/* 4 colunas */}
-            <div className="grid grid-cols-4 gap-16">
+            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
               {third.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -114,7 +144,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-20 h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -125,12 +155,12 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p>{student?.name}</p>
+                  <p className="text-sm xl:text-base">{student?.name}</p>
                 </div>
               ))}
             </div>
             {/* 4 colunas */}
-            <div className="grid grid-cols-4 gap-16">
+            <div className="grid grid-cols-4 gap-8 xl:gap-10 2xl:gap-16">
               {fourth.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -138,7 +168,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-20 h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -149,12 +179,12 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p>{student?.name}</p>
+                  <p className="text-sm xl:text-base">{student?.name}</p>
                 </div>
               ))}
             </div>
             {/* 2 colunas */}
-            <div className="grid grid-cols-2 gap-16">
+            <div className="grid grid-cols-2 gap-8 xl:gap-10 2xl:gap-16">
               {fifth.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -162,7 +192,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-20 h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -173,7 +203,7 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p>{student?.name}</p>
+                  <p className="text-sm xl:text-base">{student?.name}</p>
                 </div>
               ))}
             </div>
@@ -188,56 +218,105 @@ const Event = () => {
           </motion.div>
         </div>
         {nextPage && (
-          <div className="absolute w-full h-screen bg-black/80 flex flex-col items-center justify-center">
+          <div
+            className="absolute w-full h-screen bg-black/80 flex flex-col items-center justify-center"
+            id="out_area"
+          >
             <div
-              className="w-[400px] h-[500px] bg-slate-200 rounded-2xl 
+              className="w-[300px] h-[500px] lg:w-[400px] bg-slate-200 rounded-2xl 
             text-slate-900"
+              id="in_area"
+              ref={inAreaRef}
             >
-              <div className="w-full h-full flex flex-col items-center my-10">
-                <h1 className="text-3xl font-bold text-center ">
-                  Confirmar Compra
-                </h1>
-                <div className="flex flex-col items-center justify-center">
-                  <div className={`rounded-full w-16 h-16 `}>
-                    <img
-                      src={selectedStudent?.img}
-                      className="w-full h-full rounded-full object-cover object-top"
+              {!isPix ? (
+                <div className="w-full h-full flex flex-col items-center justify-center space-y-2">
+                  <div className="w-full space-y-3">
+                    <h1 className="text-2xl font-bold text-center ">
+                      Confirmar Compra
+                    </h1>
+                    <div className="flex flex-col items-center justify-center">
+                      <div className={`rounded-full w-16 h-16 `}>
+                        <img
+                          src={selectedStudent?.img}
+                          className="w-full h-full rounded-full object-cover object-top"
+                        />
+                      </div>
+                      <p>{selectedStudent?.name}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center w-full  justify-center space-y-5">
+                    <p className="text-center font-semibold">
+                      Quantidade de acompanhantes:
+                    </p>
+                    <div
+                      className="flex flex-col items-center justify-center
+                  w-[200px]
+                "
+                    >
+                      <div
+                        className="w-full flex justify-center rounded-t-2xl hover:cursor-pointer hover:bg-slate-300"
+                        onClick={() => setCounter(counter + 1)}
+                      >
+                        <IoIosArrowUp className="w-10 h-10 2xl:w-16" />
+                      </div>
+                      <p className="text-8xl">{counter}</p>
+                      <div
+                        className="w-full flex justify-center rounded-b-2xl hover:cursor-pointer hover:bg-slate-300"
+                        onClick={() => setCounter(counter - 1)}
+                      >
+                        <IoIosArrowDown className="w-10 h-10 2xl:w-16" />
+                      </div>
+                      <p className="font-semibold">
+                        Valor total: {totalValue}R$
+                      </p>
+                      <button
+                        className="bg-purple-500 p-2 text-sm uppercase rounded-lg 2xl:p-3 2xl:text-base mt-2 2xl:mt-4
+               disabled:bg-slate-300 text-white"
+                        onClick={() => setIsPix(true)}
+                      >
+                        Gerar pix
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center space-y-2">
+                  <div className="w-full space-y-3">
+                    <h1 className="text-2xl font-bold text-center ">
+                      Confirmar Compra
+                    </h1>
+                    <div className="flex flex-col items-center justify-center">
+                      <p className="text-xs px-12 py-2 text-center">
+                        Escaneie o QR Code para prosseguir com o pagamento.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-center w-full space-y-2">
+                    <PIX
+                      pixkey="+5583981358394"
+                      merchant="Rúben Eliel"
+                      onLoad={setFullPIX}
+                      resize={200}
+                      city="Campina Grande"
+                      cep="58460000"
+                      amount={totalValue}
                     />
-                  </div>
-                  <p>{selectedStudent?.name}</p>
-                </div>
-                <div>
-                  <p className="text-center font-semibold">
-                    Quantidade de acompanhantes:
-                  </p>
-                </div>
-                <div
-                  className="flex flex-col items-center justify-center
-                   w-[200px] h-[190px] 
-                 "
-                >
-                  <div
-                    className="w-full flex justify-center rounded-t-2xl hover:cursor-pointer hover:bg-slate-300"
-                    onClick={() => setCounter(counter + 1)}
-                  >
-                    <IoIosArrowUp className="w-10 h-10 2xl:w-16" />
-                  </div>
-                  <p className="text-8xl">{counter}</p>
-                  <div
-                    className="w-full flex justify-center rounded-b-2xl hover:cursor-pointer hover:bg-slate-300"
-                    onClick={() => setCounter(counter - 1)}
-                  >
-                    <IoIosArrowDown className="w-10 h-10 2xl:w-16" />
+                    <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
+                      <button
+                        className="my-2 flex border bg-slate-300 p-2 text-sm items-center justify-center 
+                    rounded-md border-slate-400 px-8 text-slate-600 cursor-pointer"
+                      >
+                        <IoMdCopy className="w-6 h-6" />
+                        <p>Copiar PIX copia e cola</p>
+                      </button>
+                    </CopyToClipboard>
+                    <p className="text-xs px-6 py-2 text-center">
+                      Verifique se o remetente e o valor está correto antes de
+                      confirmar o pagamento.
+                    </p>
                   </div>
                 </div>
-                <p className="font-semibold">Valor total: {totalValue}R$</p>
-                <button
-                  className="bg-purple-500 p-2 text-sm uppercase rounded-lg 2xl:p-3 2xl:text-base mt-2 2xl:mt-4 
-                disabled:bg-slate-300 text-white"
-                >
-                  Gerar pix
-                </button>
-              </div>
+              )}
             </div>
           </div>
         )}
@@ -247,18 +326,3 @@ const Event = () => {
 };
 
 export default Event;
-
-{
-  //   <div className="flex flex-col items-center justify-center">
-  //   <PIX
-  //     pixkey="+5583981358394"
-  //     merchant="Rúben Eliel"
-  //     city="Campina Grande"
-  //     cep="58460000"
-  //     amount={100}
-  //   />
-  //   <p className="text-sm text-center">
-  //     Escaneie o QR Code para prosseguir com o pagamento.
-  //   </p>
-  // </div>
-}
