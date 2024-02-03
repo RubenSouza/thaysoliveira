@@ -44,6 +44,8 @@ const Event = () => {
     }, 3000);
   };
 
+  console.log(isCopied);
+
   useEffect(() => {
     setTotalValue(35 * counter);
 
