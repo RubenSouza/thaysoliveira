@@ -17,7 +17,7 @@ const Event = () => {
   const [selectedStudent, setSelectedStudent] = useState({} as Student);
   const [counter, setCounter] = useState(1);
   const [nextPage, setNextPage] = useState(false);
-  const [totalValue, setTotalValue] = useState(35);
+  const [totalValue, setTotalValue] = useState(30);
   const [fullPIX, setFullPIX] = useState("");
   const [isPix, setIsPix] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -47,7 +47,7 @@ const Event = () => {
   console.log(isCopied);
 
   useEffect(() => {
-    setTotalValue(35 * counter);
+    setTotalValue(30 * counter);
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -295,8 +295,8 @@ const Event = () => {
                   </div>
                   <div className="flex flex-col items-center justify-center w-full space-y-2">
                     <PIX
-                      pixkey="+5583981358394"
-                      merchant="Rúben Eliel"
+                      pixkey="profs.thaysoliveira@gmail.com"
+                      merchant="Virginia Thays da Silva Oliveira"
                       onLoad={setFullPIX}
                       resize={200}
                       city="Campina Grande"
@@ -312,9 +312,13 @@ const Event = () => {
                         <p>Copiar PIX copia e cola</p>
                       </button>
                     </CopyToClipboard>
-                    <p className="text-xs px-6 py-2 text-center">
+                    <div className="text-xs">
+                      <p>Banco: PICPAY</p>
+                      <p>Nome: Virgínia Thays da Silva Oliveira</p>
+                    </div>
+                    <p className="text-xs px-14 py-2 text-center">
                       Verifique se o remetente e o valor está correto antes de
-                      confirmar o pagamento.
+                      confirmar o pagamento. Após isso, envie o comprovante.
                     </p>
                   </div>
                 </div>
