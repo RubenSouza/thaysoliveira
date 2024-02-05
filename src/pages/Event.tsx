@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import fundo from "../assets/fundo.jpg";
 import recitalStudents from "../data/recitalStudents.json";
+import { registerTicket } from "../utils/ticket";
 import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from "react-icons/io";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -45,6 +46,20 @@ const Event = () => {
   };
 
   console.log(isCopied);
+
+  const handlePix = async () => {
+    setIsPix(true);
+    const data = {
+      aluno: selectedStudent?.name,
+      quantidade: counter,
+      valor: totalValue,
+    };
+    try {
+      await registerTicket(data);
+    } catch (error) {
+      console.log("Erro ao registrar ticket", error);
+    }
+  };
 
   useEffect(() => {
     setTotalValue(30 * counter);
@@ -274,7 +289,7 @@ const Event = () => {
                       <button
                         className="bg-purple-500 p-2 text-sm uppercase rounded-lg 2xl:p-3 2xl:text-base mt-2 2xl:mt-4
                disabled:bg-slate-300 text-white"
-                        onClick={() => setIsPix(true)}
+                        onClick={handlePix}
                       >
                         Gerar pix
                       </button>
