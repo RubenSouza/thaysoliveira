@@ -313,7 +313,7 @@ const Event = () => {
                       pixkey="profs.thaysoliveira@gmail.com"
                       merchant="Virginia Thays da Silva Oliveira"
                       onLoad={setFullPIX}
-                      resize={200}
+                      resize={160}
                       city="Campina Grande"
                       cep="58460000"
                       amount={totalValue}
@@ -331,9 +331,10 @@ const Event = () => {
                       <p>Banco: PICPAY</p>
                       <p>Nome: Virgínia Thays da Silva Oliveira</p>
                     </div>
-                    <p className="text-xs px-14 py-2 text-center">
+                    <p className="text-[11px] px-10 py-2 text-center">
                       Verifique se o remetente e o valor está correto antes de
-                      confirmar o pagamento. Após isso, envie o comprovante.
+                      confirmar o pagamento. Após isso, envie o comprovante para
+                      o WhatsApp (83) 9102-9054
                     </p>
                   </div>
                 </div>
