@@ -7,6 +7,7 @@ import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from "react-icons/io";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import PIX from "react-qrcode-pix";
+import toast, { Toaster } from "react-hot-toast";
 
 type Student = {
   id: number;
@@ -21,7 +22,6 @@ const Event = () => {
   const [totalValue, setTotalValue] = useState(30);
   const [fullPIX, setFullPIX] = useState("");
   const [isPix, setIsPix] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
   const inAreaRef = useRef<HTMLDivElement | null>(null);
 
   const first = recitalStudents.slice(0, 3);
@@ -39,13 +39,10 @@ const Event = () => {
   };
 
   const handleCopy = () => {
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 3000);
+    toast.success("PIX copiado!", {
+      duration: 3000,
+    });
   };
-
-  console.log(isCopied);
 
   const handlePix = async () => {
     setIsPix(true);
@@ -87,6 +84,7 @@ const Event = () => {
       className="w-full h-screen bg-cover bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${fundo})` }}
     >
+      <Toaster />
       <div
         className="flex flex-col items-center justify-center  w-full h-full 
       bg-black bg-opacity-50"
@@ -321,7 +319,7 @@ const Event = () => {
                     <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
                       <button
                         className="my-2 flex border bg-slate-300 p-2 text-sm items-center justify-center 
-                    rounded-md border-slate-400 px-8 text-slate-600 cursor-pointer"
+                    rounded-md border-slate-400 px-6 text-slate-600 cursor-pointer"
                       >
                         <IoMdCopy className="w-6 h-6" />
                         <p>Copiar PIX copia e cola</p>
