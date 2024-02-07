@@ -330,9 +330,9 @@ const Event = () => {
                       <p>Nome: Virgínia Thays da Silva Oliveira</p>
                     </div>
                     <p className="text-[11px] px-10 py-2 text-center">
-                      Verifique se o remetente e o valor está correto antes de
+                      Verifique se o remetente e o valor estão corretos antes de
                       confirmar o pagamento. Após isso, envie o comprovante para
-                      o WhatsApp (83) 9102-9054
+                      o WhatsApp (83) 99102-9054
                     </p>
                   </div>
                 </div>
