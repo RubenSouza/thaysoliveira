@@ -89,12 +89,13 @@ const Event = () => {
         className="flex flex-col items-center justify-center  w-full h-full 
       bg-black bg-opacity-50"
       >
-        <h1 className="text-lg 2xl:text-3xl font-bold text-white">
+        <h1 className="text-lg 2xl:text-3xl font-bold text-white pb-2">
           Recital 2024
         </h1>
         <div className="flex flex-col items-center ">
-          <p className="text-sm 2xl:text-base">
-            Selecione o aluno que irá acompanhar
+          <p className="text-xs 2xl:text-base text-center pb-4">
+            Efetue a compra do seu ingresso individual <br />
+            ou selecione o aluno que irá acompanhar
           </p>
           <motion.div
             initial={{ x: -2000 }}
