@@ -24,11 +24,11 @@ const Event = () => {
   const [isPix, setIsPix] = useState(false);
   const inAreaRef = useRef<HTMLDivElement | null>(null);
 
-  const first = recitalStudents.slice(0, 3);
-  const second = recitalStudents.slice(3, 7);
-  const third = recitalStudents.slice(7, 11);
-  const fourth = recitalStudents.slice(11, 15);
-  const fifth = recitalStudents.slice(15, 17);
+  const first = recitalStudents.slice(0, 4);
+  const second = recitalStudents.slice(4, 8);
+  const third = recitalStudents.slice(8, 12);
+  const fourth = recitalStudents.slice(12, 16);
+  const fifth = recitalStudents.slice(16, 20);
 
   const handleStudent = (student: Student) => {
     setSelectedStudent(student);
@@ -101,10 +101,10 @@ const Event = () => {
             initial={{ x: -2000 }}
             animate={{ x: 0 }}
             transition={{ duration: 2 }}
-            className="flex flex-col items-center justify-center py-2 2xl:py-6"
+            className="flex flex-col items-center justify-center px-10 md:px-0 py-2 2xl:py-6"
           >
-            {/* 3 colunas */}
-            <div className="grid grid-cols-3 gap-6 xl:gap-10 2xl:gap-16">
+            {/* 1 coluna */}
+            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
               {first.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -123,12 +123,14 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-sm xl:text-base">{student?.name}</p>
+                  <p className="text-xs xl:text-base  w-full text-center flex-shrink">
+                    {student?.name}
+                  </p>
                 </div>
               ))}
             </div>
-            {/* 4 colunas */}
-            <div className="grid grid-cols-4 gap-8 xl:gap-10 2xl:gap-16">
+            {/* 2 coluna */}
+            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
               {second.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -147,11 +149,13 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-sm xl:text-base">{student?.name}</p>
+                  <p className="text-xs xl:text-base  w-full text-center flex-shrink">
+                    {student?.name}
+                  </p>
                 </div>
               ))}
             </div>
-            {/* 4 colunas */}
+            {/* 3 coluna */}
             <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
               {third.map((student, i) => (
                 <div
@@ -171,12 +175,14 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-sm xl:text-base">{student?.name}</p>
+                  <p className="text-xs xl:text-base  w-full text-center flex-shrink">
+                    {student?.name}
+                  </p>
                 </div>
               ))}
             </div>
-            {/* 4 colunas */}
-            <div className="grid grid-cols-4 gap-8 xl:gap-10 2xl:gap-16">
+            {/* 4 coluna */}
+            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
               {fourth.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -195,12 +201,14 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-sm xl:text-base">{student?.name}</p>
+                  <p className="text-sm xl:text-base  w-full text-center flex-shrink">
+                    {student?.name}
+                  </p>
                 </div>
               ))}
             </div>
-            {/* 2 colunas */}
-            <div className="grid grid-cols-2 gap-8 xl:gap-10 2xl:gap-16">
+            {/* 5 coluna */}
+            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
               {fifth.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -219,7 +227,9 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-sm xl:text-base">{student?.name}</p>
+                  <p className="text-sm xl:text-base  w-full text-center flex-shrink">
+                    {student?.name}
+                  </p>
                 </div>
               ))}
             </div>
