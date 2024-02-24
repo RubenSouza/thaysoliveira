@@ -93,7 +93,7 @@ const Event = () => {
           Recital 2024
         </h1>
         <div className="flex flex-col items-center ">
-          <p className="text-xs 2xl:text-base text-center pb-4">
+          <p className="text-xs 2xl:text-base text-center xl:pb-0 2xl:pb-4">
             Efetue a compra do seu ingresso individual <br />
             ou selecione o aluno que irá acompanhar
           </p>
@@ -123,14 +123,14 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-xs xl:text-base  w-full text-center flex-shrink">
+                  <p className="text-xs xl:text-sm 2xl:text-base  w-full text-center flex-shrink">
                     {student?.name}
                   </p>
                 </div>
               ))}
             </div>
             {/* 2 coluna */}
-            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
+            <div className="grid grid-cols-4 gap-9 xl:gap-12 2xl:gap-16">
               {second.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -149,14 +149,14 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-xs xl:text-base  w-full text-center flex-shrink">
+                  <p className="text-xs xl:text-sm 2xl:text-base  w-full text-center flex-shrink">
                     {student?.name}
                   </p>
                 </div>
               ))}
             </div>
             {/* 3 coluna */}
-            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
+            <div className="grid grid-cols-4 gap-9 xl:gap-14 2xl:gap-16">
               {third.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -175,14 +175,14 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-xs xl:text-base  w-full text-center flex-shrink">
+                  <p className="text-xs xl:text-sm 2xl:text-base  w-full text-center flex-shrink">
                     {student?.name}
                   </p>
                 </div>
               ))}
             </div>
             {/* 4 coluna */}
-            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
+            <div className="grid grid-cols-4 gap-9 xl:gap-14 2xl:gap-16">
               {fourth.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -201,14 +201,14 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-sm xl:text-base  w-full text-center flex-shrink">
+                  <p className="text-sm xl:text-sm 2xl:text-base  w-full text-center flex-shrink">
                     {student?.name}
                   </p>
                 </div>
               ))}
             </div>
             {/* 5 coluna */}
-            <div className="grid grid-cols-4 gap-9 xl:gap-10 2xl:gap-16">
+            <div className="grid grid-cols-4 gap-9 xl:gap-14 2xl:gap-16">
               {fifth.map((student, i) => (
                 <div
                   className="w-full flex flex-col items-center cursor-pointer"
@@ -227,7 +227,7 @@ const Event = () => {
                       className="w-full h-full rounded-full object-cover object-top"
                     />
                   </div>
-                  <p className="text-sm xl:text-base  w-full text-center flex-shrink">
+                  <p className="text-sm xl:text-sm 2xl:text-base  w-full text-center flex-shrink">
                     {student?.name}
                   </p>
                 </div>
