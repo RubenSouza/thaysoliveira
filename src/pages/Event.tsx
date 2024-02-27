@@ -15,6 +15,8 @@ type Student = {
   img: string;
 };
 
+const now = new Date().getTime().toString();
+
 const Event = () => {
   const [selectedStudent, setSelectedStudent] = useState({} as Student);
   const [counter, setCounter] = useState(1);
@@ -320,12 +322,13 @@ const Event = () => {
                   <div className="flex flex-col items-center justify-center w-full space-y-2">
                     <PIX
                       pixkey="profs.thaysoliveira@gmail.com"
-                      merchant="Virginia Thays da Silva Oliveira"
+                      merchant="Virginia Thays"
+                      city="Campina Grande"
+                      cep="58.419-205"
+                      code={"RQP" + now}
+                      amount={totalValue}
                       onLoad={setFullPIX}
                       resize={160}
-                      city="Campina Grande"
-                      cep="58460000"
-                      amount={totalValue}
                     />
                     <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
                       <button
