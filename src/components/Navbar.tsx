@@ -22,7 +22,7 @@ const Navbar = () => {
             <li className="hover:cursor-pointer">Feedbacks</li>
           </a>
           <a href="#students">
-            <li className="hover:cursor-pointer">Alunos</li>
+            <li className="hover:cursor-pointer">Recitais</li>
           </a>
           <a href="#videos">
             <li className="hover:cursor-pointer">Vídeos</li>
@@ -65,7 +65,7 @@ const Navbar = () => {
                 <li className="hover:cursor-pointer">Feedbacks</li>
               </a>
               <a href="#students" onClick={() => handleMenuClick()}>
-                <li className="hover:cursor-pointer">Alunos</li>
+                <li className="hover:cursor-pointer">Recitais</li>
               </a>
               <a href="#videos" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Vídeos</li>
