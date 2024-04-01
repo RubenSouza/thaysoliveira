@@ -81,6 +81,20 @@ const mobileStudentsList = students.map((student, i) => {
         <p className="text-[11px] font-sans text-neutral-400">
           {student.musics}
         </p>
+        <ul className="">
+          <li
+            className="text-xs font-sans text-neutral-400 
+              list-disc list-inside"
+          >
+            {student.age}
+          </li>
+          <li
+            className="text-xs font-sans text-neutral-400 
+             list-disc list-inside"
+          >
+            {student.experience}
+          </li>
+        </ul>
       </div>
     </div>
   );
