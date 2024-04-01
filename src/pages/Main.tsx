@@ -10,6 +10,7 @@ import arrowUp from "../assets/arrrowUp.svg";
 import rightBackground from "../assets/rightBackground.svg";
 import leftBackground from "../assets/leftBackground.svg";
 import loading from "../assets/videos/loading3.gif";
+import Recital24 from "../components/Recital24";
 
 function Main() {
   const [isLoading, setLoading] = useState(true);
@@ -72,6 +73,13 @@ function Main() {
         >
           <Games />
         </section> */}
+        <section
+          className="w-full flex items-center justify-center relative py-5"
+          id="students"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Recital24 />
+        </section>
         <section
           className="w-full flex items-center justify-center relative py-5"
           id="students"

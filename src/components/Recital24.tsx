@@ -1,6 +1,6 @@
 import StudentVideo from "./StudentVideo";
 import Title from "./Title";
-import students from "../data/recital23.json";
+import students from "../data/recital24.json";
 
 const studentsList = students.map((student, i) => {
   return (
@@ -19,20 +19,6 @@ const studentsList = students.map((student, i) => {
             <p className="text-[11px] font-sans text-neutral-400">
               {student.musics}
             </p>
-            <ul className="">
-              <li
-                className="text-xs font-sans text-neutral-400 
-              list-disc list-inside"
-              >
-                {student.age}
-              </li>
-              <li
-                className="text-xs font-sans text-neutral-400 
-             list-disc list-inside"
-              >
-                {student.experience}
-              </li>
-            </ul>
           </div>
         </>
       ) : (
@@ -44,20 +30,6 @@ const studentsList = students.map((student, i) => {
             <p className="text-[11px] font-sans text-neutral-400">
               {student.musics}
             </p>
-            <ul className="">
-              <li
-                className="text-xs font-sans text-neutral-400 
-              list-disc list-inside"
-              >
-                {student.age}
-              </li>
-              <li
-                className="text-xs font-sans text-neutral-400 
-             list-disc list-inside"
-              >
-                {student.experience}
-              </li>
-            </ul>
           </div>
           <StudentVideo videoId={student.video} />
         </>
@@ -86,10 +58,10 @@ const mobileStudentsList = students.map((student, i) => {
   );
 });
 
-const Students = () => {
+const Recital24 = () => {
   return (
     <div className="w-full px-6 md:px-0 md:w-[1200px] flex flex-col items-center justify-center">
-      <Title title="Recital 2023" line="w-full" />
+      <Title title="Recital 2024" line="w-full" />
       <div className="max-w-full md:flex flex-wrap justify-between py-10 gap-10 hidden">
         {studentsList}
       </div>
@@ -100,4 +72,4 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default Recital24;
