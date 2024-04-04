@@ -4,14 +4,14 @@ import Title from "./Title";
 
 const AboutMe = () => {
   return (
-    <div className="w-full md:w-[1200px] md:py-10">
+    <div className="w-full h-full md:w-[1200px] md:py-10 flex flex-col justify-center">
       <div
         className="w-full md:flex md:justify-between items-center space-y-2 
         px-4 md:px-0"
       >
         <img
           src={crianca}
-          className="w-[130px] md:w-[400px] bg-clip-text float-right m-2 md:m-0 "
+          className="w-[130px] md:w-[300px] bg-clip-text float-right m-2 md:m-0 "
         />
         <div className="w-full text-sm md:w-[490px] space-y-2">
           <Title title="Sobre mim" line="w-[81px]" />
@@ -71,7 +71,7 @@ const AboutMe = () => {
         </div>
         <img
           src={fundoroxo}
-          className="w-[400px] hidden md:inline rounded-full"
+          className="w-[300px] hidden md:inline rounded-full"
         />
       </div>
     </div>

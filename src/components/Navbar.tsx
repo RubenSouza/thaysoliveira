@@ -9,8 +9,14 @@ const Navbar = () => {
   }
 
   return (
-    <div className="h-10 w-full flex justify-center">
-      <div className="md:w-[1200px] md:flex items-center md:py-10 hidden z-20">
+    <div
+      className="w-full flex lg:justify-center justify-start px-10 
+    lg:px-0"
+    >
+      <div
+        className="lg:w-[1200px] md:flex items-center md:py-10 
+      hidden z-20 absolute top-0 "
+      >
         <ul
           className="uppercase flex justify-between w-[450px] h-full text-xs 
         font-sans"
@@ -32,7 +38,6 @@ const Navbar = () => {
           </a>
         </ul>
       </div>
-
       <div
         className="w-full px-4 h-12 bg-black md:hidden fixed z-30 top-0 left-0 right-0"
         onClick={() => setIsMenuOpen(true)}
