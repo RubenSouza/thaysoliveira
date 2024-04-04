@@ -17,9 +17,7 @@ function Main() {
   const [topPadding, setTopPadding] = useState("0px");
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    setLoading(false);
   }, []);
 
   useEffect(() => {
