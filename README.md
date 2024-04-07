@@ -1,3 +1,3 @@
 # BETA
 
-Still in development
+Here is the new redesign of the portfolio page
