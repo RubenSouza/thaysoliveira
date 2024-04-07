@@ -4,10 +4,10 @@ import Inicio from "../components/Inicio";
 import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
 import loading from "../assets/videos/loading3.gif";
+import Feedbacks from "../components/Feedbacks";
 // import rightBackground from "../assets/rightBackground.svg";
 // import leftBackground from "../assets/leftBackground.svg";
 // import Contact from "../components/Contact";
-// import Feedbacks from "../components/Feedbacks";
 // import Students from "../components/Students";
 // import Videos from "../components/Videos";
 // import Recital24 from "../components/Recital24";
@@ -30,30 +30,30 @@ function Main() {
       min-h-screen h-screen scrollbar-thin overflow-y-scroll overflow-x-hidden
       scrollbar-track-gray-400/40 scrollbar-thumb-primary-300 relative"
     >
-      <div className="w-full h-screen relative">
+      <div className="w-full h-full">
         <Navbar />
         <section
           className="w-full h-full flex flex-col items-center 
-          relative linear-gradient justify-center overflow-hidden"
+          relative linear-gradient justify-center "
           id="home"
         >
           <Inicio />
-          {/* <img
-            src={leftBackground}
-            className="h-full absolute -top-5 left-0 mix-blend-overlay"
-          /> */}
-          {/* <img
-            src={rightBackground}
-            className="h-full absolute top-0 right-0 mix-blend-overlay"
-          /> */}
         </section>
         <section
-          className="w-full h-full flex items-center 
-        justify-center relative bg-black overflow-hidden "
+          className="w-full  flex items-center 
+        justify-center relative bg-black py-14 xl:py-28"
           id="aboutme"
           style={{ scrollMarginTop: topPadding }}
         >
           <AboutMe />
+        </section>
+        <section
+          className="w-full  flex items-center justify-center
+      relative feedbacks"
+          id="feedbacks"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Feedbacks />
         </section>
       </div>
       <a href="#home">

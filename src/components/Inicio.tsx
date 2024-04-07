@@ -12,8 +12,8 @@ const Inicio = () => {
         className="absolute bottom-0 right-0 h-full w-full animate animate-pulse-slow"
       />
       <div
-        className="w-full h-full max-h-full xl:w-[1200px] 
-        overflow-hidden relative "
+        className="w-full h-full max-h-full lg:w-[1100px] 2xl:w-[1200px] 
+         relative "
       >
         <div
           className="px-4 md:px-0 h-full flex flex-col justify-end items-center 
@@ -43,7 +43,7 @@ const Inicio = () => {
             <div className="">
               <img
                 src={capa}
-                className="z-20  lg:pt-24 justify-self-end self-end"
+                className="z-20 lg:pt-24 justify-self-end self-end"
               />
             </div>
           </div>

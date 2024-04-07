@@ -14,7 +14,7 @@ const Navbar = () => {
     lg:px-0"
     >
       <div
-        className="lg:w-[1200px] md:flex items-center md:py-10 
+        className="lg:w-[1100px] 2xl:w-[1200px] md:flex items-center md:py-10 
       hidden z-20 absolute top-0 "
       >
         <ul
