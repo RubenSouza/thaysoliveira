@@ -34,7 +34,7 @@ function Main() {
         <Navbar />
         <section
           className="w-full h-full flex flex-col items-center 
-          relative linear-gradient justify-center "
+          relative linear-gradient justify-center"
           id="home"
         >
           <Inicio />
@@ -48,7 +48,7 @@ function Main() {
           <AboutMe />
         </section>
         <section
-          className="w-full  flex items-center justify-center
+          className="w-full  flex items-center py-14 justify-center
       relative feedbacks"
           id="feedbacks"
           style={{ scrollMarginTop: topPadding }}

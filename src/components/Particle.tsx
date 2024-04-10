@@ -66,7 +66,7 @@ export const Particle = () => {
           density: {
             enable: true,
           },
-          value: 200,
+          value: 230,
         },
         opacity: {
           value: 0.4,
@@ -79,6 +79,9 @@ export const Particle = () => {
         },
       },
       detectRetina: true,
+      fullScreen: {
+        enable: false,
+      },
     }),
     []
   );
@@ -89,6 +92,7 @@ export const Particle = () => {
         id="tsparticles"
         particlesLoaded={particlesLoaded}
         options={options}
+        className="absolute top-0 left-0 w-full h-full "
       />
     );
   }

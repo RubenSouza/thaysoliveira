@@ -10,13 +10,13 @@ type Props = {
 const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
   return (
     <div
-      className="w-full md:w-[580px] h-[290px] md:h-[360px] border-[1px] 
-    border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer"
+      className="w-full h-[280px] border-[1px] 
+    border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer "
     >
       <div className="flex px-6 md:px-10 pt-8 items-center justify-between">
         <div className="flex items-center">
           <div
-            className="rounded-full bg-primary-100 w-12 md:w-20 h-12 md:h-20 
+            className="rounded-full bg-primary-100 h-14 w-14
           flex items-center justify-center"
           >
             <img src={photo} className="w-full rounded-full p-[1px]" />
@@ -26,9 +26,12 @@ const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
             <p className="text-[11px] md:text-sm">{character}</p>
           </div>
         </div>
-        <img src={quotes} alt="quotes" className="w-8 md:w-12" />
+        <img src={quotes} alt="quotes" className="w-10" />
       </div>
-      <div className="px-6 md:px-10 py-4 md:py-6 text-primary-600 text-sm md:text-lg">
+      <div
+        className="px-6 md:px-10 py-5 text-primary-600 
+      text-sm "
+      >
         {feedback}
       </div>
     </div>
