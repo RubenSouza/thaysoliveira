@@ -16,18 +16,20 @@ const Feedbacks = () => {
   });
 
   return (
-    <div className="w-full flex flex-col md:w-[1200px] py-5 md:py-14">
+    <div className="w-full flex flex-col md:w-[1200px] py-5 md:py-10">
       {/* feedbacks */}
       <div className="w-full px-4 md:px-0 md:w-[1200px] pt-4 md:pt-8">
-        <Title title="Feedbacks" line="w-[78px]" />
+        <div>
+          <Title title="Feedbacks" line="w-[78px]" />
+        </div>
         <div className="flex justify-between">
           <h2 className="text-xl md:text-3xl font-semibold text-primary-100 font-serif py-2">
             Clientes felizes dizem
           </h2>
         </div>
         <div
-          className="grid grid-cols-3 w-full 
-        gap-y-8 gap-x-6 py-4"
+          className="flex flex-col md:grid md:grid-cols-3 w-full 
+        gap-y-8 gap-x-6 pt-4"
         >
           {feedbacksList}
         </div>

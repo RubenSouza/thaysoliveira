@@ -13,10 +13,10 @@ const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
       className="w-full h-[280px] border-[1px] 
     border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer "
     >
-      <div className="flex px-6 md:px-10 pt-8 items-center justify-between">
+      <div className="flex px-8 pt-8 items-center justify-between">
         <div className="flex items-center">
           <div
-            className="rounded-full bg-primary-100 h-14 w-14
+            className="rounded-full bg-primary-100 w-10 h-10 md:h-14 md:w-14
           flex items-center justify-center"
           >
             <img src={photo} className="w-full rounded-full p-[1px]" />
@@ -29,8 +29,8 @@ const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
         <img src={quotes} alt="quotes" className="w-10" />
       </div>
       <div
-        className="px-6 md:px-10 py-5 text-primary-600 
-      text-sm "
+        className="px-8 py-5 text-primary-600 
+      text-base"
       >
         {feedback}
       </div>
