@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 const AboutMe = () => {
   return (
     <div
-      className="w-full h-full lg:w-[1100px] 2xl:w-[1200px] py-5 md:py-10 
-    flex flex-col justify-center items-center"
+      className="w-full h-full lg:w-[1100px] 2xl:w-[1200px] py-5 
+      md:py-10 flex flex-col justify-center items-center"
     >
       <motion.div
         initial={{ y: -200, opacity: 0 }}

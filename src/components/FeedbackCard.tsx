@@ -1,17 +1,23 @@
 import quotes from "../assets/quotes.svg";
+import { motion } from "framer-motion";
 
 type Props = {
   name: string;
   character: string;
   photo?: string;
   feedback: string;
+  index: number;
 };
 
-const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
+const FeedbackCard = ({ name, character, photo, feedback, index }: Props) => {
   return (
-    <div
+    <motion.div
+      initial={{ y: 200, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
       className="w-full h-[280px] border-[1px] 
-    border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer "
+    border-primary-200 rounded-xl bg-secondary-200/70 
+    cursor-pointer "
     >
       <div className="flex px-8 pt-8 items-center justify-between">
         <div className="flex items-center">
@@ -34,7 +40,7 @@ const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
       >
         {feedback}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
