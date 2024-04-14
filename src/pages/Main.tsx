@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
 import loading from "../assets/videos/loading3.gif";
 import Feedbacks from "../components/Feedbacks";
+import Games from "../components/Games";
 // import rightBackground from "../assets/rightBackground.svg";
 // import leftBackground from "../assets/leftBackground.svg";
 // import Contact from "../components/Contact";
@@ -55,6 +56,14 @@ function Main() {
         >
           <Feedbacks />
         </section>
+        <section
+          className="w-full flex items-center py-14 xl:py-28 justify-center
+      relative "
+          id="games"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Games />
+        </section>
       </div>
       <a href="#home">
         <div
@@ -79,94 +88,3 @@ function Main() {
 }
 
 export default Main;
-
-// return (
-//   <div
-//     className="flex flex-col justify-center items-center w-full
-//     min-h-screen h-screen scrollbar-thin overflow-y-scroll overflow-x-hidden
-//     scrollbar-track-gray-400/40 scrollbar-thumb-primary-300 relative"
-//   >
-//     <div className="w-full h-screen space-y-4 relative">
-//       <section
-//         className="w-full h-screen flex flex-col items-center justify-center
-//         relative linear-gradient"
-//         id="home"
-//       >
-//         <Navbar />
-//         <Inicio />
-//         <img
-//           src={leftBackground}
-//           className="h-full absolute -top-5 left-0 mix-blend-overlay"
-//         />
-//         <img
-//           src={rightBackground}
-//           className="h-full absolute top-0 right-0 mix-blend-overlay"
-//         />
-//       </section>
-//       <section
-//         className="w-full flex items-center
-//       justify-center relative "
-//         id="aboutme"
-//         style={{ scrollMarginTop: topPadding }}
-//       >
-//         <AboutMe />
-//       </section>
-//       <section
-//         className="w-full flex items-center justify-center
-//       relative feedbacks"
-//         id="feedbacks"
-//         style={{ scrollMarginTop: topPadding }}
-//       >
-//         <Feedbacks />
-//       </section>
-//       <section
-//         className="w-full flex items-center justify-center relative py-5"
-//         id="students"
-//         style={{ scrollMarginTop: topPadding }}
-//       >
-//         <Recital24 />
-//       </section>
-//       <section
-//         className="w-full flex items-center justify-center relative py-5"
-//         id="students"
-//         style={{ scrollMarginTop: topPadding }}
-//       >
-//         <Students />
-//       </section>
-//       <section
-//         className="w-full flex items-center  justify-center
-//       relative videos pb-7"
-//         id="videos"
-//         style={{ scrollMarginTop: topPadding }}
-//       >
-//         <Videos />
-//       </section>
-//       <section
-//         className="w-full flex items-center justify-center
-//       relative pb-7"
-//         id="contact"
-//         style={{ scrollMarginTop: topPadding }}
-//       >
-//         <Contact />
-//       </section>
-//     </div>
-//     <a href="#home">
-//       <div
-//         className="w-[40px] h-[40px] border border-primary-500
-//     rounded-full flex items-center justify-center opacity-50
-//     fixed bottom-5 right-7 cursor-pointer hover:opacity-70
-//     animate-bounce duration-1000 delay-1000 z-40"
-//       >
-//         <img src={arrowUp} alt="goToHome" className="w-[15px]" />
-//       </div>
-//     </a>
-//     {isLoading === true ? (
-//       <div
-//         className="fixed w-full h-screen bg-[#1e1d1d] flex items-center
-//       justify-center z-40"
-//       >
-//         <img src={loading} className="w-[600px]" />
-//       </div>
-//     ) : null}
-//   </div>
-// );

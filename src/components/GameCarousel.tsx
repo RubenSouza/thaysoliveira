@@ -22,17 +22,17 @@ const GameCarousel = ({ slides }: any) => {
         breakpoints={{
           // when window width is >= 640px
           320: {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
           // when window width is >= 768px
           768: {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 20,
           },
           // when window width is >= 1200px
           1200: {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 40,
           },
         }}

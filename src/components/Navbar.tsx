@@ -27,6 +27,9 @@ const Navbar = () => {
           <a href="#feedbacks">
             <li className="hover:cursor-pointer">Feedbacks</li>
           </a>
+          <a href="#games">
+            <li className="hover:cursor-pointer">Games</li>
+          </a>
           <a href="#students">
             <li className="hover:cursor-pointer">Recitais</li>
           </a>
@@ -68,6 +71,9 @@ const Navbar = () => {
               </a>
               <a href="#feedbacks" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Feedbacks</li>
+              </a>
+              <a href="#games" onClick={() => handleMenuClick()}>
+                <li className="hover:cursor-pointer">Games</li>
               </a>
               <a href="#students" onClick={() => handleMenuClick()}>
                 <li className="hover:cursor-pointer">Recitais</li>
