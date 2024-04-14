@@ -1,4 +1,4 @@
-import capa from "../assets/capa.svg";
+import capa from "../assets/capa.png";
 import blob from "../assets/blob.png";
 import { Particle } from "./Particle";
 
