@@ -17,9 +17,9 @@ const AboutMe = () => {
           <Title title="Sobre mim" line="w-[81px]" />
           <div className="space-y-2 text-xs md:text-sm">
             <p>
-              Amante da música e apaixonada pela arte de ensinar. Toco desde os
-              6 anos de idade e hoje tenho a oportunidade de lecionar, dessa
-              forma, ajudo outras pessoas a realizarem o sonho de tocar um
+              Licenciando em música e apaixonada pela arte de ensinar. Toco
+              desde os 6 anos de idade e hoje tenho a oportunidade de lecionar,
+              dessa forma, ajudo outras pessoas a realizarem o sonho de tocar um
               instrumento musical.
             </p>
             <p>
