@@ -12,10 +12,10 @@ const Games = () => {
   const images = imagesList.map((image, i) => {
     return (
       <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.3, delay: i * 0.1 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
         className="w-full border-[1px]
               border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer transform "
         key={i}
