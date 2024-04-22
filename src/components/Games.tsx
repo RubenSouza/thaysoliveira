@@ -32,7 +32,7 @@ const Games = () => {
   return (
     <div className="w-full px-4 md:px-0 md:w-[1200px] py-5 md:py-10">
       <motion.div
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex justify-between items-center md:items-start md:pt-8"
