@@ -9,13 +9,12 @@ type Props = {
   index: number;
 };
 
-const FeedbackCard = ({ name, character, photo, feedback, index }: Props) => {
+const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
   return (
     <motion.div
       initial={{ y: 100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: index * 0.1 }}
+      transition={{ duration: 0.3 }}
       className="w-full  h-[290px] md:h-[360px] border-[1px] 
     border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer"
     >
