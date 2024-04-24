@@ -2,6 +2,7 @@ import FeedbackCard from "./FeedbackCard";
 import Title from "./Title";
 import feedbacks from "../data/feedbacks.json";
 import { motion } from "framer-motion";
+import FeedbacksCarousel from "./FeedbacksCarousel";
 
 const Feedbacks = () => {
   const feedbacksList = feedbacks.map((feedback, i) => {
@@ -41,11 +42,8 @@ const Feedbacks = () => {
             Clientes felizes dizem
           </motion.h2>
         </div>
-        <div
-          className="w-full flex flex-col md:grid md:grid-cols-2
-          lg:grid-cols-3 gap-y-8 gap-x-6 pt-4"
-        >
-          {feedbacksList}
+        <div className="w-full">
+          <FeedbacksCarousel slides={feedbacksList} />
         </div>
       </div>
     </div>

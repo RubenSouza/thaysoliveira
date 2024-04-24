@@ -16,9 +16,8 @@ const FeedbackCard = ({ name, character, photo, feedback, index }: Props) => {
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.1 }}
-      className="w-full h-[280px] border-[1px] 
-    border-primary-200 rounded-xl bg-secondary-200/70 
-    cursor-pointer "
+      className="w-full  h-[290px] md:h-[360px] border-[1px] 
+    border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer"
     >
       <div className="flex px-8 pt-8 items-center justify-between">
         <div className="flex items-center">
