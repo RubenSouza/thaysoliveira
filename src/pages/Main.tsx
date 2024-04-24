@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
 import loading from "../assets/videos/loading3.gif";
 import Feedbacks from "../components/Feedbacks";
-import Games from "../components/Games";
+// import Games from "../components/Games";
 // import Contact from "../components/Contact";
 // import Students from "../components/Students";
 // import Videos from "../components/Videos";
@@ -53,14 +53,6 @@ function Main() {
           style={{ scrollMarginTop: topPadding }}
         >
           <Feedbacks />
-        </section>
-        <section
-          className="w-full flex items-center py-14 xl:py-28 justify-center
-      relative "
-          id="games"
-          style={{ scrollMarginTop: topPadding }}
-        >
-          <Games />
         </section>
       </div>
       <a href="#home">

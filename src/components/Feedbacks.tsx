@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import FeedbacksCarousel from "./FeedbacksCarousel";
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
+import Games from "./Games";
 
 const Feedbacks = () => {
   const feedbacksList = feedbacks.map((feedback, i) => {
@@ -65,6 +66,9 @@ const Feedbacks = () => {
         <div className="w-full">
           <FeedbacksCarousel slides={feedbacksList} />
         </div>
+      </div>
+      <div>
+        <Games />
       </div>
     </div>
   );
