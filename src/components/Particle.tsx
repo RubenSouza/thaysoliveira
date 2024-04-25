@@ -19,11 +19,11 @@ export const Particle = () => {
 
   const options: ISourceOptions = useMemo(
     () => ({
-      fpsLimit: 120,
+      fpsLimit: 20,
       interactivity: {
         events: {
           onClick: {
-            enable: true,
+            enable: false,
             mode: "push",
           },
           onHover: {
@@ -47,7 +47,7 @@ export const Particle = () => {
         },
         links: {
           color: "#3f316a",
-          distance: 150,
+          distance: 200,
           enable: true,
           opacity: 0.3,
           width: 1,
