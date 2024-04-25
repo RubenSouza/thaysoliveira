@@ -31,7 +31,7 @@ const Games = () => {
   });
 
   return (
-    <div className="w-full px-4 md:px-0 lg:w-[1100px] 2xl:w-[1200px] py-5 md:py-10">
+    <div className="w-full px-4 md:px-0 lg:w-[1100px] 2xl:w-[1200px] py-5 ">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

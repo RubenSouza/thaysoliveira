@@ -47,7 +47,7 @@ function Main() {
           <AboutMe />
         </section>
         <section
-          className="w-full flex items-center py-14 xl:py-28 justify-center
+          className="w-full flex items-center  justify-center
       relative feedbacks"
           id="feedbacks"
           style={{ scrollMarginTop: topPadding }}

@@ -12,9 +12,9 @@ const studentsList = students.map((student, i) => {
     >
       {student?.side === "left" ? (
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 1, delay: 0.2 }}
           className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
         >
           <StudentVideo videoId={student.video} />
@@ -29,9 +29,9 @@ const studentsList = students.map((student, i) => {
         </motion.div>
       ) : (
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
+          initial={{ x: 50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 1, delay: 0.2 }}
           className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
         >
           <div>
@@ -52,9 +52,9 @@ const studentsList = students.map((student, i) => {
 const mobileStudentsList = students.map((student, i) => {
   return (
     <motion.div
-      initial={{ x: -100, opacity: 0 }}
+      initial={{ x: -50, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 1, delay: 0.2 }}
       className="w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
       md:space-y-0 md:space-x-6 md:justify-start"
       key={i}
