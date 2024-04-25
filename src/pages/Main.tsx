@@ -6,10 +6,10 @@ import arrowUp from "../assets/arrrowUp.svg";
 import loading from "../assets/videos/loading3.gif";
 import Feedbacks from "../components/Feedbacks";
 // import Games from "../components/Games";
-// import Contact from "../components/Contact";
-// import Students from "../components/Students";
-// import Videos from "../components/Videos";
-// import Recital24 from "../components/Recital24";
+import Contact from "../components/Contact";
+import Students from "../components/Students";
+import Videos from "../components/Videos";
+import Recital24 from "../components/Recital24";
 
 function Main() {
   const [isLoading, setLoading] = useState(true);
@@ -53,6 +53,36 @@ function Main() {
           style={{ scrollMarginTop: topPadding }}
         >
           <Feedbacks />
+        </section>
+        <section
+          className="w-full flex items-center justify-center relative py-14 xl:py-28"
+          id="students"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Recital24 />
+        </section>
+        <section
+          className="w-full flex items-center justify-center relative py-5"
+          id="students"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Students />
+        </section>
+        <section
+          className="w-full flex items-center  justify-center 
+        relative videos pb-7"
+          id="videos"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Videos />
+        </section>
+        <section
+          className="w-full flex items-center justify-center
+        relative py-7"
+          id="contact"
+          style={{ scrollMarginTop: topPadding }}
+        >
+          <Contact />
         </section>
       </div>
       <a href="#home">

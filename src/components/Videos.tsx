@@ -1,9 +1,13 @@
 import ThaysVideo from "./ThaysVideo";
 import Title from "./Title";
+import { motion } from "framer-motion";
 
 const Videos = () => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       className="w-full md:h-[500px] flex flex-col 
     items-center justify-start md:w-[1200px] py-5 md:py-10 "
     >
@@ -15,7 +19,7 @@ const Videos = () => {
         <ThaysVideo videoId="u-WY05TNY60" />
         <ThaysVideo videoId="he4gnkr654A" />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

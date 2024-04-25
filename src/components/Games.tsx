@@ -16,8 +16,6 @@ const Games = () => {
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, delay: 0.2 }}
         className="w-full border-[1px]
               border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer transform "
         key={i}
@@ -25,7 +23,8 @@ const Games = () => {
         <img
           src={image}
           alt="game"
-          className="w-full md:w-[580px] md:h-[360px] rounded-xl md:object-fill "
+          className="w-full h-[220px] md:w-[580px] md:h-[360px] 
+          rounded-xl md:object-fill "
         />
       </motion.div>
     );

@@ -1,6 +1,7 @@
 import StudentVideo from "./StudentVideo";
 import Title from "./Title";
 import students from "../data/recital23.json";
+import { motion } from "framer-motion";
 
 const studentsList = students.map((student, i) => {
   return (
@@ -10,7 +11,12 @@ const studentsList = students.map((student, i) => {
       key={i}
     >
       {student?.side === "left" ? (
-        <>
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
+        >
           <StudentVideo videoId={student.video} />
           <div>
             <h3 className="text-xl md:text-3xl font-semibold text-primary-300">
@@ -34,9 +40,14 @@ const studentsList = students.map((student, i) => {
               </li>
             </ul>
           </div>
-        </>
+        </motion.div>
       ) : (
-        <>
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
+        >
           <div>
             <h3 className="text-xl md:text-3xl font-semibold text-primary-300">
               {student.name}
@@ -60,7 +71,7 @@ const studentsList = students.map((student, i) => {
             </ul>
           </div>
           <StudentVideo videoId={student.video} />
-        </>
+        </motion.div>
       )}
     </div>
   );
@@ -68,9 +79,12 @@ const studentsList = students.map((student, i) => {
 
 const mobileStudentsList = students.map((student, i) => {
   return (
-    <div
+    <motion.div
+      initial={{ x: -100, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       className="w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
-      md:space-y-0 md:space-x-6 md:justify-start"
+    md:space-y-0 md:space-x-6 md:justify-start"
       key={i}
     >
       <StudentVideo videoId={student.video} />
@@ -96,7 +110,7 @@ const mobileStudentsList = students.map((student, i) => {
           </li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 });
 
