@@ -56,7 +56,7 @@ export const Particle = () => {
           direction: "none",
           enable: true,
           outModes: {
-            default: "out",
+            default: "bounce",
           },
           random: false,
           speed: 1,
@@ -66,7 +66,7 @@ export const Particle = () => {
           density: {
             enable: true,
           },
-          value: 230,
+          value: 150,
         },
         opacity: {
           value: 0.4,
