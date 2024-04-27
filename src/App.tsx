@@ -9,8 +9,11 @@ const App = () => {
   return (
     <Suspense
       fallback={
-        <div className="w-full h-screen flex justify-center items-center">
-          <img src={loading} className="w-[200px] h-[200px]" />
+        <div
+          className="fixed w-full h-screen bg-[#1e1d1d] flex items-center 
+        justify-center z-40"
+        >
+          <img src={loading} className="w-[600px]" />
         </div>
       }
     >
