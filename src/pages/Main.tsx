@@ -1,7 +1,3 @@
-import {
-  // useState,
-  useEffect,
-} from "react";
 import Inicio from "../components/Inicio";
 import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
@@ -10,19 +6,13 @@ import arrowUp from "../assets/arrrowUp.svg";
 
 // const Inicio = lazy(() => import("../components/Inicio"));
 import AboutMe from "../components/AboutMe";
-// import Feedbacks from "../components/Feedbacks";
+import Feedbacks from "../components/Feedbacks";
 // import Contact from "../components/Contact";
 // import Students from "../components/Students";
 // import Videos from "../components/Videos";
 // import Recital24 from "../components/Recital24";
 
 function Main() {
-  // const [topPadding, setTopPadding] = useState("0px");
-
-  useEffect(() => {
-    // window.innerWidth < 768 ? setTopPadding("48px") : setTopPadding("0px");
-  });
-
   return (
     <div
       className="flex flex-col justify-center items-center w-full 
@@ -42,29 +32,25 @@ function Main() {
           className="w-full  flex items-center 
         justify-center relative bg-black py-14 xl:py-28"
           id="aboutme"
-          // style={{ scrollMarginTop: topPadding }}
         >
           <AboutMe />
         </section>
-        {/* <section
+        <section
           className="w-full flex items-center  justify-center
       relative feedbacks"
           id="feedbacks"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Feedbacks />
         </section>
-        <section
+        {/* <section
           className="w-full flex items-center justify-center relative py-14 xl:py-28"
           id="students"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Recital24 />
         </section>
         <section
           className="w-full flex items-center justify-center relative py-5"
           id="students"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Students />
         </section>
@@ -72,7 +58,6 @@ function Main() {
           className="w-full flex items-center  justify-center 
         relative videos pb-7"
           id="videos"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Videos />
         </section>
@@ -80,7 +65,6 @@ function Main() {
           className="w-full flex items-center justify-center
         relative py-7"
           id="contact"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Contact />
         </section> */}
