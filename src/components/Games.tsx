@@ -16,6 +16,7 @@ const Games = () => {
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
         className="w-full border-[1px]
               border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer transform "
         key={i}
@@ -36,6 +37,7 @@ const Games = () => {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex justify-between items-center md:items-start md:pt-8 px-4"
       >

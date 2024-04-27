@@ -14,6 +14,7 @@ const studentsList = students.map((student, i) => {
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2 }}
           className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
         >
@@ -31,6 +32,7 @@ const studentsList = students.map((student, i) => {
         <motion.div
           initial={{ x: 50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2 }}
           className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
         >
@@ -54,6 +56,7 @@ const mobileStudentsList = students.map((student, i) => {
     <motion.div
       initial={{ x: -50, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true }}
       transition={{ duration: 1, delay: 0.2 }}
       className="w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
       md:space-y-0 md:space-x-6 md:justify-start"

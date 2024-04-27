@@ -6,11 +6,12 @@ const AboutMe = () => {
   return (
     <div
       className="w-full h-full lg:w-[1100px] 2xl:w-[1200px] py-5 
-      md:py-10 flex flex-col justify-center items-center"
+    md:py-10 flex flex-col justify-center items-center"
     >
       <motion.div
-        initial={{ y: -50, opacity: 0 }}
+        initial={{ y: 20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
         className="py-4"
       >
         <Title title="Sobre mim" line="w-[81px]" />
@@ -20,11 +21,12 @@ const AboutMe = () => {
         px-4 md:px-0 "
       >
         <motion.div
-          initial={{ x: -50, opacity: 0 }}
+          initial={{ x: 20, opacity: 0 }}
           whileInView={{
             x: 0,
             opacity: 1,
           }}
+          viewport={{ once: true }}
           className="flex items-center justify-center xl:justify-start"
         >
           <img
@@ -33,8 +35,9 @@ const AboutMe = () => {
           />
         </motion.div>
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
+          initial={{ x: 20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
           className="w-full text-sm md:w-[550px] space-y-6 py-6"
         >
           <h2 className="text-xl md:text-4xl font-semibold text-primary-200">
@@ -62,6 +65,7 @@ const AboutMe = () => {
               Deus por trabalhar com o que amo!
             </p>
           </div>
+
           <div>
             <ul className="list-none text-base">
               <li className="flex items-center mb-2">
