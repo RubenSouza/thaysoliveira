@@ -1,11 +1,26 @@
 import capa from "../assets/capa.webp";
 import blob from "../assets/blob.webp";
-import { Particle } from "./Particle";
+// import { Particle } from "./Particle";
+import { lazy, Suspense } from "react";
+import loading from "../assets/videos/loading3.webp";
+
+const Particle = lazy(() => import("./Particle"));
 
 const Inicio = () => {
   return (
     <>
-      <Particle />
+      <Suspense
+        fallback={
+          <div
+            className="fixed w-full h-screen bg-[#1e1d1d] flex items-center 
+        justify-center z-40"
+          >
+            <img src={loading} className="w-[600px]" />
+          </div>
+        }
+      >
+        <Particle />
+      </Suspense>
       <img
         src={blob}
         alt="light effect"

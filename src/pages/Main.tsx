@@ -2,13 +2,13 @@ import {
   // useState,
   useEffect,
 } from "react";
-// import Inicio from "../components/Inicio";
+import Inicio from "../components/Inicio";
 import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
-import { lazy, Suspense } from "react";
-import loading from "../assets/videos/loading3.webp";
+// import { lazy, Suspense } from "react";
+// import loading from "../assets/videos/loading3.webp";
 
-const Inicio = lazy(() => import("../components/Inicio"));
+// const Inicio = lazy(() => import("../components/Inicio"));
 // import AboutMe from "../components/AboutMe";
 // import Feedbacks from "../components/Feedbacks";
 // import Contact from "../components/Contact";
@@ -36,18 +36,7 @@ function Main() {
           relative linear-gradient justify-center"
           id="home"
         >
-          <Suspense
-            fallback={
-              <div
-                className="fixed w-full h-screen bg-[#1e1d1d] flex items-center 
-        justify-center z-40"
-              >
-                <img src={loading} className="w-[600px]" />
-              </div>
-            }
-          >
-            <Inicio />
-          </Suspense>
+          <Inicio />
         </section>
         {/* <section
           className="w-full  flex items-center 

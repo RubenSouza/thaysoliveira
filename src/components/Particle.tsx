@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { type ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
-export const Particle = () => {
+
+const Particle = () => {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -95,3 +96,5 @@ export const Particle = () => {
 
   return <></>;
 };
+
+export default Particle;
