@@ -1,5 +1,5 @@
-import capa from "../assets/capa.png";
-import blob from "../assets/blob.png";
+import capa from "../assets/capa.webp";
+import blob from "../assets/blob.webp";
 import { Particle } from "./Particle";
 
 const Inicio = () => {

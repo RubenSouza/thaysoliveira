@@ -6,7 +6,7 @@ import {
 import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
 import { lazy, Suspense } from "react";
-import loading from "../assets/videos/loading3.gif";
+import loading from "../assets/videos/loading3.webp";
 
 const Inicio = lazy(() => import("../components/Inicio"));
 // import AboutMe from "../components/AboutMe";
@@ -17,12 +17,7 @@ const Inicio = lazy(() => import("../components/Inicio"));
 // import Recital24 from "../components/Recital24";
 
 function Main() {
-  // const [isLoading, setLoading] = useState(true);
   // const [topPadding, setTopPadding] = useState("0px");
-
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, []);
 
   useEffect(() => {
     // window.innerWidth < 768 ? setTopPadding("48px") : setTopPadding("0px");
