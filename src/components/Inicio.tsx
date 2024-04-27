@@ -1,11 +1,11 @@
 import capa from "../assets/capa.png";
 import blob from "../assets/blob.png";
-// import { Particle } from "./Particle";
+import { Particle } from "./Particle";
 
 const Inicio = () => {
   return (
     <>
-      {/* <Particle /> */}
+      <Particle />
       <img
         src={blob}
         alt="light effect"
@@ -37,13 +37,14 @@ const Inicio = () => {
             </h3>
           </div>
           <div
-            className="w-full 2xl:h-full flex items-end
-           justify-end "
+            className="w-full lg:h-full flex items-end
+           justify-end"
           >
             <div className="">
               <img
                 src={capa}
-                className="z-20 lg:pt-24 justify-self-end self-end"
+                className="z-20 w-[400px]
+                md:w-[580px] lg:w-[600px] 2xl:w-[800px]"
               />
             </div>
           </div>
