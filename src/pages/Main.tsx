@@ -111,14 +111,6 @@ function Main() {
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
-      {/* {isLoading === true ? (
-        <div
-          className="fixed w-full h-screen bg-[#1e1d1d] flex items-center 
-        justify-center z-40"
-        >
-          <img src={loading} className="w-[600px]" />
-        </div>
-      ) : null} */}
     </div>
   );
 }
