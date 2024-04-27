@@ -32,7 +32,6 @@ const Feedbacks = () => {
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               <Title title="Feedbacks" line="w-[78px]" />
@@ -40,7 +39,6 @@ const Feedbacks = () => {
             <motion.h2
               initial={{ y: 0, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
               className="text-xl md:text-3xl font-semibold 
           text-primary-100 font-serif py-2"
