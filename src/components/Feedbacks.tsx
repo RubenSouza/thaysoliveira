@@ -30,7 +30,7 @@ const Feedbacks = () => {
         <div className="flex items-center justify-between">
           <div>
             <motion.div
-              initial={{ y: -100, opacity: 0 }}
+              initial={{ y: -50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
@@ -67,7 +67,7 @@ const Feedbacks = () => {
           <FeedbacksCarousel slides={feedbacksList} />
         </div>
       </div>
-      <div>
+      <div id="games">
         <Games />
       </div>
     </div>
