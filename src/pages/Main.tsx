@@ -1,26 +1,31 @@
-import { useState, useEffect } from "react";
-import AboutMe from "../components/AboutMe";
-import Inicio from "../components/Inicio";
+import {
+  // useState,
+  useEffect,
+} from "react";
+// import Inicio from "../components/Inicio";
 import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
+import { lazy, Suspense } from "react";
 import loading from "../assets/videos/loading3.gif";
-import Feedbacks from "../components/Feedbacks";
-// import Games from "../components/Games";
-import Contact from "../components/Contact";
-import Students from "../components/Students";
-import Videos from "../components/Videos";
-import Recital24 from "../components/Recital24";
+
+const Inicio = lazy(() => import("../components/Inicio"));
+// import AboutMe from "../components/AboutMe";
+// import Feedbacks from "../components/Feedbacks";
+// import Contact from "../components/Contact";
+// import Students from "../components/Students";
+// import Videos from "../components/Videos";
+// import Recital24 from "../components/Recital24";
 
 function Main() {
-  const [isLoading, setLoading] = useState(true);
-  const [topPadding, setTopPadding] = useState("0px");
+  // const [isLoading, setLoading] = useState(true);
+  // const [topPadding, setTopPadding] = useState("0px");
+
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, []);
 
   useEffect(() => {
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    window.innerWidth < 768 ? setTopPadding("48px") : setTopPadding("0px");
+    // window.innerWidth < 768 ? setTopPadding("48px") : setTopPadding("0px");
   });
 
   return (
@@ -36,9 +41,20 @@ function Main() {
           relative linear-gradient justify-center"
           id="home"
         >
-          <Inicio />
+          <Suspense
+            fallback={
+              <div
+                className="fixed w-full h-screen bg-[#1e1d1d] flex items-center 
+        justify-center z-40"
+              >
+                <img src={loading} className="w-[600px]" />
+              </div>
+            }
+          >
+            <Inicio />
+          </Suspense>
         </section>
-        <section
+        {/* <section
           className="w-full  flex items-center 
         justify-center relative bg-black py-14 xl:py-28"
           id="aboutme"
@@ -83,7 +99,7 @@ function Main() {
           style={{ scrollMarginTop: topPadding }}
         >
           <Contact />
-        </section>
+        </section> */}
       </div>
       <a href="#home">
         <div
@@ -95,14 +111,14 @@ function Main() {
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
-      {isLoading === true ? (
+      {/* {isLoading === true ? (
         <div
           className="fixed w-full h-screen bg-[#1e1d1d] flex items-center 
         justify-center z-40"
         >
           <img src={loading} className="w-[600px]" />
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
