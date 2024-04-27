@@ -1,10 +1,6 @@
 import Inicio from "../components/Inicio";
 import Navbar from "../components/Navbar";
 import arrowUp from "../assets/arrrowUp.svg";
-// import { lazy, Suspense } from "react";
-// import loading from "../assets/videos/loading3.webp";
-
-// const Inicio = lazy(() => import("../components/Inicio"));
 import AboutMe from "../components/AboutMe";
 import Feedbacks from "../components/Feedbacks";
 import Contact from "../components/Contact";

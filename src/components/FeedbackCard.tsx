@@ -24,11 +24,7 @@ const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
             className="rounded-full bg-primary-100 w-10 h-10 md:h-14 md:w-14
           flex items-center justify-center"
           >
-            <img
-              src={photo}
-              className="w-full rounded-full p-[1px]"
-              loading="lazy"
-            />
+            <img src={photo} className="w-full rounded-full p-[1px]" />
           </div>
           <div className="text-primary-600 px-3">
             <h3 className="text-base md:text-xl font-semibold">{name}</h3>
