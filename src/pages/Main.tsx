@@ -9,7 +9,7 @@ import arrowUp from "../assets/arrrowUp.svg";
 // import loading from "../assets/videos/loading3.webp";
 
 // const Inicio = lazy(() => import("../components/Inicio"));
-// import AboutMe from "../components/AboutMe";
+import AboutMe from "../components/AboutMe";
 // import Feedbacks from "../components/Feedbacks";
 // import Contact from "../components/Contact";
 // import Students from "../components/Students";
@@ -38,15 +38,15 @@ function Main() {
         >
           <Inicio />
         </section>
-        {/* <section
+        <section
           className="w-full  flex items-center 
         justify-center relative bg-black py-14 xl:py-28"
           id="aboutme"
-          style={{ scrollMarginTop: topPadding }}
+          // style={{ scrollMarginTop: topPadding }}
         >
           <AboutMe />
         </section>
-        <section
+        {/* <section
           className="w-full flex items-center  justify-center
       relative feedbacks"
           id="feedbacks"

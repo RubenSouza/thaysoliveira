@@ -1,4 +1,4 @@
-import crianca from "../assets/criancaPng2.png";
+import crianca from "../assets/criancaPng2.webp";
 import Title from "./Title";
 import { motion } from "framer-motion";
 
@@ -92,41 +92,3 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
-
-{
-  /* <div
-className="md:flex md:justify-between
-items-center  w-full px-4 md:px-0  2xl:py-10"
->
-<img
-  src={fundoroxo}
-  className="w-[90px] bg-clip-text float-right m-2 md:hidden rounded-full"
-/>
-<div className="w-full md:w-[490px] space-y-2 text-xs md:text-sm">
-  <h2 className="text-lg md:text-3xl font-semibold text-primary-200">
-    A vida é uma música e a nossa história é a letra
-  </h2>
-  <p>
-    A música nos proporciona diversos benefícios como: estimula a
-    criatividade, melhora a concentração, a socialização, diminui o
-    estresse… Inclusive, exerce um papel importantíssimo no
-    desenvolvimento das crianças. Meu objetivo é contribuir com o seu
-    crescimento musical e te ajudar a realizar o sonho de tocar um
-    instrumento, mesmo sem nunca ter tido contato com um.
-  </p>
-  <p>
-    As aulas acontecem uma vez na semana no melhor horário para ambas as
-    partes. Possuímos um cronograma de estudos e repertório musical
-    personalizado de acordo com o gosto e o tempo de cada aluno. Além
-    disso, realizamos um evento lindo em que todos os alunos terão a
-    oportunidade de mostrar seu crescimento e desenvolvimento musical
-    aos seus amigos e familiares. Acompanhe um pouco desse momento na
-    sessão alunos.
-  </p>
-</div>
-<img
-  src={fundoroxo}
-  className="lg:w-[250px] 2xl:w-[350px] hidden md:inline rounded-full"
-/>
-</div> */
-}
