@@ -9,7 +9,7 @@ const AboutMe = () => {
       md:py-10 flex flex-col justify-center items-center"
     >
       <motion.div
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className="py-4"
@@ -21,7 +21,7 @@ const AboutMe = () => {
         px-4 md:px-0 "
       >
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: -50, opacity: 0 }}
           whileInView={{
             x: 0,
             opacity: 1,
@@ -35,7 +35,7 @@ const AboutMe = () => {
           />
         </motion.div>
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
+          initial={{ x: 50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="w-full text-sm md:w-[550px] space-y-6 py-6"
