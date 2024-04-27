@@ -23,6 +23,7 @@ const Games = () => {
         <img
           src={image}
           alt="game"
+          loading="lazy"
           className="w-full h-[220px] md:w-[580px] md:h-[360px] 
           rounded-xl md:object-fill "
         />
