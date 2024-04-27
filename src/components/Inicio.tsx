@@ -1,11 +1,11 @@
 import capa from "../assets/capa.webp";
 import blob from "../assets/blob.webp";
-// import Particle from "./Particle";
+import Particle from "./Particle";
 
 const Inicio = () => {
   return (
     <>
-      {/* <Particle /> */}
+      <Particle />
       <img
         src={blob}
         alt="light effect"

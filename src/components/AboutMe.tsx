@@ -11,7 +11,6 @@ const AboutMe = () => {
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
         className="py-4"
       >
         <Title title="Sobre mim" line="w-[81px]" />
@@ -26,7 +25,6 @@ const AboutMe = () => {
             x: 0,
             opacity: 1,
           }}
-          transition={{ duration: 0.5, delay: 0.2 }}
           className="flex items-center justify-center xl:justify-start"
         >
           <img
@@ -37,7 +35,6 @@ const AboutMe = () => {
         <motion.div
           initial={{ x: 50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
           className="w-full text-sm md:w-[550px] space-y-6 py-6"
         >
           <h2 className="text-xl md:text-4xl font-semibold text-primary-200">
