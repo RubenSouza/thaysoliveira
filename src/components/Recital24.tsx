@@ -12,7 +12,7 @@ const studentsList = students.map((student, i) => {
     >
       {student?.side === "left" ? (
         <motion.div
-          initial={{ x: -50, opacity: 0 }}
+          initial={{ x: -20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2 }}
@@ -30,7 +30,7 @@ const studentsList = students.map((student, i) => {
         </motion.div>
       ) : (
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
+          initial={{ x: 20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2 }}
@@ -54,7 +54,7 @@ const studentsList = students.map((student, i) => {
 const mobileStudentsList = students.map((student, i) => {
   return (
     <motion.div
-      initial={{ x: -50, opacity: 0 }}
+      initial={{ x: -20, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1, delay: 0.2 }}
