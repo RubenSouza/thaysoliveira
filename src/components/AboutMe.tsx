@@ -45,7 +45,7 @@ const AboutMe = () => {
           </h2>
           <div className="text-base text-gray-400 font-bold">
             <p>
-              Licenciando em música e apaixonada pela arte de ensinar. Toco
+              Licencianda em música e apaixonada pela arte de ensinar. Toco
               desde os 6 anos de idade e hoje tenho a oportunidade de lecionar,
               dessa forma, ajudo outras pessoas a realizarem o sonho de tocar um
               instrumento musical.
