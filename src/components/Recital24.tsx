@@ -1,16 +1,22 @@
 import StudentVideo from "./StudentVideo";
 import Title from "./Title";
 import students from "../data/recital24.json";
+import { motion } from "framer-motion";
 
 const studentsList = students.map((student, i) => {
   return (
     <div
       className="w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
-      md:space-y-0 md:space-x-6 md:justify-start"
+      md:space-y-0 md:space-x-6 md:justify-start py-5 md:py-10"
       key={i}
     >
       {student?.side === "left" ? (
-        <>
+        <motion.div
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
+        >
           <StudentVideo videoId={student.video} />
           <div>
             <h3 className="text-xl md:text-3xl font-semibold text-primary-300">
@@ -20,9 +26,14 @@ const studentsList = students.map((student, i) => {
               {student.musics}
             </p>
           </div>
-        </>
+        </motion.div>
       ) : (
-        <>
+        <motion.div
+          initial={{ x: 20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
+        >
           <div>
             <h3 className="text-xl md:text-3xl font-semibold text-primary-300">
               {student.name}
@@ -32,7 +43,7 @@ const studentsList = students.map((student, i) => {
             </p>
           </div>
           <StudentVideo videoId={student.video} />
-        </>
+        </motion.div>
       )}
     </div>
   );
@@ -40,7 +51,10 @@ const studentsList = students.map((student, i) => {
 
 const mobileStudentsList = students.map((student, i) => {
   return (
-    <div
+    <motion.div
+      initial={{ x: -20, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true }}
       className="w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
       md:space-y-0 md:space-x-6 md:justify-start"
       key={i}
@@ -54,7 +68,7 @@ const mobileStudentsList = students.map((student, i) => {
           {student.musics}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 });
 

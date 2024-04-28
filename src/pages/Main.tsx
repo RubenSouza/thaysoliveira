@@ -1,89 +1,52 @@
-import { useState, useEffect } from "react";
-import AboutMe from "../components/AboutMe";
-import Contact from "../components/Contact";
-import Feedbacks from "../components/Feedbacks";
 import Inicio from "../components/Inicio";
 import Navbar from "../components/Navbar";
+import arrowUp from "../assets/arrrowUp.svg";
+import AboutMe from "../components/AboutMe";
+import Feedbacks from "../components/Feedbacks";
+import Contact from "../components/Contact";
 import Students from "../components/Students";
 import Videos from "../components/Videos";
-import arrowUp from "../assets/arrrowUp.svg";
-import rightBackground from "../assets/rightBackground.svg";
-import leftBackground from "../assets/leftBackground.svg";
-import loading from "../assets/videos/loading3.gif";
 import Recital24 from "../components/Recital24";
 
 function Main() {
-  const [isLoading, setLoading] = useState(true);
-  const [topPadding, setTopPadding] = useState("0px");
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
-
-  useEffect(() => {
-    window.innerWidth < 768 ? setTopPadding("48px") : setTopPadding("0px");
-  });
-
   return (
     <div
       className="flex flex-col justify-center items-center w-full 
       min-h-screen h-screen scrollbar-thin overflow-y-scroll overflow-x-hidden
       scrollbar-track-gray-400/40 scrollbar-thumb-primary-300 relative"
     >
-      <div className="w-full h-full space-y-4 relative">
+      <div className="w-full h-full">
+        <Navbar />
         <section
-          className="w-full flex flex-col items-center justify-center 
-          relative linear-gradient"
+          className="w-full h-full flex flex-col items-center 
+          relative linear-gradient justify-center"
           id="home"
         >
-          <Navbar />
           <Inicio />
-          <img
-            src={leftBackground}
-            className="h-full absolute -top-5 left-0 mix-blend-overlay"
-          />
-          <img
-            src={rightBackground}
-            className="h-full absolute top-0 right-0 mix-blend-overlay"
-          />
         </section>
         <section
-          className="w-full flex items-center 
-        justify-center relative "
+          className="w-full  flex items-center 
+        justify-center relative bg-black py-14 xl:py-28"
           id="aboutme"
-          style={{ scrollMarginTop: topPadding }}
         >
           <AboutMe />
         </section>
         <section
-          className="w-full flex items-center justify-center 
-        relative feedbacks"
+          className="w-full flex items-center  justify-center
+      relative feedbacks"
           id="feedbacks"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Feedbacks />
         </section>
-        {/* <section
-          className="w-full flex items-center justify-center 
-        relative feedbacks"
-          id="feedbacks"
-          style={{ scrollMarginTop: topPadding }}
-        >
-          <Games />
-        </section> */}
         <section
-          className="w-full flex items-center justify-center relative py-5"
+          className="w-full flex items-center justify-center relative py-14 xl:py-28"
           id="students"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Recital24 />
         </section>
         <section
           className="w-full flex items-center justify-center relative py-5"
           id="students"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Students />
         </section>
@@ -91,15 +54,13 @@ function Main() {
           className="w-full flex items-center  justify-center 
         relative videos pb-7"
           id="videos"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Videos />
         </section>
         <section
           className="w-full flex items-center justify-center
-        relative pb-7"
+        relative py-7"
           id="contact"
-          style={{ scrollMarginTop: topPadding }}
         >
           <Contact />
         </section>
@@ -114,14 +75,6 @@ function Main() {
           <img src={arrowUp} alt="goToHome" className="w-[15px]" />
         </div>
       </a>
-      {isLoading === true ? (
-        <div
-          className="fixed w-full h-screen bg-[#1e1d1d] flex items-center 
-        justify-center z-40"
-        >
-          <img src={loading} className="w-[600px]" />
-        </div>
-      ) : null}
     </div>
   );
 }

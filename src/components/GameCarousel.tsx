@@ -22,8 +22,13 @@ const GameCarousel = ({ slides }: any) => {
         breakpoints={{
           // when window width is >= 640px
           320: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 1,
+            spaceBetween: 10,
           },
           // when window width is >= 768px
           768: {
@@ -33,7 +38,7 @@ const GameCarousel = ({ slides }: any) => {
           // when window width is >= 1200px
           1200: {
             slidesPerView: 2,
-            spaceBetween: 40,
+            spaceBetween: 20,
           },
         }}
         slidesPerView={2}
@@ -41,7 +46,6 @@ const GameCarousel = ({ slides }: any) => {
           nextEl: ".game-next-button",
           prevEl: ".game-prev-button",
         }}
-        style={{ direction: "rtl" }} // Defina a direção como RTL
       >
         {slides.map((slide: any, i: number) => {
           return <SwiperSlide key={i}>{slide}</SwiperSlide>;

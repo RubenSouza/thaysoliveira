@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F01.webp?alt=media&token=22cb1608-baee-4073-a916-7511b4660ee7"
+  },
+  {
+    "id": 2,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F02.webp?alt=media&token=75c4f8ac-fca2-4149-8492-16b7dc260ca6"
+  },
+  {
+    "id": 3,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F03.webp?alt=media&token=c6092d6a-9194-48ab-b89e-f36fbcf0ad0d"
+  },
+  {
+    "id": 4,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F04.webp?alt=media&token=fdf1a394-5ad8-4e0c-b75f-0c263dad7c75"
+  },
+  {
+    "id": 5,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F05.webp?alt=media&token=475e581e-4c52-40d6-b826-4456ff3cb867"
+  },
+  {
+    "id": 6,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F06.webp?alt=media&token=823d6c16-8b13-4a54-a20c-8f0e0df7b046"
+  },
+  {
+    "id": 7,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F07.webp?alt=media&token=d7ba9898-50b2-4522-9cdb-4eff061d4679"
+  },
+  {
+    "id": 8,
+    "photo": "https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/games%2F08.webp?alt=media&token=f2e77a21-63cd-4e1f-aa8a-67b6ec2073dd"
+  }
+]
