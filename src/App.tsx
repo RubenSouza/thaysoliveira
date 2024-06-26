@@ -1,5 +1,3 @@
-// import Main from "./pages/Main";
-
 import { lazy, Suspense } from "react";
 import loading from "../src/assets/videos/loading3.webp";
 
