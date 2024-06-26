@@ -16,7 +16,7 @@ const Particle = () => {
 
   const options: ISourceOptions = useMemo(
     () => ({
-      fpsLimit: 20,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onClick: {
