@@ -13,7 +13,7 @@ function Main() {
     <div
       className="flex flex-col justify-center items-center w-full 
       min-h-screen h-screen scrollbar-thin overflow-y-scroll overflow-x-hidden
-      scrollbar-track-gray-400/40 scrollbar-thumb-primary-300 relative"
+      scrollbar-track-gray-400/40 scrollbar-thumb-primary-300 relative scroll-smooth"
     >
       <div className="w-full h-full">
         <Navbar />
