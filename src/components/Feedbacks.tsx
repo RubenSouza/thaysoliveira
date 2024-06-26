@@ -31,14 +31,14 @@ const Feedbacks = () => {
           <div>
             <motion.div
               initial={{ y: -20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
+              whileInView={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
               viewport={{ once: true }}
             >
               <Title title="Feedbacks" line="w-[78px]" />
             </motion.div>
             <motion.h2
               initial={{ y: 0, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
+              whileInView={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
               viewport={{ once: true }}
               className="text-xl md:text-3xl font-semibold 
           text-primary-100 font-serif py-2"

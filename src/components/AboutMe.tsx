@@ -10,7 +10,7 @@ const AboutMe = () => {
     >
       <motion.div
         initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        whileInView={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
         viewport={{ once: true }}
         className="py-4"
       >
@@ -25,6 +25,7 @@ const AboutMe = () => {
           whileInView={{
             x: 0,
             opacity: 1,
+            transition: { duration: 0.8 },
           }}
           viewport={{ once: true }}
           className="flex items-center justify-center xl:justify-start"
@@ -36,7 +37,7 @@ const AboutMe = () => {
         </motion.div>
         <motion.div
           initial={{ x: 20, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
+          whileInView={{ x: 0, opacity: 1, transition: { duration: 0.8 } }}
           viewport={{ once: true }}
           className="w-full text-sm md:w-[550px] space-y-6 py-6"
         >

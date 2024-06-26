@@ -15,7 +15,7 @@ const Games = () => {
     return (
       <motion.div
         initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        whileInView={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
         viewport={{ once: true }}
         className="w-full border-[1px]
               border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer transform "
@@ -24,7 +24,6 @@ const Games = () => {
         <img
           src={image}
           alt="game"
-          loading="lazy"
           className="w-full h-[220px] md:w-[580px] md:h-[360px] 
           rounded-xl md:object-fill "
         />
@@ -36,7 +35,7 @@ const Games = () => {
     <div className="w-full px-4 md:px-0 lg:w-[1100px] 2xl:w-[1200px] py-5 ">
       <motion.div
         initial={{ opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        whileInView={{ y: 0, opacity: 1, transition: { duration: 0.8 } }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex justify-between items-center md:items-start md:pt-8 px-4"

@@ -6,7 +6,7 @@ const Videos = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
       viewport={{ once: true }}
       className="w-full md:h-[500px] flex flex-col 
     items-center justify-start md:w-[1200px] py-5 md:py-10 "
