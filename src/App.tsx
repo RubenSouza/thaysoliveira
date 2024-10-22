@@ -1,5 +1,7 @@
 import { lazy, Suspense } from "react";
 import loading from "../src/assets/videos/loading3.webp";
+import { Route, Routes } from "react-router-dom";
+import Event from "./pages/Event";
 
 const Main = lazy(() => import("./pages/Main"));
 
@@ -15,7 +17,10 @@ const App = () => {
         </div>
       }
     >
-      <Main />
+      <Routes>
+        <Route path="/*" element={<Main />} />
+        <Route path="/recital" element={<Event />} />
+      </Routes>
     </Suspense>
   );
 };
