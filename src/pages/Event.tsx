@@ -114,7 +114,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -140,7 +140,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -166,7 +166,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -192,7 +192,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
@@ -218,7 +218,7 @@ const Event = () => {
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-20 md:h-20 2xl:w-28 2xl:h-28 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
                       selectedStudent?.name === student.name
                         ? "border-2 border-purple-500"
                         : "border-2 border-slate-300"
