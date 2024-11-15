@@ -1,8 +1,16 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/$1"
+      "source": "/admin/panel/:path*",
+      "destination": "https://elomuses-1o7b.vercel.app/:path*"
+    },
+    {
+      "source": "/admin/panel",
+      "destination": "https://elomuses-1o7b.vercel.app/"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/:path*"
     }
   ]
 }
