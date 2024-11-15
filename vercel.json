@@ -2,8 +2,15 @@
   "rewrites": [
     {
       "source": "/admin/panel/(.*)",
+      "destination": "https://elomuses-1o7b.vercel.app/$1"
+    },
+    {
+      "source": "/admin/panel",
       "destination": "https://elomuses-1o7b.vercel.app"
     },
-    { "source": "/(.*)", "destination": "/$1" }
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
   ]
 }
