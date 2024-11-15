@@ -1,1 +1,9 @@
-{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
+{
+  "rewrites": [
+    {
+      "source": "/admin/panel/(.*)",
+      "destination": "https://elomuses-1o7b.vercel.app"
+    },
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}
