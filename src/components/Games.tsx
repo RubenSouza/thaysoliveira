@@ -4,6 +4,7 @@ import GameCarousel from "./GameCarousel";
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
 import games from "../data/games.json";
+import Image from "next/image";
 
 const Games = () => {
   const landscapeImages = games.map(game => {
@@ -21,8 +22,10 @@ const Games = () => {
               border-primary-200 rounded-xl bg-secondary-200/70 cursor-pointer transform "
         key={i}
       >
-        <img
+        <Image
           src={image}
+          width={400}
+          height={400}
           alt="game"
           className="w-full h-[220px] md:w-[580px] md:h-[360px] 
           rounded-xl md:object-fill "
@@ -43,14 +46,18 @@ const Games = () => {
         <Title title="Materiais didáticos" line="w-[136px]" />
         <div className="flex cursor-pointer">
           <div className="w-[35px] h-[35px] border-[2px] border-primary-200">
-            <img
+            <Image
               src={arrowLeft}
+              width={400}
+              height={400}
               alt="arrow left"
               className="w-full h-full p-1 game-prev-button"
             />
           </div>
           <div className="w-[35px] h-[35px] border-[2px] border-primary-200">
-            <img
+            <Image
+              width={400}
+              height={400}
               src={arrowRight}
               alt="arrow left"
               className="w-full h-full p-1 game-next-button"

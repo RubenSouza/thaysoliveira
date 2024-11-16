@@ -1,3 +1,5 @@
+"use client";
+
 import StudentVideo from "./StudentVideo";
 import Title from "./Title";
 import students from "../data/recital23.json";

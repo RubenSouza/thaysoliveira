@@ -1,13 +1,15 @@
 import capa from "../assets/capa.webp";
 import blob from "../assets/blob.webp";
 import Particle from "./Particle";
+import Image from "next/image";
 
 const Inicio = () => {
   return (
     <>
       <Particle />
-      <img
+      <Image
         src={blob}
+        width={400}
         alt="light effect"
         className="absolute bottom-0 right-0 h-full w-full animate animate-pulse-slow"
       />
@@ -41,8 +43,11 @@ const Inicio = () => {
            justify-end"
           >
             <div className="">
-              <img
+              <Image
+                alt="capa"
                 src={capa}
+                width={400}
+                height={400}
                 className="z-20 w-[400px]
                 md:w-[580px] lg:w-[600px] 2xl:w-[800px]"
               />

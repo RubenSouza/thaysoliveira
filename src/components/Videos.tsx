@@ -1,3 +1,5 @@
+"use client";
+
 import ThaysVideo from "./ThaysVideo";
 import Title from "./Title";
 import { motion } from "framer-motion";

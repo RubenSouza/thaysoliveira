@@ -1,5 +1,7 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import Swiper core and required modules
+
 import { Navigation, Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-const FeedbacksCarousel = ({ slides }: any) => {
+export const FeedbacksCarousel = ({ slides }: any) => {
   return (
     <div className="w-full h-full ">
       <Swiper
@@ -52,5 +54,3 @@ const FeedbacksCarousel = ({ slides }: any) => {
     </div>
   );
 };
-
-export default FeedbacksCarousel;

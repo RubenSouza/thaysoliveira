@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Props = {
   link: string;
   title: string;
@@ -17,7 +19,10 @@ const ContactCard = ({ link, title, description, image }: Props) => {
             <h4 className="text-2xl font-serif">{title}</h4>
             <p className="text-xs text-primary-500">{description}</p>
           </div>
-          <img
+          <Image
+            alt="logo"
+            width={90}
+            height={90}
             src={image}
             className="invert opacity-80 md:invert-0 md:opacity-100 p-3"
           />

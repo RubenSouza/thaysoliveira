@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import menu from "../assets/menu.svg";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +48,7 @@ const Navbar = () => {
         className="w-full px-4 h-12 bg-black md:hidden fixed z-30 top-0 left-0 right-0"
         onClick={() => setIsMenuOpen(true)}
       >
-        <img src={menu} alt="menu" className="w-11" />
+        <Image src={menu} width={40} height={400} alt="menu" className="w-11" />
       </div>
 
       {isMenuOpen && (

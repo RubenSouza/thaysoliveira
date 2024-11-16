@@ -1,3 +1,5 @@
+"use client";
+
 import { Player, Youtube, DefaultControls, ClickToPlay } from "@vime/react";
 
 type Props = {
