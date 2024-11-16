@@ -2,7 +2,6 @@
 
 import StudentVideo from "./StudentVideo";
 import Title from "./Title";
-// import students from "../data/recital24.json";
 import students from "../data/recital24.json";
 import { motion } from "framer-motion";
 
