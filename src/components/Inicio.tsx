@@ -46,8 +46,8 @@ const Inicio = () => {
               <Image
                 alt="capa"
                 src={capa}
-                width={400}
-                height={400}
+                width={1080}
+                height={1080}
                 className="z-20 w-[400px]
                 md:w-[580px] lg:w-[600px] 2xl:w-[800px]"
               />
