@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = import.meta.env.VITE_API_URL;
+const URL = process.env.NEXT_PUBLIC_API_URL;
 
 type Ticket = {
   aluno: string;

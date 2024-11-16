@@ -7,6 +7,7 @@ import Contact from "../components/Contact";
 import Students from "../components/Students";
 import Videos from "../components/Videos";
 import Recital24 from "../components/Recital24";
+import Image from "next/image";
 
 function Main() {
   return (
@@ -72,7 +73,13 @@ function Main() {
       fixed bottom-5 right-7 cursor-pointer hover:opacity-70 
       animate-bounce duration-1000 delay-1000 z-40"
         >
-          <img src={arrowUp} alt="goToHome" className="w-[15px]" />
+          <Image
+            width={400}
+            height={400}
+            src={arrowUp}
+            alt="goToHome"
+            className="w-[15px]"
+          />
         </div>
       </a>
     </div>

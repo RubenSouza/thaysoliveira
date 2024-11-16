@@ -1,13 +1,16 @@
+"use client";
+
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import fundo from "../assets/fundo.jpg";
-import recitalStudents from "../data/recitalStudents.json";
-import { registerTicket } from "../utils/ticket";
+import fundo from "../..//assets/fundo.jpg";
+import recitalStudents from "../../data/recitalStudents.json";
+import { registerTicket } from "../../utils/ticket";
 import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from "react-icons/io";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import PIX from "react-qrcode-pix";
 import toast, { Toaster } from "react-hot-toast";
+import Image from "next/image";
 
 type Student = {
   id: number;
@@ -17,7 +20,7 @@ type Student = {
 
 const now = new Date().getTime().toString();
 
-const Event = () => {
+const Recital = () => {
   const [selectedStudent, setSelectedStudent] = useState({} as Student);
   const [counter, setCounter] = useState(1);
   const [nextPage, setNextPage] = useState(false);
@@ -120,7 +123,10 @@ const Event = () => {
                         : "border-2 border-slate-300"
                     }`}
                   >
-                    <img
+                    <Image
+                      width={400}
+                      height={400}
+                      alt="student"
                       src={student?.img}
                       className="w-full h-full rounded-full object-cover object-top"
                     />
@@ -146,7 +152,10 @@ const Event = () => {
                         : "border-2 border-slate-300"
                     }`}
                   >
-                    <img
+                    <Image
+                      width={400}
+                      height={400}
+                      alt="student"
                       src={student?.img}
                       className="w-full h-full rounded-full object-cover object-top"
                     />
@@ -172,7 +181,10 @@ const Event = () => {
                         : "border-2 border-slate-300"
                     }`}
                   >
-                    <img
+                    <Image
+                      width={400}
+                      height={400}
+                      alt="student"
                       src={student?.img}
                       className="w-full h-full rounded-full object-cover object-top"
                     />
@@ -198,7 +210,10 @@ const Event = () => {
                         : "border-2 border-slate-300"
                     }`}
                   >
-                    <img
+                    <Image
+                      width={400}
+                      height={400}
+                      alt="student"
                       src={student?.img}
                       className="w-full h-full rounded-full object-cover object-top"
                     />
@@ -224,7 +239,10 @@ const Event = () => {
                         : "border-2 border-slate-300"
                     }`}
                   >
-                    <img
+                    <Image
+                      width={400}
+                      height={400}
+                      alt="student"
                       src={student?.img}
                       className="w-full h-full rounded-full object-cover object-top"
                     />
@@ -264,7 +282,10 @@ const Event = () => {
                     </h1>
                     <div className="flex flex-col items-center justify-center">
                       <div className={`rounded-full w-16 h-16 `}>
-                        <img
+                        <Image
+                          width={400}
+                          height={400}
+                          alt="student"
                           src={selectedStudent?.img}
                           className="w-full h-full rounded-full object-cover object-top"
                         />
@@ -359,4 +380,4 @@ const Event = () => {
   );
 };
 
-export default Event;
+export default Recital;

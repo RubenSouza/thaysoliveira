@@ -1,3 +1,4 @@
+import Image from "next/image";
 import quotes from "../assets/quotes.svg";
 import { motion } from "framer-motion";
 
@@ -24,14 +25,26 @@ const FeedbackCard = ({ name, character, photo, feedback }: Props) => {
             className="rounded-full bg-primary-100 w-10 h-10 md:h-14 md:w-14
           flex items-center justify-center"
           >
-            <img src={photo} className="w-full rounded-full p-[1px]" />
+            <Image
+              alt="foto"
+              width={400}
+              height={400}
+              src={photo || "/loog.png"}
+              className="w-full rounded-full p-[1px]"
+            />
           </div>
           <div className="text-primary-600 px-3">
             <h3 className="text-base md:text-xl font-semibold">{name}</h3>
             <p className="text-[11px] md:text-sm">{character}</p>
           </div>
         </div>
-        <img src={quotes} alt="quotes" className="w-10" />
+        <Image
+          width={400}
+          height={400}
+          src={quotes}
+          alt="quotes"
+          className="w-10"
+        />
       </div>
       <div
         className="px-8 py-5 text-primary-600 

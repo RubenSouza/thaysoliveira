@@ -1,29 +1,23 @@
-import {
-  Ui,
-  ClickToPlay,
-  Spinner,
-  Poster,
-  Player,
-  Youtube,
-  DefaultControls,
-} from "@vime/react";
+"use client";
 
 type Props = {
   videoId: string;
 };
 
 const StudentVideo = ({ videoId }: Props) => {
+  const iframeUrl = `https://www.youtube.com/embed/${videoId}?controls=1&rel=0&showinfo=0`;
+
   return (
-    <div className="w-[300px] md:w-[350px]">
-      <Player aspectRatio="4:5" playbackQuality="auto" volume={70}>
-        <Youtube videoId={videoId} />
-        <Ui>
-          <ClickToPlay />
-          <Spinner />
-          <Poster />
-          <DefaultControls activeDuration={1200} hideOnMouseLeave />
-        </Ui>
-      </Player>
+    <div className="w-[300px] md:w-[350px] h-[500px] md:h-[550px]">
+      <iframe
+        width="100%"
+        height="100%"
+        src={iframeUrl}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
     </div>
   );
 };

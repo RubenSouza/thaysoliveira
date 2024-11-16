@@ -1,7 +1,14 @@
 /* eslint-disable no-undef */
-/** @type {import('tailwindcss').Config} */
+
+import type { Config } from "tailwindcss";
+import tailwindScrollbar from "tailwind-scrollbar";
+
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
@@ -32,5 +39,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar")],
-};
+  plugins: [tailwindScrollbar],
+} satisfies Config;

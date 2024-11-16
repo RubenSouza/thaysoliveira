@@ -5,6 +5,7 @@ import whatsapp from "../assets/whatsapp.svg";
 import youtube from "../assets/youtube.svg";
 import email from "../assets/email.svg";
 import ContactCard from "./ContactCard";
+import Image from "next/image";
 
 const Contact = () => {
   return (
@@ -17,7 +18,13 @@ const Contact = () => {
       </div>
       <div className="py-10 flex flex-col md:flex-row w-full items-center md:justify-between ">
         <div className="">
-          <img src={logo} alt="logo" className="w-[200px] md:w-[350px]" />
+          <Image
+            src={logo}
+            width={400}
+            height={400}
+            alt="logo"
+            className="w-[200px] md:w-[350px]"
+          />
         </div>
         <div className="grid grid-cols-4 md:grid-cols-2 gap-4 py-4 md:py-0">
           {/* instagram */}

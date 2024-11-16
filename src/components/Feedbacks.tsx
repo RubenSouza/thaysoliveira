@@ -1,11 +1,14 @@
+"use client";
+
 import FeedbackCard from "./FeedbackCard";
 import Title from "./Title";
 import feedbacks from "../data/feedbacks.json";
 import { motion } from "framer-motion";
-import FeedbacksCarousel from "./FeedbacksCarousel";
+import { FeedbacksCarousel } from "./FeedbacksCarousel";
 import arrowLeft from "../assets/arrowLeft.svg";
 import arrowRight from "../assets/arrowRight.svg";
 import Games from "./Games";
+import Image from "next/image";
 
 const Feedbacks = () => {
   const feedbacksList = feedbacks.map((feedback, i) => {
@@ -48,14 +51,18 @@ const Feedbacks = () => {
           </div>
           <div className="flex cursor-pointer">
             <div className="w-[35px] h-[35px] border-[2px] border-primary-200">
-              <img
+              <Image
+                width={400}
+                height={400}
                 src={arrowLeft}
                 alt="arrow left"
                 className="w-full h-full p-1 prev-button"
               />
             </div>
             <div className="w-[35px] h-[35px] border-[2px] border-primary-200">
-              <img
+              <Image
+                width={400}
+                height={400}
                 src={arrowRight}
                 alt="arrow left"
                 className="w-full h-full p-1 next-button"

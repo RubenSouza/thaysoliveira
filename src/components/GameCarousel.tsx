@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import Swiper core and required modules
 import { Navigation, Autoplay } from "swiper/modules";

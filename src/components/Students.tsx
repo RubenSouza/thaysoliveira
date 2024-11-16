@@ -1,3 +1,5 @@
+"use client";
+
 import StudentVideo from "./StudentVideo";
 import Title from "./Title";
 import students from "../data/recital23.json";
@@ -15,7 +17,7 @@ const studentsList = students.map((student, i) => {
           initial={{ x: -20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
+          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center gap-4"
         >
           <StudentVideo videoId={student.video} />
           <div>
@@ -45,7 +47,7 @@ const studentsList = students.map((student, i) => {
         <motion.div
           initial={{ x: 20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center"
+          className="w-full md:w-auto flex flex-col md:flex-row justify-center items-center gap-4"
         >
           <div>
             <h3 className="text-xl md:text-3xl font-semibold text-primary-300">

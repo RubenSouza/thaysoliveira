@@ -1,4 +1,4 @@
-import { Player, Youtube, DefaultControls, ClickToPlay } from "@vime/react";
+"use client";
 
 type Props = {
   videoId: string;
@@ -7,11 +7,15 @@ type Props = {
 const ThaysVideo = ({ videoId }: Props) => {
   return (
     <div className="w-full md:w-[550px]">
-      <Player playbackQuality="auto" volume={50}>
-        <Youtube videoId={videoId} />
-        <DefaultControls hideOnMouseLeave />
-        <ClickToPlay />
-      </Player>
+      <iframe
+        width="100%"
+        height="315"
+        src={`https://www.youtube.com/embed/${videoId}?controls=1&rel=0&showinfo=0`}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
     </div>
   );
 };

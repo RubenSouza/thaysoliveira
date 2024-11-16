@@ -1,5 +1,8 @@
+"use client";
+
+import Image from "next/image";
 import crianca from "../assets/criancaPng2.webp";
-import Title from "./Title";
+import Title from "../components/Title";
 import { motion } from "framer-motion";
 
 const AboutMe = () => {
@@ -30,7 +33,10 @@ const AboutMe = () => {
           viewport={{ once: true }}
           className="flex items-center justify-center xl:justify-start"
         >
-          <img
+          <Image
+            alt="criança"
+            width={400}
+            height={400}
             src={crianca}
             className="w-[200px] md:w-[450px] 2xl:w-[500px] "
           />
@@ -57,7 +63,7 @@ const AboutMe = () => {
             </p>
             <p>
               Além de lecionar, atuo como cantora no cenário gospel da minha
-              cidade e região, com alguns trabalhos como Cd's e um EP nas
+              cidade e região, com alguns trabalhos como Cd&apos;s e um EP nas
               principais plataformas digitais.
             </p>
             <p>
