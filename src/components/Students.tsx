@@ -87,7 +87,7 @@ const mobileStudentsList = students.map((student, i) => {
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
       className="w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
-    md:space-y-0 md:space-x-6 md:justify-start"
+    md:space-y-0 md:space-x-6 md:justify-start gap-6"
       key={i}
     >
       <StudentVideo videoId={student.video} />
