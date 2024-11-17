@@ -4,9 +4,9 @@ import arrowUp from "../assets/arrrowUp.svg";
 import AboutMe from "../components/AboutMe";
 import Feedbacks from "../components/Feedbacks";
 import Contact from "../components/Contact";
-import Students from "../components/Students";
-import Videos from "../components/Videos";
-import Recital24 from "../components/Recital24";
+// import Students from "../components/Students";
+// import Videos from "../components/Videos";
+// import Recital24 from "../components/Recital24";
 import Image from "next/image";
 
 function Main() {
@@ -39,7 +39,7 @@ function Main() {
         >
           <Feedbacks />
         </section>
-        <section
+        {/* <section
           className="w-full flex items-center justify-center relative py-14 xl:py-28"
           id="students"
         >
@@ -50,14 +50,14 @@ function Main() {
           id="students"
         >
           <Students />
-        </section>
-        <section
+        </section> */}
+        {/* <section
           className="w-full flex items-center  justify-center 
         relative videos pb-7"
           id="videos"
         >
           <Videos />
-        </section>
+        </section> */}
         <section
           className="w-full flex items-center justify-center
         relative py-7"
