@@ -1,5 +1,27 @@
 "use client";
 
+import "@vidstack/react/player/styles/base.css";
+import "@vidstack/react/player/styles/plyr/theme.css";
+
+import dynamic from "next/dynamic";
+
+// Carrega o player dinamicamente sem SSR
+const MediaPlayer = dynamic(
+  () => import("@vidstack/react").then(mod => mod.MediaPlayer),
+  { ssr: false }
+);
+const MediaProvider = dynamic(
+  () => import("@vidstack/react").then(mod => mod.MediaProvider),
+  { ssr: false }
+);
+const PlyrLayout = dynamic(
+  () =>
+    import("@vidstack/react/player/layouts/plyr").then(mod => mod.PlyrLayout),
+  { ssr: false }
+);
+
+import { plyrLayoutIcons } from "@vidstack/react/player/layouts/plyr";
+
 type Props = {
   videoId: string;
 };
@@ -7,15 +29,10 @@ type Props = {
 const ThaysVideo = ({ videoId }: Props) => {
   return (
     <div className="w-full md:w-[550px]">
-      <iframe
-        width="100%"
-        height="315"
-        src={`https://www.youtube.com/embed/${videoId}?controls=1&rel=0&showinfo=0`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+      <MediaPlayer title="Sprite Fight" src={`youtube/${videoId}`}>
+        <MediaProvider />
+        <PlyrLayout icons={plyrLayoutIcons} />
+      </MediaPlayer>
     </div>
   );
 };
