@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import recitalStudents from '../../data/recitalStudents.json';
+import { recitalStudents } from '@/src/data/recitals';
 import { registerTicket } from '../../utils/ticket';
 import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from 'react-icons/io';
 import { CopyToClipboard } from 'react-copy-to-clipboard';

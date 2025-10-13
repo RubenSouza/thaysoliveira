@@ -8,6 +8,12 @@ export interface RecitalVideo {
   experience?: string;
 }
 
+export interface RecitalStudent {
+  id: number;
+  name: string;
+  img: string;
+}
+
 export const recitals2024: RecitalVideo[] = [
   {
     performer: 'Arthur Oliveira',
@@ -178,5 +184,135 @@ export const recitals2023: RecitalVideo[] = [
     year: 2023,
     age: '14 anos',
     experience: '7 meses de aulas',
+  },
+];
+
+export const recitalStudents: RecitalStudent[] = [
+  {
+    id: 0,
+    name: 'Ingresso avulso',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/perfis%20dos%20alunos%20do%20recital%2FIngresso.jpeg?alt=media&token=590bc937-034b-4144-b009-6ff4adabd4d0',
+  },
+
+  {
+    id: 1,
+    name: 'Abraão',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FAbra%C3%A3o.jpg?alt=media&token=895483a8-bd0d-4408-bc93-1d5f4b70ea13',
+  },
+
+  {
+    id: 2,
+    name: 'Ana Clara',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FAna%20Clara.jpg?alt=media&token=436d65fa-ee91-4272-99f9-c1f81e19a7ae',
+  },
+  {
+    id: 3,
+    name: 'Arthur',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FArthur.jpg?alt=media&token=6063f04f-63d7-4167-b31c-47c5f1463d8d',
+  },
+  {
+    id: 5,
+    name: 'Alice Vigneron',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FAlice%20Vigneron.jpg?alt=media&token=27ebaf45-b150-4b89-85c4-bc65e3cefa29',
+  },
+  {
+    id: 6,
+    name: 'Alice Barbosa',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FAlice%20Barbosa.jpg?alt=media&token=b68d43a7-3576-4b93-97ce-6c0b085b27a2',
+  },
+  {
+    id: 7,
+    name: 'Ana Carolina',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FCarol.jpg?alt=media&token=6a9adcec-7746-4909-aa88-ceb32a0b05a0',
+  },
+  {
+    id: 8,
+    name: 'Cecília',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FCec%C3%ADlia.jpg?alt=media&token=9b237e1a-e1c4-464f-9b24-46ba7518f6bd',
+  },
+  {
+    id: 9,
+    name: 'Eduarda',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FEduarda.jpg?alt=media&token=ab45edd2-dd63-4677-97ff-4db558a9bd4a',
+  },
+  {
+    id: 10,
+    name: 'Heitor',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FHeitor.jpg?alt=media&token=67533e8e-2ec2-4537-98b6-9841cd73b91e',
+  },
+  {
+    id: 11,
+    name: 'Hellen',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FHellen.jpg?alt=media&token=f9234fbb-5504-4a6e-aa72-9e25bf861228',
+  },
+  {
+    id: 12,
+    name: 'Heráclio',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FHer%C3%A1clio.jpg?alt=media&token=950665ba-fe2a-4c26-a63e-0ca5d2aa5bed',
+  },
+  {
+    id: 13,
+    name: 'Jujú',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FJuj%C3%BA.jpg?alt=media&token=ef6ad3af-4685-4998-bd37-8df0bbb9e3e2',
+  },
+  {
+    id: 14,
+    name: 'Júlia',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FJ%C3%BAlia.jpg?alt=media&token=f1bf4e17-b32b-4891-8a8a-8322fa99462b',
+  },
+  {
+    id: 15,
+    name: 'Lara',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FLara.jpg?alt=media&token=3b2af35e-ddae-4ea7-b05e-a0d33b027ff0',
+  },
+  {
+    id: 16,
+    name: 'Majú',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FMaj%C3%BA.jpg?alt=media&token=80f369e9-2c8c-4926-983b-9e4e4154c0f4',
+  },
+  {
+    id: 17,
+    name: 'Malú',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FMal%C3%BA.jpg?alt=media&token=c64ae6d5-e76e-4d42-ba6d-a859b19c6a43',
+  },
+  {
+    id: 18,
+    name: 'Marina',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FMarina.jpg?alt=media&token=4a2639f2-c9dc-4702-8a24-a9963af7f4e1',
+  },
+  {
+    id: 19,
+    name: 'Pedro',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FPedro.jpg?alt=media&token=892d3280-430c-4192-98eb-3dc542b5905d',
+  },
+  {
+    id: 20,
+    name: 'Raissa',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FRaissa.jpg?alt=media&token=949d61ab-da25-4e9d-96f1-309ffbc235ac',
+  },
+  {
+    id: 21,
+    name: 'Ravi',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FRavi.jpg?alt=media&token=df8527b4-4db5-4c49-bda9-0312905b251a',
+  },
+  {
+    id: 22,
+    name: 'Rodolfo',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FRodolfo.jpg?alt=media&token=3efe3605-5cd5-4576-95bd-0affa10f6f93',
+  },
+  {
+    id: 23,
+    name: 'Sofia Catão',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FSofia%20Cat%C3%A3o.jpg?alt=media&token=f6b03412-ab03-4d41-890d-8c1e3da81ae5',
+  },
+  {
+    id: 24,
+    name: 'Sofia Guimarães',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FSofia%20Guimar%C3%A3es.jpg?alt=media&token=c05691fe-83ab-47c4-8439-6d9f1bfa90fb',
+  },
+  {
+    id: 25,
+    name: 'Tomás',
+    img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/P%C3%A1gina%20Recital%202024-2%2FTom%C3%A1s.jpg?alt=media&token=279b4c32-d756-4f5c-b080-710b70671c47',
   },
 ];
