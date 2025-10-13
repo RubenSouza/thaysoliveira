@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import fundo from '@/src/assets/fundo.png';
 import recitalStudents from '../../data/recitalStudents.json';
 import { registerTicket } from '../../utils/ticket';
 import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from 'react-icons/io';
@@ -87,7 +86,7 @@ const Recital = () => {
   return (
     <div
       className='w-full h-screen bg-cover bg-no-repeat bg-center'
-      style={{ backgroundImage: `url(${fundo})` }}
+      style={{ backgroundImage: `url(./assets/fundo.jpg)` }}
     >
       <Toaster />
       <div

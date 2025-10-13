@@ -1,98 +1,66 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import menu from "../assets/menu.svg";
-import Image from "next/image";
+import { useHamburgerMenu } from '@/src/hooks/useHamburgerMenu';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const navLinks = [
+  { href: '#sobre', label: 'Sobre' },
+  { href: '#aulas', label: 'Aulas & Serviços' },
+  { href: '#depoimentos', label: 'Depoimentos' },
+  { href: '#materiais', label: 'Materiais' },
+  { href: '#galeria', label: 'Recitais' },
+  { href: '#midia', label: 'Mídia' },
+  { href: '#contato', label: 'Contato' },
+];
 
-  function handleMenuClick() {
-    setIsMenuOpen(false); // Feche o menu após o clique
-  }
+export default function Navbar() {
+  const { isOpen, toggle, close, hamburgerRef, navRef, iconClass } =
+    useHamburgerMenu();
 
   return (
-    <div
-      className="w-full flex lg:justify-center justify-start px-10 
-    lg:px-0"
-    >
-      <div
-        className="lg:w-[1100px] 2xl:w-[1200px] md:flex items-center md:py-10 
-      hidden z-20 absolute top-0 "
-      >
-        <ul
-          className="uppercase flex justify-between w-[450px] h-full text-xs 
-        font-sans"
-        >
-          <a href="#aboutme">
-            <li className="hover:cursor-pointer">Sobre mim</li>
-          </a>
-          <a href="#feedbacks">
-            <li className="hover:cursor-pointer">Feedbacks</li>
-          </a>
-          <a href="#games">
-            <li className="hover:cursor-pointer">Games</li>
-          </a>
-          <a href="#students">
-            <li className="hover:cursor-pointer">Recitais</li>
-          </a>
-          <a href="#videos">
-            <li className="hover:cursor-pointer">Vídeos</li>
-          </a>
-          <a href="#contact">
-            <li className="hover:cursor-pointer">Contatos</li>
-          </a>
+    <header>
+      <nav>
+        <Link href='#inicio' className='logo' onClick={close}>
+          <Image
+            src='/assets/logo2.png'
+            alt='Logo Thays Oliveira'
+            width={140}
+            height={50}
+            className='disable-interaction'
+            priority
+          />
+        </Link>
+        <ul id='nav-links' ref={navRef} className={isOpen ? 'nav-active' : ''}>
+          <li className='nav-logo-mobile'>
+            <Image
+              src='/assets/logo3.png'
+              alt='Logo Thays Oliveira Mobile'
+              width={120}
+              height={40}
+              className='disable-interaction'
+            />
+          </li>
+          {navLinks.map(l => (
+            <li key={l.href}>
+              <Link href={l.href} onClick={close}>
+                {l.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-      </div>
-      <div
-        className="w-full px-4 h-12 bg-black md:hidden fixed z-30 top-0 left-0 right-0"
-        onClick={() => setIsMenuOpen(true)}
-      >
-        <Image src={menu} width={40} height={400} alt="menu" className="w-11" />
-      </div>
-
-      {isMenuOpen && (
-        <div className="top-0 bottom-0 left-0 right-0 bg-black/90 fixed z-40">
-          <div className="absolute right-0 opacity-70 z-40">
-            <p
-              className="text-2xl p-6 h-20 w-16"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              X
-            </p>
-          </div>
-          <div className="fixed top-0 left-0 right-0 bottom-0 z-20">
-            <ul
-              className="uppercase flex flex-col justify-center items-center
-          space-y-8 h-full text-xl font-sans"
-            >
-              <a href="#home" onClick={() => setIsMenuOpen(false)}>
-                <li className="hover:cursor-pointer">Inicio</li>
-              </a>
-              <a href="#aboutme" onClick={() => handleMenuClick()}>
-                <li className="hover:cursor-pointer">Sobre mim</li>
-              </a>
-              <a href="#feedbacks" onClick={() => handleMenuClick()}>
-                <li className="hover:cursor-pointer">Feedbacks</li>
-              </a>
-              <a href="#games" onClick={() => handleMenuClick()}>
-                <li className="hover:cursor-pointer">Games</li>
-              </a>
-              <a href="#students" onClick={() => handleMenuClick()}>
-                <li className="hover:cursor-pointer">Recitais</li>
-              </a>
-              <a href="#videos" onClick={() => handleMenuClick()}>
-                <li className="hover:cursor-pointer">Vídeos</li>
-              </a>
-              <a href="#contact" onClick={() => handleMenuClick()}>
-                <li className="hover:cursor-pointer">Contatos</li>
-              </a>
-            </ul>
-          </div>
+        <div
+          className={`hamburger-menu ${isOpen ? 'toggle' : ''}`}
+          id='hamburger-menu'
+          onClick={toggle}
+          ref={hamburgerRef}
+          aria-label='Menu'
+          aria-expanded={isOpen}
+          role='button'
+        >
+          <i className={iconClass} />
         </div>
-      )}
-    </div>
+      </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}

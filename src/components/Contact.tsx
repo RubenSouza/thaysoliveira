@@ -1,64 +1,78 @@
-import Title from "./Title";
-import logo from "../assets/logo.png";
-import instagram from "../assets/instagram.svg";
-import whatsapp from "../assets/whatsapp.svg";
-import youtube from "../assets/youtube.svg";
-import email from "../assets/email.svg";
-import ContactCard from "./ContactCard";
-import Image from "next/image";
+'use client';
 
-const Contact = () => {
+import { useContactForm } from '@/src/hooks/useContactForm';
+import Image from 'next/image';
+
+export default function Contact() {
+  const { handleSubmit } = useContactForm();
+
   return (
-    <div className="w-full md:w-[1200px] px-4 md:px-0 space-y-2">
-      <div className="space-y-1">
-        <Title title="Contatos" line="w-[65px]" />
-        <h2 className="text-xl md:text-3xl font-semibold text-primary-100 font-serif">
-          Consultar horários disponíveis
-        </h2>
-      </div>
-      <div className="py-10 flex flex-col md:flex-row w-full items-center md:justify-between ">
-        <div className="">
-          <Image
-            src={logo}
-            width={400}
-            height={400}
-            alt="logo"
-            className="w-[200px] md:w-[350px]"
-          />
+    <section id='contato' className='content-section dark-bg'>
+      <div className='container'>
+        <h2>Entre em Contato</h2>
+        <p className='section-subtitle'>
+          Vamos começar sua jornada musical juntos!
+        </p>
+        <div className='contato-wrapper'>
+          <div className='contato-info'>
+            <Image
+              src='/assets/logo.webp'
+              alt='Logo Thays Oliveira'
+              width={140}
+              height={60}
+              className='contato-logo disable-interaction'
+            />
+            <h3>Informações</h3>
+            <p>
+              <i className='fas fa-phone' /> (83) 99102-9054
+            </p>
+            <p>
+              <i className='fas fa-envelope' /> profs.thaysoliveira@gmail.com
+            </p>
+            <div className='social-icons'>
+              <a
+                href='https://www.instagram.com/thaysoliveira.a/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <i className='fab fa-instagram' />
+              </a>
+              <a
+                href='https://www.youtube.com/@ThaysOliveira'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <i className='fab fa-youtube' />
+              </a>
+              <a
+                href='https://api.whatsapp.com/send?phone=5583991029054'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <i className='fab fa-whatsapp' />
+              </a>
+            </div>
+          </div>
+          <form className='contact-form' onSubmit={handleSubmit}>
+            <input type='text' name='name' placeholder='Seu Nome' required />
+            <input
+              type='email'
+              name='email'
+              placeholder='Seu E-mail'
+              required
+            />
+            <textarea
+              name='message'
+              rows={5}
+              placeholder='Sua Mensagem'
+              required
+            />
+            <button type='submit' className='cta-button'>
+              Enviar Mensagem
+            </button>
+          </form>
         </div>
-        <div className="grid grid-cols-4 md:grid-cols-2 gap-4 py-4 md:py-0">
-          {/* instagram */}
-          <ContactCard
-            link="https://www.instagram.com/thaysoliveira.a/"
-            title="Instagram"
-            description="Perfil profissional de imagens"
-            image={instagram}
-          />
-          {/* whatsappp */}
-          <ContactCard
-            link="https://wa.me/5583991029054"
-            title="Whatsapp"
-            description="Contato profissional"
-            image={whatsapp}
-          />
-          {/* Youtube */}
-          <ContactCard
-            link="https://www.youtube.com/@ThaysOliveira"
-            title="Youtube"
-            description="Perfil pessoal de vídeos"
-            image={youtube}
-          />
-          {/* Email */}
-          <ContactCard
-            link="mailto:profs.thaysoliveira@gmail.com"
-            title="Email"
-            description="profs.thaysoliveira@gmail.com"
-            image={email}
-          />
-        </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Contact;
+}
