@@ -18,7 +18,7 @@ export default function Hero() {
             alt='Thays Oliveira com seu violão'
             width={500}
             height={500}
-            className='disable-interaction w-full h-full object-cover object-left-bottom pl-10 scale-125'
+            className='disable-interaction w-full h-full object-cover object-left-bottom scale-125'
             priority
           />
         </div>
