@@ -12,14 +12,13 @@ export default function Hero() {
             Entre em Contato
           </Link>
         </div>
-        <div className='hero-image '>
+        <div className='hero-image overflow-hidden rounded-full w-[300px] h-[300px] md:w-[450px] md:h-[450px] shadow-lg'>
           <Image
-            // src='/assets/hero-photo.jpg'
-            src='/assets/thaysperfil.webp'
+            src='/assets/hero-photo.jpg'
             alt='Thays Oliveira com seu violão'
-            width={480}
-            height={480}
-            className='disable-interaction rounded-full shadow-lg object-cover object-center max-w-[480px] max-h-[480px]'
+            width={500}
+            height={500}
+            className='disable-interaction w-full h-full object-cover object-right-bottom scale-125'
             priority
           />
         </div>
