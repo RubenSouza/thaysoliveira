@@ -7,7 +7,7 @@ export default function Hero() {
       <div className='hero-content'>
         <div className='hero-text'>
           <h1>Thays Oliveira</h1>
-          <p>Musicista, Professora de Música &amp; Cantora</p>
+          <p>Professora de Música</p>
           <Link href='#contato' className='cta-button'>
             Entre em Contato
           </Link>
