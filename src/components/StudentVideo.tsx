@@ -32,7 +32,7 @@ const StudentVideo = ({ videoId, className }: Props) => {
   return (
     <div
       className={cn(
-        'w-[300px] max-w-[350px] h-[500px] relative z-40',
+        'w-[280px] max-w-[330px] h-[480px] relative z-40',
         className
       )}
     >

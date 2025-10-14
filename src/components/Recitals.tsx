@@ -6,6 +6,7 @@ import {
   type RecitalVideo,
 } from '@/src/data/recitals';
 import StudentVideo from './StudentVideo';
+import { motion } from 'framer-motion';
 
 interface RecitalGroupProps {
   year: string;
@@ -13,31 +14,91 @@ interface RecitalGroupProps {
 }
 
 function RecitalGroup({ year, items }: RecitalGroupProps) {
+  const desktopList = items.map((student, i) => {
+    return (
+      <div
+        className='w-full md:w-auto flex flex-col md:flex-row  justify-center items-center space-y-6 
+      md:space-y-0 md:justify-start py-5 md:py-10'
+        key={i}
+      >
+        {student?.side === 'left' ? (
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center
+          gap-6'
+          >
+            <StudentVideo videoId={student.videoId} />
+            <div>
+              <h3 className='text-xl md:text-3xl font-semibold text-[--primary-gold]'>
+                {student.performer}
+              </h3>
+              <p className='text-[11px] font-sans text-neutral-400'>
+                {student.title}
+              </p>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ x: 20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center
+          gap-6'
+          >
+            <div>
+              <h3 className='text-xl md:text-3xl font-semibold text-[--primary-gold]'>
+                {student.performer}
+              </h3>
+              <p className='text-[11px] font-sans text-neutral-400'>
+                {student.title}
+              </p>
+            </div>
+            <StudentVideo videoId={student.videoId} />
+          </motion.div>
+        )}
+      </div>
+    );
+  });
+
+  const mobileList = items.map((v, i) => (
+    <motion.div
+      key={`${v.performer}-mobile-${i}`}
+      initial={{ x: -20, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center space-y-6 
+      md:space-y-0 md:space-x-6 md:justify-start gap-6'
+    >
+      <StudentVideo videoId={v.videoId} className='w-full h-full max-w-full' />
+      <div>
+        <h3 className='text-xl md:text-3xl font-semibold text-[--primary-gold]]'>
+          {v.performer}
+        </h3>
+        <p className='text-[11px] font-sans text-neutral-400'>{v.title}</p>
+        {(v.age || v.experience) && (
+          <p className='text-[10px] font-sans text-neutral-500 mt-1'>
+            {v.age && <span>{v.age}</span>}
+            {v.age && v.experience && <span> • </span>}
+            {v.experience && <span>{v.experience}</span>}
+          </p>
+        )}
+      </div>
+    </motion.div>
+  ));
+
   return (
     <>
       <h3 className='recital-ano'>Recital {year}</h3>
-      <div className='recital-grid'>
-        {items.map((v, i) => (
-          <div className='recital-video-item' key={`${v.performer}-${i}`}>
-            <div>
-              <StudentVideo
-                videoId={v.videoId}
-                className='w-full h-full max-w-full'
-              />
-            </div>
-            <div className='video-info'>
-              <h4>{v.performer}</h4>
-              <p>{v.title}</p>
-              {(v.age || v.experience) && (
-                <p className='extra-info text-[10px] text-neutral-400 mt-1'>
-                  {v.age && <span>{v.age}</span>}
-                  {v.age && v.experience && <span> • </span>}
-                  {v.experience && <span>{v.experience}</span>}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
+
+      <div className='max-w-full md:flex flex-wrap justify-between py-10 hidden'>
+        {desktopList}
+      </div>
+
+      {/* Mobile */}
+      <div className='max-w-full flex flex-wrap justify-between pt-5 md:hidden'>
+        {mobileList}
       </div>
     </>
   );
@@ -52,8 +113,8 @@ export default function Recitals() {
           Momentos especiais das apresentações dos alunos.
         </p>
 
-        <RecitalGroup year='2024' items={recitals2024} />
-        <RecitalGroup year='2023' items={recitals2023} />
+        <RecitalGroup year='2024' items={recitals2024 as RecitalVideo[]} />
+        <RecitalGroup year='2023' items={recitals2023 as RecitalVideo[]} />
       </div>
     </section>
   );
