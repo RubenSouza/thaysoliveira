@@ -123,7 +123,7 @@ export default function Carousel<T>({
         aria-label='Anterior'
         type='button'
       >
-        <i className='fas fa-chevron-left' />
+        <i className='fas fa-chevron-left mt-2' />
       </button>
       <button
         className='carousel-btn next'
@@ -131,7 +131,7 @@ export default function Carousel<T>({
         aria-label='Próximo'
         type='button'
       >
-        <i className='fas fa-chevron-right' />
+        <i className='fas fa-chevron-right mt-2' />
       </button>
     </div>
   );
