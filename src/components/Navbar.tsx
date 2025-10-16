@@ -1,6 +1,6 @@
 'use client';
 
-import { useHamburgerMenu } from '@/src/hooks/useHamburgerMenu';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,13 +15,15 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const { isOpen, toggle, close, hamburgerRef, navRef, iconClass } =
-    useHamburgerMenu();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <header>
       <nav>
-        <Link href='#inicio' className='logo' onClick={close}>
+        <Link href='#inicio' className='logo' onClick={closeMenu}>
           <Image
             src='/assets/logo2.png'
             alt='Logo Thays Oliveira'
@@ -31,7 +33,8 @@ export default function Navbar() {
             priority
           />
         </Link>
-        <ul id='nav-links' ref={navRef} className={isOpen ? 'nav-active' : ''}>
+
+        <ul className={isOpen ? 'nav-active' : ''}>
           <li className='nav-logo-mobile'>
             <Image
               src='/assets/logo3.png'
@@ -41,24 +44,23 @@ export default function Navbar() {
               className='disable-interaction'
             />
           </li>
-          {navLinks.map(l => (
-            <li key={l.href}>
-              <Link href={l.href} onClick={close}>
-                {l.label}
+          {navLinks.map(link => (
+            <li key={link.href}>
+              <Link href={link.href} onClick={closeMenu}>
+                {link.label}
               </Link>
             </li>
           ))}
         </ul>
+
         <div
           className={`hamburger-menu ${isOpen ? 'toggle' : ''}`}
-          id='hamburger-menu'
-          onClick={toggle}
-          ref={hamburgerRef}
+          onClick={toggleMenu}
+          role='button'
           aria-label='Menu'
           aria-expanded={isOpen}
-          role='button'
         >
-          <i className={iconClass} />
+          <i className={isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'} />
         </div>
       </nav>
     </header>

@@ -13,11 +13,9 @@ import Contact from '@/src/components/Contact';
 import Footer from '@/src/components/Footer';
 import BackToTopButton from '@/src/components/BackToTopButton';
 import useDisableImageContextMenu from '@/src/hooks/useDisableImageContextMenu';
-import useVimeoPlayers from '@/src/hooks/useVimeoPlayers';
 
 export default function Page() {
   useDisableImageContextMenu();
-  useVimeoPlayers();
 
   return (
     <>
