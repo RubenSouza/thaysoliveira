@@ -1,7 +1,6 @@
 'use client';
 
-import { useCarousel } from '@/src/hooks/useCarousel';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 interface CarouselProps<T> {
   items: T[];
@@ -20,32 +19,104 @@ export default function Carousel<T>({
   renderItem,
   ariaLabel,
 }: CarouselProps<T>) {
-  const { trackRef, next, prev, handleMouseEnter, handleMouseLeave, style } =
-    useCarousel({
-      itemsLength: items.length,
-      itemsPerViewDesktop,
-      itemsPerViewMobile,
-      autoScrollInterval,
-    });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(itemsPerViewDesktop);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Para efeito infinito duplicamos arrays (front + back)
-  const doubledItems = [...items, ...items];
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 768;
+      setItemsPerView(isMobile ? itemsPerViewMobile : itemsPerViewDesktop);
+      setCurrentIndex(0);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [itemsPerViewDesktop, itemsPerViewMobile]);
+
+  const maxIndex = Math.max(0, items.length - itemsPerView);
+
+  const next = () => {
+    setIsTransitioning(true);
+    setCurrentIndex(prev => {
+      if (prev >= maxIndex) {
+        return 0;
+      }
+      return prev + 1;
+    });
+  };
+
+  const prev = () => {
+    setIsTransitioning(true);
+    setCurrentIndex(prev => {
+      if (prev <= 0) {
+        return maxIndex;
+      }
+      return prev - 1;
+    });
+  };
+
+  useEffect(() => {
+    if (autoScrollInterval <= 0) return;
+
+    const startAutoPlay = () => {
+      autoPlayRef.current = setInterval(next, autoScrollInterval);
+    };
+
+    startAutoPlay();
+
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [autoScrollInterval, maxIndex]);
+
+  const handleMouseEnter = () => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (autoScrollInterval > 0) {
+      autoPlayRef.current = setInterval(next, autoScrollInterval);
+    }
+  };
+
+  const itemWidth = 100 / itemsPerView;
+  const translateX = -(currentIndex * itemWidth);
 
   return (
-    <div className='carousel-wrapper' aria-label={ariaLabel}>
+    <div
+      className='carousel-wrapper'
+      aria-label={ariaLabel}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div
         className='carousel'
-        ref={trackRef}
-        style={style}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        style={{
+          display: 'flex',
+          transform: `translateX(${translateX}%)`,
+          transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none',
+        }}
       >
-        {doubledItems.map((item, idx) => (
-          <div className='carousel-item' key={idx}>
-            {renderItem(item, idx % items.length)}
+        {items.map((item, idx) => (
+          <div
+            className='carousel-item'
+            key={idx}
+            style={{
+              flex: `0 0 ${itemWidth}%`,
+            }}
+          >
+            {renderItem(item, idx)}
           </div>
         ))}
       </div>
+
       <button
         className='carousel-btn prev'
         onClick={prev}
