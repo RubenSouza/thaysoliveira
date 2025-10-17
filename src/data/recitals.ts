@@ -230,7 +230,7 @@ export const recitalStudents: RecitalStudent[] = [
   },
   {
     id: 8,
-    name: 'Hellen',
+    name: 'Hellen Vieira',
     img: '/assets/recital/students/hellen.jpg',
   },
   {
@@ -330,12 +330,7 @@ export const recitalStudents: RecitalStudent[] = [
   },
   {
     id: 28,
-    name: 'Thomás Torres',
-    img: '/assets/recital/students/thomas-torres.jpg',
-  },
-  {
-    id: 29,
-    name: 'Tomás',
+    name: 'Tomás Torres',
     img: '/assets/recital/students/tomas.jpg',
   },
 ];
