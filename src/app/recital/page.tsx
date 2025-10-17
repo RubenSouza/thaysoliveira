@@ -28,12 +28,6 @@ const Recital = () => {
   const [isPix, setIsPix] = useState(false);
   const inAreaRef = useRef<HTMLDivElement | null>(null);
 
-  const first = recitalStudents.slice(0, 5);
-  const second = recitalStudents.slice(5, 10);
-  const third = recitalStudents.slice(10, 15);
-  const fourth = recitalStudents.slice(15, 20);
-  const fifth = recitalStudents.slice(20, 25);
-
   const handleStudent = (student: Student) => {
     setSelectedStudent(student);
   };
@@ -85,18 +79,18 @@ const Recital = () => {
 
   return (
     <div
-      className='w-full h-screen bg-cover bg-no-repeat bg-center'
+      className='w-full h-full bg-cover bg-no-repeat bg-center'
       style={{ backgroundImage: `url(./assets/fundo.jpg)` }}
     >
       <Toaster />
       <div
-        className='flex flex-col items-center justify-center  w-full h-full 
-      bg-black bg-opacity-50'
+        className='flex flex-col items-center justify-center w-full h-full 
+      bg-black bg-opacity-50 mt-6'
       >
         <h1 className='text-lg 2xl:text-3xl font-bold text-white pb-2'>
           Recital 2024
         </h1>
-        <div className='flex flex-col items-center '>
+        <div className='flex flex-col items-center'>
           <p className='text-xs 2xl:text-base text-center xl:pb-0 2xl:pb-4'>
             Efetue a compra do seu ingresso individual <br />
             ou selecione o aluno que irá acompanhar
@@ -107,154 +101,40 @@ const Recital = () => {
             transition={{ duration: 2 }}
             className='flex flex-col items-center justify-center px-10 md:px-0 py-2 2xl:py-6'
           >
-            {/* 1 coluna */}
-            <div className='grid grid-cols-5 gap-9 xl:gap-10 2xl:gap-16'>
-              {first.map((student, i) => (
+            {/* Grid responsivo com todos os alunos */}
+            <div className='grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-2 md:gap-6 md:gap-y-3 lg:gap-8 lg:gap-y-4 xl:gap-10 xl:gap-y-6 '>
+              {recitalStudents.map(student => (
                 <div
                   className='w-full flex flex-col items-center cursor-pointer'
-                  key={i}
+                  key={student.id}
                   onClick={() => handleStudent(student)}
                 >
                   <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
+                    className={`bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24 transition-all duration-200 ${
                       selectedStudent?.name === student.name
-                        ? 'border-2 border-purple-500'
-                        : 'border-2 border-slate-300'
+                        ? 'border-4 border-purple-500 scale-105'
+                        : 'border-2 border-slate-300 hover:border-purple-300'
                     }`}
                   >
                     <Image
                       width={400}
                       height={400}
-                      alt='student'
-                      src={student?.img}
+                      alt={student.name}
+                      src={student.img}
                       className='w-full h-full rounded-full object-cover object-top'
                     />
                   </div>
-                  <p className='text-xs xl:text-sm 2xl:text-base  w-[70px] text-center flex-shrink'>
-                    {student?.name}
+                  <p className='text-xs xl:text-sm 2xl:text-base w-[70px] md:w-[80px] lg:w-[90px] text-center mt-1'>
+                    {student.name}
                   </p>
                 </div>
               ))}
             </div>
-            {/* 2 coluna */}
-            <div className='grid grid-cols-5 gap-9 xl:gap-12 2xl:gap-16'>
-              {second.map((student, i) => (
-                <div
-                  className='w-full flex flex-col items-center cursor-pointer'
-                  key={i}
-                  onClick={() => handleStudent(student)}
-                >
-                  <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
-                      selectedStudent?.name === student.name
-                        ? 'border-2 border-purple-500'
-                        : 'border-2 border-slate-300'
-                    }`}
-                  >
-                    <Image
-                      width={400}
-                      height={400}
-                      alt='student'
-                      src={student?.img}
-                      className='w-full h-full rounded-full object-cover object-top'
-                    />
-                  </div>
-                  <p className='text-xs xl:text-sm 2xl:text-base  w-[70px] text-center flex-shrink'>
-                    {student?.name}
-                  </p>
-                </div>
-              ))}
-            </div>
-            {/* 3 coluna */}
-            <div className='grid grid-cols-5 gap-9 xl:gap-14 2xl:gap-16'>
-              {third.map((student, i) => (
-                <div
-                  className='w-full flex flex-col items-center cursor-pointer'
-                  key={i}
-                  onClick={() => handleStudent(student)}
-                >
-                  <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
-                      selectedStudent?.name === student.name
-                        ? 'border-2 border-purple-500'
-                        : 'border-2 border-slate-300'
-                    }`}
-                  >
-                    <Image
-                      width={400}
-                      height={400}
-                      alt='student'
-                      src={student?.img}
-                      className='w-full h-full rounded-full object-cover object-top'
-                    />
-                  </div>
-                  <p className='text-xs xl:text-sm 2xl:text-base  w-[70px] text-center flex-shrink'>
-                    {student?.name}
-                  </p>
-                </div>
-              ))}
-            </div>
-            {/* 4 coluna */}
-            <div className='grid grid-cols-5 gap-9 xl:gap-14 2xl:gap-16'>
-              {fourth.map((student, i) => (
-                <div
-                  className='w-full flex flex-col items-center cursor-pointer'
-                  key={i}
-                  onClick={() => handleStudent(student)}
-                >
-                  <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
-                      selectedStudent?.name === student.name
-                        ? 'border-2 border-purple-500'
-                        : 'border-2 border-slate-300'
-                    }`}
-                  >
-                    <Image
-                      width={400}
-                      height={400}
-                      alt='student'
-                      src={student?.img}
-                      className='w-full h-full rounded-full object-cover object-top'
-                    />
-                  </div>
-                  <p className='text-sm xl:text-sm 2xl:text-base  w-[70px] text-center flex-shrink'>
-                    {student?.name}
-                  </p>
-                </div>
-              ))}
-            </div>
-            {/* 5 coluna */}
-            <div className='grid grid-cols-5 gap-9 xl:gap-14 2xl:gap-16'>
-              {fifth.map((student, i) => (
-                <div
-                  className='w-full flex flex-col items-center cursor-pointer'
-                  key={i}
-                  onClick={() => handleStudent(student)}
-                >
-                  <div
-                    className={`bg-white rounded-full w-14 h-14 sm:16 sm:h-16 md:w-18 md:h-18 2xl:w-24 2xl:h-24 ${
-                      selectedStudent?.name === student.name
-                        ? 'border-2 border-purple-500'
-                        : 'border-2 border-slate-300'
-                    }`}
-                  >
-                    <Image
-                      width={400}
-                      height={400}
-                      alt='student'
-                      src={student?.img}
-                      className='w-full h-full rounded-full object-cover object-top'
-                    />
-                  </div>
-                  <p className='text-sm xl:text-sm 2xl:text-base w-[70px] text-center flex-shrink'>
-                    {student?.name}
-                  </p>
-                </div>
-              ))}
-            </div>
+
             <button
               className='bg-purple-500 p-2 text-sm uppercase rounded-lg 2xl:p-3 2xl:text-base mt-2 2xl:mt-4 
-                disabled:bg-slate-300 disabled:cursor-not-allowed disabled:text-slate-900 disabled:opacity-50'
+                disabled:bg-slate-300 disabled:cursor-not-allowed disabled:text-slate-900 disabled:opacity-50
+                hover:bg-purple-600 transition-colors'
               onClick={handleNextPage}
               disabled={!selectedStudent?.name}
             >
@@ -262,6 +142,7 @@ const Recital = () => {
             </button>
           </motion.div>
         </div>
+
         {nextPage && (
           <div
             className='absolute w-full h-screen bg-black/80 flex flex-col items-center justify-center'
@@ -292,7 +173,7 @@ const Recital = () => {
                       <p>{selectedStudent?.name}</p>
                     </div>
                   </div>
-                  <div className='flex flex-col items-center w-full  justify-center space-y-5'>
+                  <div className='flex flex-col items-center w-full justify-center space-y-5'>
                     <p className='text-center font-semibold'>
                       Quantidade de acompanhantes:
                     </p>
@@ -319,7 +200,7 @@ const Recital = () => {
                       </p>
                       <button
                         className='bg-purple-500 p-2 text-sm uppercase rounded-lg 2xl:p-3 2xl:text-base mt-2 2xl:mt-4
-               disabled:bg-slate-300 text-white'
+               disabled:bg-slate-300 text-white hover:bg-purple-600 transition-colors'
                         onClick={handlePix}
                       >
                         Gerar pix
@@ -353,7 +234,7 @@ const Recital = () => {
                     <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
                       <button
                         className='my-2 flex border bg-slate-300 p-2 text-sm items-center justify-center 
-                    rounded-md border-slate-400 px-6 text-slate-600 cursor-pointer'
+                    rounded-md border-slate-400 px-6 text-slate-600 cursor-pointer hover:bg-slate-400 transition-colors'
                       >
                         <IoMdCopy className='w-6 h-6' />
                         <p>Copiar PIX copia e cola</p>
