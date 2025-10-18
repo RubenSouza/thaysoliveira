@@ -26,7 +26,7 @@ function RecitalGroup({ year, items }: RecitalGroupProps) {
             initial={{ x: -20, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
-            className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center
+            className='w-full max-h-[600px] md:w-auto flex flex-col md:flex-row justify-center items-center
           gap-6'
           >
             <StudentVideo videoId={student.videoId} />
@@ -44,7 +44,7 @@ function RecitalGroup({ year, items }: RecitalGroupProps) {
             initial={{ x: 20, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
-            className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center
+            className='w-full max-h-[600px] md:w-auto flex flex-col md:flex-row justify-center items-center
           gap-6'
           >
             <div>
