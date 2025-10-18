@@ -68,25 +68,28 @@ function RecitalGroup({ year, items }: RecitalGroupProps) {
       initial={{ x: -20, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
-      className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center 
-      md:space-y-0 md:space-x-6 md:justify-start'
     >
-      <StudentVideo
-        videoId={v.videoId}
-        className='w-full h-full max-h-[615px] max-w-full'
-      />
-      <div className='my-5'>
-        <h3 className='text-xl md:text-3xl font-semibold text-[--primary-gold]]'>
-          {v.performer}
-        </h3>
-        <p className='text-[11px] font-sans text-neutral-400'>{v.title}</p>
-        {(v.age || v.experience) && (
-          <p className='text-[10px] font-sans text-neutral-500 '>
-            {v.age && <span>{v.age}</span>}
-            {v.age && v.experience && <span> • </span>}
-            {v.experience && <span>{v.experience}</span>}
-          </p>
-        )}
+      <div
+        className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center 
+      md:gap-y-0 md:gap-x-6 md:justify-start'
+      >
+        <StudentVideo
+          videoId={v.videoId}
+          className='w-full h-full max-h-[600px] max-w-full'
+        />
+        <div className='my-5'>
+          <h3 className='text-xl md:text-3xl font-semibold text-[--primary-gold]]'>
+            {v.performer}
+          </h3>
+          <p className='text-[11px] font-sans text-neutral-400'>{v.title}</p>
+          {(v.age || v.experience) && (
+            <p className='text-[10px] font-sans text-neutral-500 '>
+              {v.age && <span>{v.age}</span>}
+              {v.age && v.experience && <span> • </span>}
+              {v.experience && <span>{v.experience}</span>}
+            </p>
+          )}
+        </div>
       </div>
     </motion.div>
   ));

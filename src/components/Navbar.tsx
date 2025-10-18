@@ -12,6 +12,7 @@ const navLinks = [
   { href: '#galeria', label: 'Recitais' },
   { href: '#midia', label: 'Mídia' },
   { href: '#contato', label: 'Contato' },
+  { href: '/recital', label: 'Ingressos' },
 ];
 
 export default function Navbar() {
@@ -45,7 +46,7 @@ export default function Navbar() {
             />
           </li>
           {navLinks.map(link => (
-            <li key={link.href}>
+            <li key={link.href} className='text-sm xl:text-base'>
               <Link href={link.href} onClick={closeMenu}>
                 {link.label}
               </Link>
