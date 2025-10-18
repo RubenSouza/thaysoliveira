@@ -190,7 +190,7 @@ export const recitals2023: RecitalVideo[] = [
 export const recitalStudents: RecitalStudent[] = [
   {
     id: 0,
-    name: 'Ingresso avulso',
+    name: 'Combo Recital',
     img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/perfis%20dos%20alunos%20do%20recital%2FIngresso.jpeg?alt=media&token=590bc937-034b-4144-b009-6ff4adabd4d0',
   },
   {
@@ -216,7 +216,7 @@ export const recitalStudents: RecitalStudent[] = [
   {
     id: 5,
     name: 'Brenno Torres',
-    img: '/assets/recital/students/brenno-torres.jpg',
+    img: '/assets/recital/students/brenno.jpg',
   },
   {
     id: 6,
@@ -225,111 +225,101 @@ export const recitalStudents: RecitalStudent[] = [
   },
   {
     id: 7,
-    name: 'Cecília',
-    img: '/assets/recital/students/cecilia.jpg',
-  },
-  {
-    id: 8,
     name: 'Hellen Vieira',
     img: '/assets/recital/students/hellen.jpg',
   },
   {
-    id: 9,
+    id: 8,
     name: 'Isabela Rocha',
     img: '/assets/recital/students/isabela-rocha.jpg',
   },
   {
-    id: 10,
+    id: 9,
     name: 'Isabela Sobral',
     img: '/assets/recital/students/isabela-sobral.jpg',
   },
   {
-    id: 11,
+    id: 10,
     name: 'João Pedro',
     img: '/assets/recital/students/joao-pedro.jpg',
   },
   {
-    id: 12,
+    id: 11,
     name: 'Jujú',
     img: '/assets/recital/students/juju.jpg',
   },
   {
-    id: 13,
-    name: 'Júlia',
-    img: '/assets/recital/students/julia.jpg',
-  },
-  {
-    id: 14,
+    id: 12,
     name: 'Júlia Duarte',
     img: '/assets/recital/students/julia-duarte.jpg',
   },
   {
-    id: 15,
+    id: 13,
     name: 'Laíza Marinho',
-    img: '/assets/recital/students/laiza-marinho.jpg',
+    img: '/assets/recital/students/laiza-2.jpg',
   },
   {
-    id: 16,
+    id: 14,
     name: 'Lara',
     img: '/assets/recital/students/lara.jpg',
   },
   {
-    id: 17,
+    id: 15,
     name: 'Letícia Andrade',
-    img: '/assets/recital/students/leticia-andrade.jpg',
+    img: '/assets/recital/students/leticia.jpg',
   },
   {
-    id: 18,
+    id: 16,
     name: 'Livia Ribeiro',
     img: '/assets/recital/students/livia-ribeiro.jpg',
   },
   {
-    id: 19,
+    id: 17,
     name: 'Lucas Amorim',
     img: '/assets/recital/students/lucas-amorim.jpg',
   },
   {
-    id: 20,
+    id: 18,
     name: 'Majú',
     img: '/assets/recital/students/maju.jpg',
   },
   {
-    id: 21,
+    id: 19,
     name: 'Malú',
     img: '/assets/recital/students/malu.jpg',
   },
   {
-    id: 22,
+    id: 20,
     name: 'Marina Meneses',
     img: '/assets/recital/students/marina-meneses.jpg',
   },
   {
-    id: 23,
+    id: 21,
     name: 'Matheus Amorim',
     img: '/assets/recital/students/matheus-amorim.jpg',
   },
   {
-    id: 24,
+    id: 22,
     name: 'Nicolas Sarmento',
-    img: '/assets/recital/students/nicolas-sarmento.jpg',
+    img: '/assets/recital/students/nicolas.jpg',
   },
   {
-    id: 25,
+    id: 23,
     name: 'Ravi',
     img: '/assets/recital/students/ravi.jpg',
   },
   {
-    id: 26,
+    id: 24,
     name: 'Rodolfo',
     img: '/assets/recital/students/rodolfo.jpg',
   },
   {
-    id: 27,
+    id: 25,
     name: 'Sofia Catão',
     img: '/assets/recital/students/sofia-catao.jpg',
   },
   {
-    id: 28,
+    id: 26,
     name: 'Tomás Torres',
     img: '/assets/recital/students/tomas.jpg',
   },

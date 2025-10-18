@@ -23,7 +23,7 @@ const Recital = () => {
   const [selectedStudent, setSelectedStudent] = useState({} as Student);
   const [counter, setCounter] = useState(1);
   const [nextPage, setNextPage] = useState(false);
-  const [totalValue, setTotalValue] = useState(30);
+  const [totalValue, setTotalValue] = useState(40);
   const [fullPIX, setFullPIX] = useState('');
   const [isPix, setIsPix] = useState(false);
   const inAreaRef = useRef<HTMLDivElement | null>(null);
@@ -57,7 +57,7 @@ const Recital = () => {
   };
 
   useEffect(() => {
-    setTotalValue(30 * counter);
+    setTotalValue(40 * counter);
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -113,7 +113,7 @@ const Recital = () => {
                     className={`bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24 transition-all duration-200 ${
                       selectedStudent?.name === student.name
                         ? 'border-4 border-purple-500 scale-105'
-                        : 'border-2 border-slate-300 hover:border-purple-300'
+                        : 'border-2 border-slate-300 hover:border-purple-300 '
                     }`}
                   >
                     <Image
@@ -121,7 +121,7 @@ const Recital = () => {
                       height={400}
                       alt={student.name}
                       src={student.img}
-                      className='w-full h-full rounded-full object-cover object-top'
+                      className='w-full h-full rounded-full object-cover object-center  max-w-full '
                     />
                   </div>
                   <p className='text-xs xl:text-sm 2xl:text-base w-[70px] md:w-[80px] lg:w-[90px] text-center mt-1'>
@@ -157,7 +157,7 @@ const Recital = () => {
               {!isPix ? (
                 <div className='w-full h-full flex flex-col items-center justify-center space-y-2'>
                   <div className='w-full space-y-3'>
-                    <h1 className='text-2xl font-bold text-center '>
+                    <h1 className='text-2xl font-bold text-center text-black '>
                       Confirmar Compra
                     </h1>
                     <div className='flex flex-col items-center justify-center'>
@@ -211,7 +211,7 @@ const Recital = () => {
               ) : (
                 <div className='w-full h-full flex flex-col items-center justify-center space-y-2'>
                   <div className='w-full space-y-3'>
-                    <h1 className='text-2xl font-bold text-center '>
+                    <h1 className='text-2xl font-bold text-center text-black '>
                       Confirmar Compra
                     </h1>
                     <div className='flex flex-col items-center justify-center'>
