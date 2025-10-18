@@ -71,7 +71,10 @@ function RecitalGroup({ year, items }: RecitalGroupProps) {
       className='w-full md:w-auto flex flex-col md:flex-row justify-center items-center 
       md:space-y-0 md:space-x-6 md:justify-start'
     >
-      <StudentVideo videoId={v.videoId} className='w-full h-full max-w-full' />
+      <StudentVideo
+        videoId={v.videoId}
+        className='w-full h-full max-h-[615px] max-w-full'
+      />
       <div className='my-5'>
         <h3 className='text-xl md:text-3xl font-semibold text-[--primary-gold]]'>
           {v.performer}

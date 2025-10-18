@@ -28,7 +28,7 @@ type Props = {
 
 const ThaysVideo = ({ videoId }: Props) => {
   return (
-    <div className='w-full'>
+    <div className='w-full max-h-[300px]'>
       <MediaPlayer title='Sprite Fight' src={`youtube/${videoId}`}>
         <MediaProvider />
         <PlyrLayout icons={plyrLayoutIcons} />
