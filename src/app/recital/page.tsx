@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { recitalStudents } from '@/src/data/recitals';
-import { registerTicket } from '@/src/utils/ticket';
+import { registerTicket } from '../../utils/ticket';
 import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from 'react-icons/io';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import PIX from 'react-qrcode-pix';
@@ -14,6 +14,7 @@ type Student = {
   id: number;
   name: string;
   img: string;
+  price?: number;
 };
 
 const now = new Date().getTime().toString();
@@ -30,13 +31,17 @@ const RecitalRegistration = () => {
   const [userPhone, setUserPhone] = useState('');
   const inAreaRef = useRef<HTMLDivElement | null>(null);
 
+  const unitPrice = selectedStudent?.price || 40;
+
   const handleStudent = (student: Student) => {
     setSelectedStudent(student);
+    setTotalValue((student.price || 40) * counter);
   };
 
   const handleNextPage = () => {
     setNextPage(true);
     setModalStep(1);
+    setTotalValue(unitPrice * counter);
   };
 
   const handleCopy = () => {
@@ -83,7 +88,7 @@ const RecitalRegistration = () => {
   const isStep1Valid = userName.trim() && isEmailValid && isPhoneValid;
 
   useEffect(() => {
-    setTotalValue(40 * counter);
+    setTotalValue(unitPrice * counter);
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -104,7 +109,7 @@ const RecitalRegistration = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [totalValue, counter, nextPage]);
+  }, [totalValue, counter, nextPage, unitPrice]);
 
   return (
     <div
@@ -303,7 +308,9 @@ const RecitalRegistration = () => {
                       <div className='bg-purple-50 rounded-lg p-4 w-full'>
                         <div className='flex justify-between items-center'>
                           <span className='text-gray-700'>Valor unitário:</span>
-                          <span className='font-semibold'>R$ 40,00</span>
+                          <span className='font-semibold'>
+                            R$ {unitPrice.toFixed(2)}
+                          </span>
                         </div>
                         <div className='flex justify-between items-center mt-2 pt-2 border-t border-purple-200'>
                           <span className='text-lg font-bold text-gray-800'>

@@ -12,6 +12,7 @@ export interface RecitalStudent {
   id: number;
   name: string;
   img: string;
+  price?: number;
 }
 
 export const recitals2024: RecitalVideo[] = [
@@ -192,6 +193,7 @@ export const recitalStudents: RecitalStudent[] = [
     id: 0,
     name: 'Combo Recital',
     img: 'https://firebasestorage.googleapis.com/v0/b/school-df18f.appspot.com/o/perfis%20dos%20alunos%20do%20recital%2FIngresso.jpeg?alt=media&token=590bc937-034b-4144-b009-6ff4adabd4d0',
+    price: 60,
   },
   {
     id: 1,
