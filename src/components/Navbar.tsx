@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const navLinks = [
   { href: '#sobre', label: 'Sobre' },
@@ -24,7 +23,7 @@ export default function Navbar() {
   return (
     <header>
       <nav>
-        <Link href='#inicio' className='logo' onClick={closeMenu}>
+        <a href='#inicio' className='logo' onClick={closeMenu}>
           <Image
             src='/assets/logo2.png'
             alt='Logo Thays Oliveira'
@@ -33,7 +32,7 @@ export default function Navbar() {
             className='disable-interaction'
             priority
           />
-        </Link>
+        </a>
 
         <ul className={isOpen ? 'nav-active' : ''}>
           <li className='nav-logo-mobile'>
@@ -47,9 +46,9 @@ export default function Navbar() {
           </li>
           {navLinks.map(link => (
             <li key={link.href} className='text-sm xl:text-base'>
-              <Link href={link.href} onClick={closeMenu}>
+              <a href={link.href} onClick={closeMenu}>
                 {link.label}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
