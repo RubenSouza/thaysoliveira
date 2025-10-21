@@ -3,24 +3,12 @@
 import '@vidstack/react/player/styles/default/theme.css';
 import '@vidstack/react/player/styles/default/layouts/video.css';
 
-import dynamic from 'next/dynamic';
-
-// Carrega o player dinamicamente sem SSR
-const MediaPlayer = dynamic(
-  () => import('@vidstack/react').then(mod => mod.MediaPlayer),
-  { ssr: false }
-);
-const MediaProvider = dynamic(
-  () => import('@vidstack/react').then(mod => mod.MediaProvider),
-  { ssr: false }
-);
-
 import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from '@vidstack/react/player/layouts/default';
 
-import { Poster } from '@vidstack/react';
+import { MediaPlayer, MediaProvider, Poster } from '@vidstack/react';
 import { cn } from '../utils/cn';
 
 type Props = {

@@ -1,3 +1,5 @@
+'use client';
+
 import ThaysVideo from './ThaysVideo';
 
 export default function Media() {

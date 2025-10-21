@@ -1,3 +1,5 @@
+'use client';
+
 import { services } from '@/src/data/services';
 
 export default function Services() {

@@ -12,11 +12,8 @@ import Media from '@/src/components/Media';
 import Contact from '@/src/components/Contact';
 import Footer from '@/src/components/Footer';
 import BackToTopButton from '@/src/components/BackToTopButton';
-import useDisableImageContextMenu from '@/src/hooks/useDisableImageContextMenu';
 
 export default function Page() {
-  useDisableImageContextMenu();
-
   return (
     <>
       <ParticlesBackground />
