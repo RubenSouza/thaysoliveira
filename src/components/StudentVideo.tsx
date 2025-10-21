@@ -1,50 +1,45 @@
-"use client";
+'use client';
 
-import "@vidstack/react/player/styles/default/theme.css";
-import "@vidstack/react/player/styles/default/layouts/video.css";
-
-import dynamic from "next/dynamic";
-
-// Carrega o player dinamicamente sem SSR
-const MediaPlayer = dynamic(
-  () => import("@vidstack/react").then(mod => mod.MediaPlayer),
-  { ssr: false }
-);
-const MediaProvider = dynamic(
-  () => import("@vidstack/react").then(mod => mod.MediaProvider),
-  { ssr: false }
-);
+import '@vidstack/react/player/styles/default/theme.css';
+import '@vidstack/react/player/styles/default/layouts/video.css';
 
 import {
   defaultLayoutIcons,
   DefaultVideoLayout,
-} from "@vidstack/react/player/layouts/default";
+} from '@vidstack/react/player/layouts/default';
 
-import { Poster } from "@vidstack/react";
+import { MediaPlayer, MediaProvider, Poster } from '@vidstack/react';
+import { cn } from '../utils/cn';
 
 type Props = {
   videoId: string;
+  className?: string;
 };
 
-const StudentVideo = ({ videoId }: Props) => {
+const StudentVideo = ({ videoId, className }: Props) => {
   return (
-    <div className="w-[300px] max-w-[350px] h-[500px] relative">
+    <div
+      className={cn(
+        'w-[270px] max-w-[270px] h-[480px] relative z-40 flex flex-1 ',
+        className
+      )}
+    >
       <MediaPlayer
-        title="Vídeo do aluno"
-        viewType="video"
-        streamType="on-demand"
-        logLevel="warn"
+        title='Vídeo do aluno'
+        viewType='video'
+        streamType='on-demand'
+        logLevel='warn'
         crossOrigin
         playsInline
         src={`youtube/${videoId}`}
-        aspectRatio="9/16"
+        aspectRatio='9/16'
       >
         <MediaProvider>
           <Poster
-            className="absolute inset-0 block h-full w-full rounded-md opacity-0 
-            transition-opacity data-[visible]:opacity-100 object-cover"
+            className='absolute inset-0 h-full w-full rounded-md opacity-0 
+            transition-opacity data-[visible]:opacity-100 object-cover flex flex-1'
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-            alt="Poster do vídeo"
+            alt='Poster do vídeo'
           />
         </MediaProvider>
         <DefaultVideoLayout icons={defaultLayoutIcons} />

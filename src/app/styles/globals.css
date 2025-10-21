@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer base {
+  @font-face {
+    font-family: "Glossy";
+    font-weight: 100;
+    src: url("./fonts/glossy.otf") format("opentype");
+  }
+} */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0b0a0a;
+  color: white;
+}
+
+.linear-gradient {
+  background: linear-gradient(
+    225deg,
+    #000000 0%,
+    #30303040 55.41%,
+    #604f9368 100%
+  );
+}
+
+.feedbacks {
+  background: linear-gradient(
+    224deg,
+    #100b0b00 0%,
+    #62557a4f 48%,
+    #100c0c00 100%
+  );
+}
+
+.videos {
+  background: linear-gradient(
+    180deg,
+    #2f2f2f00 0%,
+    #62557a17 5%,
+    #62557a3d 25%,
+    #62557a3d 98%,
+    #000000 100%
+  );
+}
