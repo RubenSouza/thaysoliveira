@@ -68,10 +68,7 @@ function RecitalGroup({ year, items }: RecitalGroupProps) {
       md:gap-y-0 md:gap-x-6 md:justify-start'
       key={`${v.performer}-mobile-${i}`}
     >
-      <StudentVideo
-        videoId={v.videoId}
-        className='w-full h-full max-h-[480px] max-w-full'
-      />
+      <StudentVideo videoId={v.videoId} className='max-h-[480px] max-w-full' />
       <div className='my-5'>
         <h3 className='text-xl md:text-3xl font-semibold text-[--primary-gold]]'>
           {v.performer}

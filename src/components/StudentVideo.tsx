@@ -20,7 +20,7 @@ const StudentVideo = ({ videoId, className }: Props) => {
   return (
     <div
       className={cn(
-        'w-[280px] max-w-[330px] h-[480px] relative z-40',
+        'w-[270px] max-w-[270px] h-[480px] relative z-40 flex flex-1 ',
         className
       )}
     >
@@ -36,8 +36,8 @@ const StudentVideo = ({ videoId, className }: Props) => {
       >
         <MediaProvider>
           <Poster
-            className='absolute inset-0 block h-full w-full rounded-md opacity-0 
-            transition-opacity data-[visible]:opacity-100 object-cover'
+            className='absolute inset-0 h-full w-full rounded-md opacity-0 
+            transition-opacity data-[visible]:opacity-100 object-cover flex flex-1'
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
             alt='Poster do vídeo'
           />
