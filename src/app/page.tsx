@@ -15,7 +15,7 @@ import BackToTopButton from '@/src/components/BackToTopButton';
 
 export default function Page() {
   return (
-    <>
+    <div className='w-full overflow-x-hidden'>
       <ParticlesBackground />
 
       <Navbar />
@@ -34,6 +34,6 @@ export default function Page() {
       <Footer />
 
       <BackToTopButton />
-    </>
+    </div>
   );
 }
