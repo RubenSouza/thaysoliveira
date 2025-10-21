@@ -119,12 +119,12 @@ const RecitalRegistration = () => {
       <Toaster />
       <div className='flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 mt-6'>
         <h1 className='text-lg 2xl:text-3xl font-bold text-white pb-2'>
-          Recital 2024
+          Recital 2025
         </h1>
         <div className='flex flex-col items-center'>
           <p className='text-xs 2xl:text-base text-center xl:pb-0 2xl:pb-4'>
-            Efetue a compra do seu ingresso individual <br />
-            ou selecione o aluno que irá acompanhar
+            Escolha o aluno que você irá acompanhar ou selecione o Combo recital
+            para participar de todas as sessões do evento.
           </p>
           <motion.div
             initial={{ x: -2000 }}

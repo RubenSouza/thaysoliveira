@@ -2,11 +2,25 @@
 
 import '@vidstack/react/player/styles/base.css';
 import '@vidstack/react/player/styles/plyr/theme.css';
-import {
-  PlyrLayout,
-  plyrLayoutIcons,
-} from '@vidstack/react/player/layouts/plyr';
-import { MediaPlayer, MediaProvider } from '@vidstack/react';
+
+import dynamic from 'next/dynamic';
+
+// Carrega o player dinamicamente sem SSR
+const MediaPlayer = dynamic(
+  () => import('@vidstack/react').then(mod => mod.MediaPlayer),
+  { ssr: false }
+);
+const MediaProvider = dynamic(
+  () => import('@vidstack/react').then(mod => mod.MediaProvider),
+  { ssr: false }
+);
+const PlyrLayout = dynamic(
+  () =>
+    import('@vidstack/react/player/layouts/plyr').then(mod => mod.PlyrLayout),
+  { ssr: false }
+);
+
+import { plyrLayoutIcons } from '@vidstack/react/player/layouts/plyr';
 
 type Props = {
   videoId: string;
