@@ -432,6 +432,8 @@ nav ul li a:hover::after {
 
 .midia-grid {
   display: grid;
+  width: 100%;
+  place-items: center;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
 }
