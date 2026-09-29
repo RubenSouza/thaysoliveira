@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState } from 'react'
+import Image from 'next/image'
 
 const navLinks = [
   { href: '#sobre', label: 'Sobre' },
@@ -11,41 +11,41 @@ const navLinks = [
   { href: '#galeria', label: 'Recitais' },
   { href: '#midia', label: 'Mídia' },
   { href: '#contato', label: 'Contato' },
-  { href: '/recital', label: 'Ingressos' },
-];
+  // { href: '/recital', label: 'Ingressos' },
+]
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
+  const toggleMenu = () => setIsOpen(!isOpen)
+  const closeMenu = () => setIsOpen(false)
 
   return (
     <header>
       <nav>
-        <a href='#inicio' className='logo' onClick={closeMenu}>
+        <a href="#inicio" className="logo" onClick={closeMenu}>
           <Image
-            src='/assets/logo2.png'
-            alt='Logo Thays Oliveira'
+            src="/assets/logo2.png"
+            alt="Logo Thays Oliveira"
             width={140}
             height={50}
-            className='disable-interaction'
+            className="disable-interaction"
             priority
           />
         </a>
 
         <ul className={isOpen ? 'nav-active' : ''}>
-          <li className='nav-logo-mobile'>
+          <li className="nav-logo-mobile">
             <Image
-              src='/assets/logo3.png'
-              alt='Logo Thays Oliveira Mobile'
+              src="/assets/logo3.png"
+              alt="Logo Thays Oliveira Mobile"
               width={120}
               height={40}
-              className='disable-interaction'
+              className="disable-interaction"
             />
           </li>
           {navLinks.map(link => (
-            <li key={link.href} className='text-sm xl:text-base'>
+            <li key={link.href} className="text-sm xl:text-base">
               <a href={link.href} onClick={closeMenu}>
                 {link.label}
               </a>
@@ -56,13 +56,13 @@ export default function Navbar() {
         <div
           className={`hamburger-menu ${isOpen ? 'toggle' : ''}`}
           onClick={toggleMenu}
-          role='button'
-          aria-label='Menu'
+          role="button"
+          aria-label="Menu"
           aria-expanded={isOpen}
         >
           <i className={isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'} />
         </div>
       </nav>
     </header>
-  );
+  )
 }
