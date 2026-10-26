@@ -21,7 +21,6 @@ type Student = {
 }
 
 const now = new Date().getTime().toString()
-
 const GOLD = '#E3BE7A'
 const MAX_TICKETS = 10
 
@@ -37,6 +36,7 @@ const getInitials = (name: string) => {
     parts.length > 1
       ? parts[0][0] + parts[parts.length - 1][0]
       : name.slice(0, 2)
+
   return value.toUpperCase()
 }
 
@@ -96,9 +96,11 @@ const RecitalRegistration = () => {
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPhone, setUserPhone] = useState('')
+
   const inAreaRef = useRef<HTMLDivElement | null>(null)
 
   const combo = recitalStudents.find(s => s.id === 0)
+
   const allStudents = useMemo(() => recitalStudents.filter(s => s.id !== 0), [])
 
   // Índice do Fuse com o nome normalizado (sem acentos), para que
@@ -106,7 +108,10 @@ const RecitalRegistration = () => {
   const fuse = useMemo(
     () =>
       new Fuse(
-        allStudents.map(s => ({ student: s, searchName: normalize(s.name) })),
+        allStudents.map(s => ({
+          student: s,
+          searchName: normalize(s.name),
+        })),
         {
           keys: ['searchName'],
           threshold: 0.35,
@@ -127,11 +132,12 @@ const RecitalRegistration = () => {
   const isCombo = selectedStudent?.id === 0
 
   const handleStudent = (student: Student) => {
-    // clicar novamente no mesmo item desmarca
+    // Clicar novamente no mesmo item desmarca
     if (selectedStudent?.id === student.id) {
       setSelectedStudent(null)
       return
     }
+
     setSelectedStudent(student)
     setTotalValue((student.price || 40) * counter)
   }
@@ -150,11 +156,13 @@ const RecitalRegistration = () => {
 
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, '')
+
     if (numbers.length <= 11) {
       return numbers
         .replace(/^(\d{2})(\d)/g, '($1) $2')
         .replace(/(\d)(\d{4})$/, '$1-$2')
     }
+
     return userPhone
   }
 
@@ -174,15 +182,18 @@ const RecitalRegistration = () => {
 
   const handleGeneratePix = async () => {
     setModalStep(3)
+
     if (!selectedStudent) return
+
     const data = {
-      aluno: selectedStudent?.name,
+      aluno: selectedStudent.name,
       email: userEmail,
       name: userName,
       phone: userPhone,
       quantidade: counter,
       valor: totalValue,
     }
+
     try {
       await registerTicket(data)
     } catch (error) {
@@ -192,28 +203,14 @@ const RecitalRegistration = () => {
 
   const isEmailValid =
     userEmail.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)
+
   const isPhoneValid = userPhone.replace(/\D/g, '').length >= 10
   const isStep1Valid = userName.trim() && isEmailValid && isPhoneValid
 
+  // Atualiza o valor sem adicionar eventos de clique fora do modal.
   useEffect(() => {
     setTotalValue(unitPrice * counter)
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        nextPage &&
-        inAreaRef.current &&
-        !inAreaRef.current.contains(event.target as Node)
-      ) {
-        closeModal()
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalValue, counter, nextPage, unitPrice])
+  }, [counter, unitPrice])
 
   const rowStyle = (on: boolean): React.CSSProperties => ({
     border: `1px solid ${on ? '#A78BFA' : 'rgba(255,255,255,0.12)'}`,
@@ -255,6 +252,7 @@ const RecitalRegistration = () => {
       style={{ backgroundImage: `url(./assets/fundo.jpg)` }}
     >
       <Toaster />
+
       <div
         className="min-h-screen flex flex-col items-center w-full"
         style={{
@@ -269,6 +267,7 @@ const RecitalRegistration = () => {
           >
             Recital 2025
           </h1>
+
           <p
             className="m-0 max-w-[520px] text-[15px] leading-normal"
             style={{ color: '#CFC6E0' }}
@@ -302,6 +301,7 @@ const RecitalRegistration = () => {
               >
                 <TicketIcon />
               </span>
+
               <span className="grow flex flex-col gap-0.5 text-left">
                 <span
                   className={`${fraunces.className} font-semibold text-xl`}
@@ -313,6 +313,7 @@ const RecitalRegistration = () => {
                   Todas as sessões do evento
                 </span>
               </span>
+
               <CheckCircle on={isCombo} color={GOLD} />
             </button>
           )}
@@ -328,6 +329,7 @@ const RecitalRegistration = () => {
               <label htmlFor="busca" className="sr-only">
                 Buscar aluno
               </label>
+
               <svg
                 width="18"
                 height="18"
@@ -342,6 +344,7 @@ const RecitalRegistration = () => {
                 <circle cx="11" cy="11" r="7" />
                 <path d="M20 20l-3.5-3.5" />
               </svg>
+
               <input
                 id="busca"
                 type="search"
@@ -356,6 +359,7 @@ const RecitalRegistration = () => {
             <div className="columns-1 min-[680px]:columns-2 gap-[10px]">
               {students.map(student => {
                 const on = selectedStudent?.id === student.id
+
                 return (
                   <button
                     key={student.id}
@@ -375,9 +379,11 @@ const RecitalRegistration = () => {
                     >
                       {getInitials(student.name)}
                     </span>
+
                     <span className="grow text-left text-[17px] font-medium">
                       {student.name}
                     </span>
+
                     <CheckCircle on={on} color="#A78BFA" />
                   </button>
                 )
@@ -401,6 +407,7 @@ const RecitalRegistration = () => {
           <span aria-live="polite" className="text-sm text-[#CFC6E0]">
             {summary}
           </span>
+
           <button
             type="button"
             onClick={handleNextPage}
@@ -410,10 +417,9 @@ const RecitalRegistration = () => {
             continuar
           </button>
         </div>
-
         {nextPage && selectedStudent && (
           <div
-            className="fixed inset-0 z-50 box-border p-4 flex items-center justify-center"
+            className="fixed inset-0 z-50 box-border p-0 sm:p-4 flex items-end sm:items-center justify-center"
             style={{
               background: 'rgba(5,3,10,0.76)',
               backdropFilter: 'blur(6px)',
@@ -424,17 +430,18 @@ const RecitalRegistration = () => {
               role="dialog"
               aria-modal="true"
               aria-labelledby="dlg-title"
-              className="w-full max-w-[440px] max-h-full overflow-auto box-border rounded-3xl border border-white/15"
+              className="w-full sm:max-w-[440px] h-auto max-h-[90dvh] sm:max-h-full overflow-y-auto overscroll-contain box-border rounded-t-3xl rounded-b-none sm:rounded-3xl border border-white/15"
               style={{
                 background: '#150E24',
                 boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
               }}
             >
+              {/* Cabeçalho fixo: o botão X permanece visível ao rolar */}
               <div
-                className="px-6 pt-[22px] pb-[18px] flex flex-col gap-[14px] border-b border-white/10"
+                className="sticky top-0 z-10 px-6 pt-[22px] pb-[18px] flex flex-col gap-[14px] border-b border-white/10"
                 style={{
                   background:
-                    'linear-gradient(120deg, rgba(124,58,237,0.34), rgba(79,70,229,0.12))',
+                    'linear-gradient(120deg, rgba(124,58,237,0.98), rgba(79,70,229,0.96))',
                 }}
               >
                 <div className="flex items-center justify-between gap-3">
@@ -444,11 +451,12 @@ const RecitalRegistration = () => {
                   >
                     {stepTitles[modalStep]}
                   </h2>
+
                   <button
                     type="button"
                     onClick={closeModal}
                     aria-label="Fechar"
-                    className="w-11 h-11 -my-2 -mr-2.5 shrink-0 border-0 rounded-full bg-transparent text-[#CFC6E0] flex items-center justify-center cursor-pointer hover:brightness-125 transition"
+                    className="w-11 h-11 -my-2 -mr-2.5 shrink-0 border-0 rounded-full bg-black/20 text-[#F3EFFA] flex items-center justify-center cursor-pointer hover:bg-black/40 transition"
                   >
                     <svg
                       width="20"
@@ -464,6 +472,7 @@ const RecitalRegistration = () => {
                     </svg>
                   </button>
                 </div>
+
                 <div className="flex items-center gap-[10px]">
                   <div
                     className="grow grid grid-cols-3 gap-1.5"
@@ -482,7 +491,8 @@ const RecitalRegistration = () => {
                       />
                     ))}
                   </div>
-                  <span className="text-[13px] text-[#CFC6E0]">
+
+                  <span className="text-[13px] text-[#F3EFFA]">
                     Etapa {modalStep} de 3
                   </span>
                 </div>
@@ -516,10 +526,12 @@ const RecitalRegistration = () => {
                           </span>
                         )}
                       </span>
+
                       <span className="flex flex-col gap-0.5 min-w-0">
                         <span className="text-[13px] text-[#A79DBB]">
                           Acompanhante de
                         </span>
+
                         <span
                           className={
                             isCombo
@@ -541,6 +553,7 @@ const RecitalRegistration = () => {
                         >
                           Nome completo
                         </label>
+
                         <input
                           id="f-nome"
                           type="text"
@@ -551,6 +564,7 @@ const RecitalRegistration = () => {
                           className={inputClass}
                         />
                       </div>
+
                       <div className="flex flex-col gap-2">
                         <label
                           htmlFor="f-email"
@@ -558,6 +572,7 @@ const RecitalRegistration = () => {
                         >
                           E-mail
                         </label>
+
                         <input
                           id="f-email"
                           type="email"
@@ -568,6 +583,7 @@ const RecitalRegistration = () => {
                           className={inputClass}
                         />
                       </div>
+
                       <div className="flex flex-col gap-2">
                         <label
                           htmlFor="f-tel"
@@ -575,6 +591,7 @@ const RecitalRegistration = () => {
                         >
                           Telefone
                         </label>
+
                         <input
                           id="f-tel"
                           type="tel"
@@ -606,6 +623,7 @@ const RecitalRegistration = () => {
                       <span className="text-[15px] text-[#CFC6E0]">
                         Quantos acompanhantes?
                       </span>
+
                       <div className="flex items-center gap-[22px]">
                         <button
                           type="button"
@@ -627,6 +645,7 @@ const RecitalRegistration = () => {
                             <path d="M5 12h14" />
                           </svg>
                         </button>
+
                         <div
                           className="min-w-[84px] flex flex-col items-center gap-0.5"
                           aria-live="polite"
@@ -636,10 +655,12 @@ const RecitalRegistration = () => {
                           >
                             {counter}
                           </span>
+
                           <span className="text-sm text-[#CFC6E0]">
                             {counter === 1 ? 'ingresso' : 'ingressos'}
                           </span>
                         </div>
+
                         <button
                           type="button"
                           onClick={() =>
@@ -668,15 +689,19 @@ const RecitalRegistration = () => {
                     <div className="flex flex-col gap-3 px-[18px] py-4 rounded-2xl bg-white/5 border border-white/10">
                       <div className="flex items-baseline justify-between text-[15px] text-[#CFC6E0]">
                         <span>Valor unitário</span>
+
                         <span className="text-[#F3EFFA] font-semibold">
                           {money(unitPrice)}
                         </span>
                       </div>
+
                       <span className="h-px bg-white/10" />
+
                       <div className="flex items-baseline justify-between">
                         <span className="text-base font-semibold">
                           Valor total
                         </span>
+
                         <span
                           className={`${fraunces.className} font-bold text-[28px]`}
                           style={{ color: GOLD }}
@@ -694,6 +719,7 @@ const RecitalRegistration = () => {
                       >
                         Voltar
                       </button>
+
                       <button
                         type="button"
                         onClick={handleGeneratePix}
@@ -704,14 +730,15 @@ const RecitalRegistration = () => {
                     </div>
                   </>
                 )}
-
                 {modalStep === 3 && (
                   <>
                     <div className="flex flex-col items-center gap-[14px]">
-                      <span className="text-[15px] text-[#CFC6E0]">
+                      <span className="hidden sm:block text-[15px] text-[#CFC6E0]">
                         Escaneie o QR Code para pagar
                       </span>
-                      <div className="p-3 rounded-2xl bg-[#F3EFFA] flex items-center justify-center">
+
+                      {/* QR Code visível em telas maiores */}
+                      <div className="hidden sm:flex p-3 rounded-2xl bg-[#F3EFFA] items-center justify-center">
                         <PIX
                           pixkey="profs.thaysoliveira@gmail.com"
                           merchant="Virginia Thays"
@@ -723,6 +750,38 @@ const RecitalRegistration = () => {
                           resize={164}
                         />
                       </div>
+
+                      {/* PIX Copia e Cola visível no celular */}
+                      <div className="sm:hidden w-full flex flex-col gap-2">
+                        <label
+                          htmlFor="pix-copia-cola"
+                          className="text-sm font-semibold text-[#F3EFFA]"
+                        >
+                          PIX Copia e Cola
+                        </label>
+
+                        <textarea
+                          id="pix-copia-cola"
+                          readOnly
+                          value={fullPIX}
+                          placeholder="Gerando código PIX..."
+                          rows={4}
+                          className="w-full box-border resize-none rounded-xl border border-white/15 bg-white/5 p-3 text-sm leading-relaxed text-[#F3EFFA] outline-none focus-visible:outline-2 focus-visible:outline-[#F3EFFA]"
+                          onFocus={event => event.currentTarget.select()}
+                        />
+
+                        <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
+                          <button
+                            type="button"
+                            disabled={!fullPIX}
+                            className={`${primaryBtn} w-full flex items-center justify-center gap-[10px]`}
+                          >
+                            <IoMdCopy className="w-[18px] h-[18px]" />
+                            <span>Copiar código PIX</span>
+                          </button>
+                        </CopyToClipboard>
+                      </div>
+
                       <span
                         className={`${fraunces.className} font-bold text-[32px]`}
                         style={{ color: GOLD }}
@@ -731,15 +790,19 @@ const RecitalRegistration = () => {
                       </span>
                     </div>
 
-                    <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
-                      <button
-                        type="button"
-                        className={`${ghostBtn} w-full flex items-center justify-center gap-[10px] bg-white/5`}
-                      >
-                        <IoMdCopy className="w-[18px] h-[18px]" />
-                        <span>Copiar PIX Copia e Cola</span>
-                      </button>
-                    </CopyToClipboard>
+                    {/* Botão de cópia para desktop */}
+                    <div className="hidden sm:block">
+                      <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
+                        <button
+                          type="button"
+                          disabled={!fullPIX}
+                          className={`${ghostBtn} w-full flex items-center justify-center gap-[10px] bg-white/5`}
+                        >
+                          <IoMdCopy className="w-[18px] h-[18px]" />
+                          <span>Copiar PIX Copia e Cola</span>
+                        </button>
+                      </CopyToClipboard>
+                    </div>
 
                     <div className="flex flex-col gap-1 px-4 py-[14px] rounded-2xl bg-white/5 border border-white/10 text-sm text-[#CFC6E0]">
                       <span className="font-semibold text-[#F3EFFA]">
