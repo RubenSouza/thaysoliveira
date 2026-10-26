@@ -11,7 +11,7 @@ const navLinks = [
   { href: '#galeria', label: 'Recitais' },
   { href: '#midia', label: 'Mídia' },
   { href: '#contato', label: 'Contato' },
-  // { href: '/recital', label: 'Ingressos' },
+  { href: '/recital', label: 'Ingressos' },
 ]
 
 export default function Navbar() {

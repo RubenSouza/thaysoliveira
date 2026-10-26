@@ -265,7 +265,7 @@ const RecitalRegistration = () => {
             className={`${fraunces.className} m-0 font-bold text-[38px] leading-[1.05] tracking-tight`}
             style={{ color: '#F3EFFA' }}
           >
-            Recital 2025
+            Recital 2026
           </h1>
 
           <p
