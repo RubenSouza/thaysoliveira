@@ -1,28 +1,93 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import Fuse from 'fuse.js'
+import { DM_Sans, Fraunces } from 'next/font/google'
 import { recitalStudents } from '@/src/data/recitals'
 import { registerTicket } from '../../utils/ticket'
-import { IoIosArrowUp, IoIosArrowDown, IoMdCopy } from 'react-icons/io'
+import { IoMdCopy } from 'react-icons/io'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import PIX from 'react-qrcode-pix'
 import toast, { Toaster } from 'react-hot-toast'
-import Image from 'next/image'
-import { redirect } from 'next/navigation'
+
+const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600'] })
+const fraunces = Fraunces({ subsets: ['latin'], weight: ['600', '700'] })
 
 type Student = {
   id: number
   name: string
-  img: string
   price?: number
 }
 
 const now = new Date().getTime().toString()
+const GOLD = '#E3BE7A'
+const MAX_TICKETS = 10
+
+const normalize = (t: string) =>
+  t
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+
+const getInitials = (name: string) => {
+  const parts = name.trim().split(' ')
+  const value =
+    parts.length > 1
+      ? parts[0][0] + parts[parts.length - 1][0]
+      : name.slice(0, 2)
+
+  return value.toUpperCase()
+}
+
+const money = (v: number) => 'R$ ' + v.toFixed(2).replace('.', ',')
+
+const TicketIcon = ({ size = 24 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.7"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z" />
+    <path d="M14 6v12" strokeDasharray="2 2.5" />
+  </svg>
+)
+
+const CheckCircle = ({ on, color }: { on: boolean; color: string }) => (
+  <span
+    className="w-6 h-6 shrink-0 rounded-full flex items-center justify-center box-border"
+    style={{
+      border: `1.5px solid ${on ? color : 'rgba(255,255,255,0.35)'}`,
+      background: on ? color : 'transparent',
+    }}
+  >
+    {on && (
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#150D26"
+        strokeWidth="3.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12.5l4.5 4.5L19 7.5" />
+      </svg>
+    )}
+  </span>
+)
 
 const RecitalRegistration = () => {
-  redirect('/')
-  const [selectedStudent, setSelectedStudent] = useState({} as Student)
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null)
+  const [search, setSearch] = useState('')
   const [counter, setCounter] = useState(1)
   const [nextPage, setNextPage] = useState(false)
   const [modalStep, setModalStep] = useState(1)
@@ -31,11 +96,48 @@ const RecitalRegistration = () => {
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPhone, setUserPhone] = useState('')
+
   const inAreaRef = useRef<HTMLDivElement | null>(null)
 
+  const combo = recitalStudents.find(s => s.id === 0)
+
+  const allStudents = useMemo(() => recitalStudents.filter(s => s.id !== 0), [])
+
+  // Índice do Fuse com o nome normalizado (sem acentos), para que
+  // "leticia" encontre "Letícia" em qualquer versão do fuse.js
+  const fuse = useMemo(
+    () =>
+      new Fuse(
+        allStudents.map(s => ({
+          student: s,
+          searchName: normalize(s.name),
+        })),
+        {
+          keys: ['searchName'],
+          threshold: 0.35,
+          ignoreLocation: true,
+          minMatchCharLength: 2,
+        },
+      ),
+    [allStudents],
+  )
+
+  const students = useMemo(() => {
+    const q = normalize(search.trim())
+    if (!q) return allStudents
+    return fuse.search(q).map(result => result.item.student)
+  }, [search, fuse, allStudents])
+
   const unitPrice = selectedStudent?.price || 40
+  const isCombo = selectedStudent?.id === 0
 
   const handleStudent = (student: Student) => {
+    // Clicar novamente no mesmo item desmarca
+    if (selectedStudent?.id === student.id) {
+      setSelectedStudent(null)
+      return
+    }
+
     setSelectedStudent(student)
     setTotalValue((student.price || 40) * counter)
   }
@@ -54,11 +156,13 @@ const RecitalRegistration = () => {
 
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, '')
+
     if (numbers.length <= 11) {
       return numbers
         .replace(/^(\d{2})(\d)/g, '($1) $2')
         .replace(/(\d)(\d{4})$/, '$1-$2')
     }
+
     return userPhone
   }
 
@@ -67,16 +171,29 @@ const RecitalRegistration = () => {
     setUserPhone(formatted)
   }
 
+  const closeModal = () => {
+    setNextPage(false)
+    setModalStep(1)
+    setCounter(1)
+    setUserName('')
+    setUserEmail('')
+    setUserPhone('')
+  }
+
   const handleGeneratePix = async () => {
     setModalStep(3)
+
+    if (!selectedStudent) return
+
     const data = {
-      aluno: selectedStudent?.name,
+      aluno: selectedStudent.name,
       email: userEmail,
       name: userName,
       phone: userPhone,
       quantidade: counter,
       valor: totalValue,
     }
+
     try {
       await registerTicket(data)
     } catch (error) {
@@ -86,269 +203,542 @@ const RecitalRegistration = () => {
 
   const isEmailValid =
     userEmail.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)
+
   const isPhoneValid = userPhone.replace(/\D/g, '').length >= 10
   const isStep1Valid = userName.trim() && isEmailValid && isPhoneValid
 
+  // Atualiza o valor sem adicionar eventos de clique fora do modal.
   useEffect(() => {
     setTotalValue(unitPrice * counter)
+  }, [counter, unitPrice])
 
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        nextPage &&
-        inAreaRef.current &&
-        !inAreaRef.current.contains(event.target as Node)
-      ) {
-        setNextPage(false)
-        setModalStep(1)
-        setCounter(1)
-        setUserName('')
-        setUserEmail('')
-        setUserPhone('')
-      }
-    }
+  const rowStyle = (on: boolean): React.CSSProperties => ({
+    border: `1px solid ${on ? '#A78BFA' : 'rgba(255,255,255,0.12)'}`,
+    background: on ? 'rgba(167,139,250,0.20)' : 'rgba(255,255,255,0.05)',
+  })
 
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [totalValue, counter, nextPage, unitPrice])
+  const comboStyle: React.CSSProperties = {
+    border: `1px solid ${isCombo ? GOLD : 'rgba(227,190,122,0.55)'}`,
+    background: isCombo
+      ? 'linear-gradient(120deg, rgba(227,190,122,0.30), rgba(227,190,122,0.12))'
+      : 'linear-gradient(120deg, rgba(227,190,122,0.16), rgba(227,190,122,0.05))',
+  }
+
+  const summary = !selectedStudent
+    ? 'Nenhum aluno selecionado'
+    : isCombo
+      ? 'Combo Recital selecionado'
+      : `${selectedStudent.name} selecionado`
+
+  const inputClass =
+    'w-full box-border h-12 px-4 rounded-[14px] border border-white/15 bg-white/5 text-[#F3EFFA] text-base outline-none placeholder:text-[#A79DBB] focus-visible:outline-2 focus-visible:outline-[#F3EFFA] focus-visible:outline-offset-2'
+
+  const ghostBtn =
+    'h-[52px] px-5 rounded-[14px] text-base font-semibold bg-transparent text-[#F3EFFA] border border-white/25 hover:brightness-125 transition'
+
+  const primaryBtn =
+    'h-[52px] px-6 rounded-[14px] text-base font-semibold tracking-wider bg-[#F3EFFA] text-[#150D26] hover:brightness-90 transition disabled:bg-white/10 disabled:text-[#A79DBB] disabled:cursor-not-allowed disabled:hover:brightness-100'
+
+  const stepTitles = [
+    '',
+    'Seus dados',
+    'Quantidade de ingressos',
+    'Pagamento PIX',
+  ]
 
   return (
     <div
-      className="w-full h-full bg-cover bg-no-repeat bg-center"
+      className={`${dmSans.className} w-full min-h-screen bg-cover bg-no-repeat bg-center bg-fixed text-[#F3EFFA]`}
       style={{ backgroundImage: `url(./assets/fundo.jpg)` }}
     >
       <Toaster />
-      <div className="flex flex-col items-center justify-center w-full h-full bg-black bg-opacity-50 mt-6">
-        <h1 className="text-lg 2xl:text-3xl font-bold text-white pb-2">
-          Recital 2025
-        </h1>
-        <div className="flex flex-col items-center">
-          <p className="text-xs 2xl:text-base text-center xl:pb-0 2xl:pb-4">
+
+      <div
+        className="min-h-screen flex flex-col items-center w-full"
+        style={{
+          background:
+            'radial-gradient(90% 26% at 50% 0%, rgba(124,58,237,0.40), rgba(124,58,237,0) 70%), rgba(10,6,16,0.80)',
+        }}
+      >
+        <div className="relative w-full max-w-[760px] box-border px-4 pt-10 pb-1 text-center flex flex-col gap-3 items-center">
+          <h1
+            className={`${fraunces.className} m-0 font-bold text-[38px] leading-[1.05] tracking-tight`}
+            style={{ color: '#F3EFFA' }}
+          >
+            Recital 2026
+          </h1>
+
+          <p
+            className="m-0 max-w-[520px] text-[15px] leading-normal"
+            style={{ color: '#CFC6E0' }}
+          >
             Escolha o aluno que você irá acompanhar ou selecione o Combo recital
             para participar de todas as sessões do evento.
           </p>
-          <motion.div
-            initial={{ x: -2000 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 2 }}
-            className="flex flex-col items-center justify-center px-10 md:px-0 py-2 2xl:py-6"
-          >
-            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-4 gap-y-2 md:gap-6 md:gap-y-3 lg:gap-8 lg:gap-y-4 xl:gap-10 xl:gap-y-6">
-              {recitalStudents.map(student => (
-                <div
-                  className="w-full flex flex-col items-center cursor-pointer"
-                  key={student.id}
-                  onClick={() => handleStudent(student)}
-                >
-                  <div
-                    className={`bg-white rounded-full w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 2xl:w-24 2xl:h-24 transition-all duration-200 ${
-                      selectedStudent?.name === student.name
-                        ? 'border-4 border-purple-500 scale-105'
-                        : 'border-2 border-slate-300 hover:border-purple-300'
-                    }`}
-                  >
-                    <Image
-                      width={400}
-                      height={400}
-                      alt={student.name}
-                      src={student.img}
-                      className="w-full h-full rounded-full object-cover object-center max-w-full"
-                    />
-                  </div>
-                  <p className="text-xs xl:text-sm 2xl:text-base w-[70px] md:w-[80px] lg:w-[90px] text-center mt-1">
-                    {student.name}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <button
-              className="bg-purple-500 p-2 text-sm uppercase rounded-lg 2xl:p-3 2xl:text-base mt-2 2xl:mt-4 
-                disabled:bg-slate-300 disabled:cursor-not-allowed disabled:text-slate-900 disabled:opacity-50
-                hover:bg-purple-600 transition-colors"
-              onClick={handleNextPage}
-              disabled={!selectedStudent?.name}
-            >
-              continuar
-            </button>
-          </motion.div>
         </div>
 
-        {nextPage && (
-          <div className="fixed inset-0 bg-black/80 flex flex-col items-center justify-center z-50">
-            <div
-              className="w-[320px] h-auto max-h-[90vh] overflow-y-auto lg:w-[420px] bg-white rounded-2xl text-slate-900"
-              ref={inAreaRef}
+        <motion.main
+          initial={{ x: -2000 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 2 }}
+          className="w-full max-w-[760px] box-border px-4 pt-6 flex flex-col gap-6 grow"
+        >
+          {combo && (
+            <button
+              type="button"
+              aria-pressed={isCombo}
+              onClick={() => handleStudent(combo)}
+              className="w-full box-border flex items-center gap-[14px] px-[18px] py-[14px] min-h-[76px] rounded-2xl text-[#F3EFFA] cursor-pointer hover:brightness-125 transition"
+              style={comboStyle}
             >
-              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 rounded-t-2xl">
-                <h1 className="text-xl font-bold text-white text-center mb-3">
-                  {modalStep === 1 && 'Seus Dados'}
-                  {modalStep === 2 && 'Quantidade de Ingressos'}
-                  {modalStep === 3 && 'Pagamento PIX'}
-                </h1>
-                <div className="flex justify-center space-x-2">
-                  {[1, 2, 3].map(s => (
-                    <div
-                      key={s}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        s === modalStep ? 'w-8 bg-white' : 'w-2 bg-white/40'
-                      }`}
-                    />
-                  ))}
+              <span
+                className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center"
+                style={{
+                  background: 'rgba(227,190,122,0.14)',
+                  border: `1.5px solid ${GOLD}`,
+                  color: GOLD,
+                }}
+              >
+                <TicketIcon />
+              </span>
+
+              <span className="grow flex flex-col gap-0.5 text-left">
+                <span
+                  className={`${fraunces.className} font-semibold text-xl`}
+                  style={{ color: '#F6E4BE' }}
+                >
+                  Combo Recital
+                </span>
+                <span className="text-sm text-[#CFC6E0]">
+                  Todas as sessões do evento
+                </span>
+              </span>
+
+              <CheckCircle on={isCombo} color={GOLD} />
+            </button>
+          )}
+
+          <section className="flex flex-col gap-4">
+            <div className="flex items-center gap-4 text-[#A79DBB] text-xs tracking-[0.14em] uppercase">
+              <span className="grow h-px bg-white/15" />
+              <span>ou escolha um aluno</span>
+              <span className="grow h-px bg-white/15" />
+            </div>
+
+            <div className="relative flex items-center">
+              <label htmlFor="busca" className="sr-only">
+                Buscar aluno
+              </label>
+
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#A79DBB"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden="true"
+                className="absolute left-4 pointer-events-none"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <path d="M20 20l-3.5-3.5" />
+              </svg>
+
+              <input
+                id="busca"
+                type="search"
+                placeholder="Buscar aluno"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                autoComplete="off"
+                className={`${inputClass} pl-11`}
+              />
+            </div>
+
+            <div className="columns-1 min-[680px]:columns-2 gap-[10px]">
+              {students.map(student => {
+                const on = selectedStudent?.id === student.id
+
+                return (
+                  <button
+                    key={student.id}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => handleStudent(student)}
+                    className="w-full box-border flex items-center gap-[14px] px-4 py-[10px] min-h-[60px] mb-[10px] break-inside-avoid rounded-2xl text-[#F3EFFA] cursor-pointer hover:brightness-125 transition"
+                    style={rowStyle(on)}
+                  >
+                    <span
+                      className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-sm font-semibold tracking-wide"
+                      style={{
+                        background:
+                          'linear-gradient(140deg, rgba(167,139,250,0.30), rgba(99,102,241,0.14))',
+                        border: '1.5px solid rgba(255,255,255,0.28)',
+                      }}
+                    >
+                      {getInitials(student.name)}
+                    </span>
+
+                    <span className="grow text-left text-[17px] font-medium">
+                      {student.name}
+                    </span>
+
+                    <CheckCircle on={on} color="#A78BFA" />
+                  </button>
+                )
+              })}
+            </div>
+
+            {students.length === 0 && (
+              <p className="mt-2 text-center text-[#A79DBB] text-[15px]">
+                Nenhum aluno encontrado.
+              </p>
+            )}
+          </section>
+        </motion.main>
+
+        <div
+          className="sticky bottom-0 w-full box-border mt-4 px-4 pt-6 pb-5 flex flex-col items-center gap-[10px]"
+          style={{
+            background: 'linear-gradient(to top, #0A0610 62%, rgba(10,6,16,0))',
+          }}
+        >
+          <span aria-live="polite" className="text-sm text-[#CFC6E0]">
+            {summary}
+          </span>
+
+          <button
+            type="button"
+            onClick={handleNextPage}
+            disabled={!selectedStudent}
+            className="h-[52px] px-11 rounded-full text-base font-semibold tracking-[0.06em] uppercase bg-[#F3EFFA] text-[#150D26] hover:brightness-90 transition disabled:bg-white/10 disabled:text-[#A79DBB] disabled:cursor-not-allowed disabled:hover:brightness-100"
+          >
+            continuar
+          </button>
+        </div>
+        {nextPage && selectedStudent && (
+          <div
+            className="fixed inset-0 z-50 box-border p-0 sm:p-4 flex items-end sm:items-center justify-center"
+            style={{
+              background: 'rgba(5,3,10,0.76)',
+              backdropFilter: 'blur(6px)',
+            }}
+          >
+            <div
+              ref={inAreaRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="dlg-title"
+              className="w-full sm:max-w-[440px] h-auto max-h-[90dvh] sm:max-h-full overflow-y-auto overscroll-contain box-border rounded-t-3xl rounded-b-none sm:rounded-3xl border border-white/15"
+              style={{
+                background: '#150E24',
+                boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
+              }}
+            >
+              {/* Cabeçalho fixo: o botão X permanece visível ao rolar */}
+              <div
+                className="sticky top-0 z-10 px-6 pt-[22px] pb-[18px] flex flex-col gap-[14px] border-b border-white/10"
+                style={{
+                  background:
+                    'linear-gradient(120deg, rgba(124,58,237,0.98), rgba(79,70,229,0.96))',
+                }}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <h2
+                    id="dlg-title"
+                    className={`${fraunces.className} m-0 font-bold text-2xl leading-tight`}
+                  >
+                    {stepTitles[modalStep]}
+                  </h2>
+
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    aria-label="Fechar"
+                    className="w-11 h-11 -my-2 -mr-2.5 shrink-0 border-0 rounded-full bg-black/20 text-[#F3EFFA] flex items-center justify-center cursor-pointer hover:bg-black/40 transition"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-[10px]">
+                  <div
+                    className="grow grid grid-cols-3 gap-1.5"
+                    aria-hidden="true"
+                  >
+                    {[1, 2, 3].map(i => (
+                      <span
+                        key={i}
+                        className="h-1 rounded-sm"
+                        style={{
+                          background:
+                            i <= modalStep
+                              ? '#A78BFA'
+                              : 'rgba(255,255,255,0.16)',
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  <span className="text-[13px] text-[#F3EFFA]">
+                    Etapa {modalStep} de 3
+                  </span>
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="px-6 pt-[22px] pb-6 flex flex-col gap-5">
                 {modalStep === 1 && (
-                  <div className="space-y-6">
-                    <div className="text-center mb-4">
-                      <div className="w-16 h-16 rounded-full mx-auto mb-2 border-2 border-purple-200">
-                        <Image
-                          width={400}
-                          height={400}
-                          alt={selectedStudent?.name}
-                          src={selectedStudent?.img}
-                          className="w-full h-full rounded-full object-cover object-top"
-                        />
-                      </div>
-                      <p className="text-gray-600 text-sm">
-                        Acompanhante de:{' '}
-                        <span className="font-semibold text-purple-600">
-                          {selectedStudent?.name}
+                  <>
+                    <div className="flex items-center gap-[14px] px-[14px] py-3 rounded-2xl bg-white/5 border border-white/10">
+                      <span
+                        className="w-11 h-11 shrink-0 rounded-full flex items-center justify-center"
+                        style={
+                          isCombo
+                            ? {
+                                background: 'rgba(227,190,122,0.14)',
+                                border: `1.5px solid ${GOLD}`,
+                                color: GOLD,
+                              }
+                            : {
+                                background:
+                                  'linear-gradient(140deg, rgba(167,139,250,0.30), rgba(99,102,241,0.14))',
+                                border: '1.5px solid rgba(255,255,255,0.28)',
+                              }
+                        }
+                      >
+                        {isCombo ? (
+                          <TicketIcon size={22} />
+                        ) : (
+                          <span className="text-sm font-semibold">
+                            {getInitials(selectedStudent.name)}
+                          </span>
+                        )}
+                      </span>
+
+                      <span className="flex flex-col gap-0.5 min-w-0">
+                        <span className="text-[13px] text-[#A79DBB]">
+                          Acompanhante de
                         </span>
-                      </p>
+
+                        <span
+                          className={
+                            isCombo
+                              ? `${fraunces.className} font-semibold text-lg`
+                              : 'text-[17px] font-semibold'
+                          }
+                          style={isCombo ? { color: '#F6E4BE' } : undefined}
+                        >
+                          {selectedStudent.name}
+                        </span>
+                      </span>
                     </div>
 
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Nome Completo
+                    <div className="flex flex-col gap-4">
+                      <div className="flex flex-col gap-2">
+                        <label
+                          htmlFor="f-nome"
+                          className="text-sm text-[#CFC6E0]"
+                        >
+                          Nome completo
                         </label>
+
                         <input
+                          id="f-nome"
                           type="text"
+                          autoComplete="name"
+                          placeholder="Digite seu nome completo"
                           value={userName}
                           onChange={e => setUserName(e.target.value)}
-                          placeholder="Digite seu nome completo"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all outline-none text-gray-900"
+                          className={inputClass}
                         />
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <div className="flex flex-col gap-2">
+                        <label
+                          htmlFor="f-email"
+                          className="text-sm text-[#CFC6E0]"
+                        >
                           E-mail
                         </label>
+
                         <input
+                          id="f-email"
                           type="email"
+                          autoComplete="email"
+                          placeholder="seu@email.com"
                           value={userEmail}
                           onChange={e => setUserEmail(e.target.value)}
-                          placeholder="seu@email.com"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all outline-none text-gray-900"
+                          className={inputClass}
                         />
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <div className="flex flex-col gap-2">
+                        <label
+                          htmlFor="f-tel"
+                          className="text-sm text-[#CFC6E0]"
+                        >
                           Telefone
                         </label>
+
                         <input
+                          id="f-tel"
                           type="tel"
-                          value={userPhone}
-                          onChange={handlePhoneChange}
+                          autoComplete="tel"
+                          inputMode="tel"
                           placeholder="(00) 00000-0000"
                           maxLength={15}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all outline-none text-gray-900"
+                          value={userPhone}
+                          onChange={handlePhoneChange}
+                          className={inputClass}
                         />
                       </div>
                     </div>
 
                     <button
+                      type="button"
                       onClick={() => setModalStep(2)}
                       disabled={!isStep1Valid}
-                      className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      className={`${primaryBtn} w-full`}
                     >
                       Continuar
                     </button>
-                  </div>
+                  </>
                 )}
 
                 {modalStep === 2 && (
-                  <div className="space-y-6">
-                    <div className="text-center">
-                      <p className="text-gray-700 font-medium mb-6">
+                  <>
+                    <div className="flex flex-col items-center gap-[14px] px-4 py-5 rounded-[20px] bg-white/5 border border-white/10">
+                      <span className="text-[15px] text-[#CFC6E0]">
                         Quantos acompanhantes?
-                      </p>
-                    </div>
+                      </span>
 
-                    <div className="flex flex-col items-center space-y-4">
-                      <div className="w-48 bg-gray-50 rounded-2xl p-4">
+                      <div className="flex items-center gap-[22px]">
                         <button
-                          onClick={() => setCounter(counter + 1)}
-                          className="w-full flex justify-center py-3 rounded-t-xl hover:bg-gray-200 transition-colors"
-                        >
-                          <IoIosArrowUp className="w-8 h-8 text-gray-600" />
-                        </button>
-
-                        <div className="text-center py-4">
-                          <p className="text-6xl font-bold text-purple-600">
-                            {counter}
-                          </p>
-                          <p className="text-sm text-gray-500 mt-2">
-                            {counter === 1 ? 'ingresso' : 'ingressos'}
-                          </p>
-                        </div>
-
-                        <button
+                          type="button"
                           onClick={() => setCounter(Math.max(1, counter - 1))}
                           disabled={counter <= 1}
-                          className="w-full flex justify-center py-3 rounded-b-xl hover:bg-gray-200 transition-colors disabled:opacity-30 disabled:hover:bg-gray-50"
+                          aria-label="Diminuir quantidade"
+                          className="w-[52px] h-[52px] rounded-full flex items-center justify-center border border-white/30 bg-white/10 text-[#F3EFFA] hover:brightness-90 transition disabled:border-white/10 disabled:bg-transparent disabled:text-[#6F6685] disabled:cursor-not-allowed"
                         >
-                          <IoIosArrowDown className="w-8 h-8 text-gray-600" />
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14" />
+                          </svg>
                         </button>
-                      </div>
 
-                      <div className="bg-purple-50 rounded-lg p-4 w-full">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-700">Valor unitário:</span>
-                          <span className="font-semibold">
-                            R$ {unitPrice.toFixed(2)}
+                        <div
+                          className="min-w-[84px] flex flex-col items-center gap-0.5"
+                          aria-live="polite"
+                        >
+                          <span
+                            className={`${fraunces.className} font-bold text-[56px] leading-none`}
+                          >
+                            {counter}
+                          </span>
+
+                          <span className="text-sm text-[#CFC6E0]">
+                            {counter === 1 ? 'ingresso' : 'ingressos'}
                           </span>
                         </div>
-                        <div className="flex justify-between items-center mt-2 pt-2 border-t border-purple-200">
-                          <span className="text-lg font-bold text-gray-800">
-                            Valor Total:
-                          </span>
-                          <span className="text-2xl font-bold text-purple-600">
-                            R$ {totalValue.toFixed(2)}
-                          </span>
-                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setCounter(Math.min(MAX_TICKETS, counter + 1))
+                          }
+                          disabled={counter >= MAX_TICKETS}
+                          aria-label="Aumentar quantidade"
+                          className="w-[52px] h-[52px] rounded-full flex items-center justify-center border border-white/30 bg-white/10 text-[#F3EFFA] hover:brightness-90 transition disabled:border-white/10 disabled:bg-transparent disabled:text-[#6F6685] disabled:cursor-not-allowed"
+                        >
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            strokeLinecap="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M12 5v14M5 12h14" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
 
-                    <div className="flex space-x-3">
+                    <div className="flex flex-col gap-3 px-[18px] py-4 rounded-2xl bg-white/5 border border-white/10">
+                      <div className="flex items-baseline justify-between text-[15px] text-[#CFC6E0]">
+                        <span>Valor unitário</span>
+
+                        <span className="text-[#F3EFFA] font-semibold">
+                          {money(unitPrice)}
+                        </span>
+                      </div>
+
+                      <span className="h-px bg-white/10" />
+
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-base font-semibold">
+                          Valor total
+                        </span>
+
+                        <span
+                          className={`${fraunces.className} font-bold text-[28px]`}
+                          style={{ color: GOLD }}
+                        >
+                          {money(totalValue)}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-[10px]">
                       <button
+                        type="button"
                         onClick={() => setModalStep(1)}
-                        className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all"
+                        className={ghostBtn}
                       >
                         Voltar
                       </button>
+
                       <button
+                        type="button"
                         onClick={handleGeneratePix}
-                        className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition-all"
+                        className={`${primaryBtn} grow`}
                       >
                         Gerar PIX
                       </button>
                     </div>
-                  </div>
+                  </>
                 )}
-
                 {modalStep === 3 && (
-                  <div className="space-y-4">
-                    <div className="text-center">
-                      <p className="text-sm text-gray-600 mb-3">
+                  <>
+                    <div className="flex flex-col items-center gap-[14px]">
+                      <span className="hidden sm:block text-[15px] text-[#CFC6E0]">
                         Escaneie o QR Code para pagar
-                      </p>
-                      <div className="flex justify-center mb-3">
+                      </span>
+
+                      {/* QR Code visível em telas maiores */}
+                      <div className="hidden sm:flex p-3 rounded-2xl bg-[#F3EFFA] items-center justify-center">
                         <PIX
                           pixkey="profs.thaysoliveira@gmail.com"
                           merchant="Virginia Thays"
@@ -357,33 +747,85 @@ const RecitalRegistration = () => {
                           code={'RQP' + now}
                           amount={totalValue}
                           onLoad={setFullPIX}
-                          resize={160}
+                          resize={164}
                         />
                       </div>
-                      <p className="text-2xl font-bold text-purple-600">
-                        R$ {totalValue.toFixed(2)}
-                      </p>
+
+                      {/* PIX Copia e Cola visível no celular */}
+                      <div className="sm:hidden w-full flex flex-col gap-2">
+                        <label
+                          htmlFor="pix-copia-cola"
+                          className="text-sm font-semibold text-[#F3EFFA]"
+                        >
+                          PIX Copia e Cola
+                        </label>
+
+                        <textarea
+                          id="pix-copia-cola"
+                          readOnly
+                          value={fullPIX}
+                          placeholder="Gerando código PIX..."
+                          rows={4}
+                          className="w-full box-border resize-none rounded-xl border border-white/15 bg-white/5 p-3 text-sm leading-relaxed text-[#F3EFFA] outline-none focus-visible:outline-2 focus-visible:outline-[#F3EFFA]"
+                          onFocus={event => event.currentTarget.select()}
+                        />
+
+                        <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
+                          <button
+                            type="button"
+                            disabled={!fullPIX}
+                            className={`${primaryBtn} w-full flex items-center justify-center gap-[10px]`}
+                          >
+                            <IoMdCopy className="w-[18px] h-[18px]" />
+                            <span>Copiar código PIX</span>
+                          </button>
+                        </CopyToClipboard>
+                      </div>
+
+                      <span
+                        className={`${fraunces.className} font-bold text-[32px]`}
+                        style={{ color: GOLD }}
+                      >
+                        {money(totalValue)}
+                      </span>
                     </div>
 
-                    <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
-                      <button className="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all flex items-center justify-center space-x-2">
-                        <IoMdCopy className="w-5 h-5" />
-                        <span>Copiar PIX Copia e Cola</span>
-                      </button>
-                    </CopyToClipboard>
-
-                    <div className="text-xs text-gray-600 bg-gray-50 rounded-lg p-3">
-                      <p className="font-semibold mb-1">Dados bancários:</p>
-                      <p>Banco: PICPAY</p>
-                      <p>Nome: Virgínia Thays da Silva Oliveira</p>
+                    {/* Botão de cópia para desktop */}
+                    <div className="hidden sm:block">
+                      <CopyToClipboard text={fullPIX} onCopy={handleCopy}>
+                        <button
+                          type="button"
+                          disabled={!fullPIX}
+                          className={`${ghostBtn} w-full flex items-center justify-center gap-[10px] bg-white/5`}
+                        >
+                          <IoMdCopy className="w-[18px] h-[18px]" />
+                          <span>Copiar PIX Copia e Cola</span>
+                        </button>
+                      </CopyToClipboard>
                     </div>
 
-                    <p className="text-xs text-gray-500 text-center">
+                    <div className="flex flex-col gap-1 px-4 py-[14px] rounded-2xl bg-white/5 border border-white/10 text-sm text-[#CFC6E0]">
+                      <span className="font-semibold text-[#F3EFFA]">
+                        Dados bancários
+                      </span>
+                      <span>Banco: PICPAY</span>
+                      <span>Nome: Virgínia Thays da Silva Oliveira</span>
+                    </div>
+
+                    <p className="m-0 text-[13px] leading-[1.55] text-[#B9B0CC] text-center">
                       Verifique se o remetente e o valor estão corretos antes de
                       confirmar o pagamento. Após isso, envie o comprovante para
-                      o WhatsApp (83) 99102-9054
+                      o WhatsApp (83) 99102-9054.
                     </p>
-                  </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setModalStep(2)}
+                      className={ghostBtn}
+                    >
+                      Voltar
+                    </button>
+                  </>
                 )}
               </div>
             </div>
