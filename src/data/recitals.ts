@@ -212,6 +212,7 @@ export const recitalStudents: RecitalStudent[] = [
   { id: 21, name: 'Marina Menezes' },
   { id: 22, name: 'Mateus Amorim' },
   { id: 23, name: 'Nicolas Sarmento' },
-  { id: 24, name: 'Ravi Paulino' },
-  { id: 25, name: 'Tomás Torres' },
+  { id: 24, name: 'Pedro Lucas' },
+  { id: 25, name: 'Ravi Paulino' },
+  { id: 26, name: 'Tomás Torres' },
 ]
